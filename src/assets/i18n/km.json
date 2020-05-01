@@ -1,0 +1,53 @@
+{
+    "COMMON": {
+        "LABEL": {
+            "SORT": "Sort",
+            "ALL": "All",
+            "NO": "No"
+        },
+        "BUTTON": {
+            "BACK": "Back",
+            "CLOSE": "បិទ",
+            "REGISTER": "ចុះឈ្មោះ",
+            "SAVE": "Save",
+            "EDIT": "edit",
+            "UPDATE": "Update",
+            "CONFIRME": "Confirme"
+        },
+        "MESSAGE": {
+            "INVALID_EMAIL": "Invalid Email"
+        }
+    },
+    "Home2000": {
+        "LABEL": {
+            "COMPANY_NAME": "Company Name",
+            "CONTACT": "Contact",
+            "EMAIL": "Email",
+            "ADDRESS": "Address",
+            "DESCRIPTION": "Description"
+        }
+    },
+    "Home2100": {
+        "LABEL": {
+            "COMPANY_NAME": "Company Name",
+            "CONTACT": "Contact",
+            "EMAIL": "Email",
+            "ADDRESS": "Address",
+            "DESCRIPTION": "Description",
+            "REGISTER_COMPANY": "Register Company"
+        },
+        "PLACE_HOLDER": {
+            "ENTER_COMPANY_NAME": "Please enter company name",
+            "ENTER_CONTACT": "Please enter contact",
+            "ENTER_EMAIL": "Please enter Email",
+            "ENTER_DESCRIPTION": "Please enter Description",
+            "ENTER_ADDRESS": "Please enter Address"
+        },
+        "MESSAGE_ERROR": {
+            "REQUIRE_COMPANY_NAME": "Company name is required",
+            "REQUIRE_CONTACT": "Contact is required",
+            "REQUIRE_EMAIL": "Email is required",
+            "IN_VALID_PHONE_NUMBER": "Invalid Phone Number"
+        }
+    }
+}

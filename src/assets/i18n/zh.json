@@ -1,0 +1,30 @@
+{
+  "COMMON": {
+      "LABEL": {
+        "SORT": "Sort",
+        "ALL": "All"
+      },
+      "BUTTON": {
+        "BACK": "Back",
+        "CLOSE": "Close",
+        "REGISTER": "Register",
+        "SAVE":"Save"
+      }
+    },
+    "Home2100":{
+      "LABEL": {
+        "COMPANY_NAME":"Company Name",
+        "CONTACT":"Contact",
+        "EMAIL":"Email",
+        "ADDRESS":"Address",
+        "DESCRIPTION":"Description"
+      },
+      "PLACE_HOLDER":{
+        "ENTER_COMPANY_NAME":"Enter company name",
+        "ENTER_CONTACT":"Enter contact",
+        "ENTER_EMAIL":"Enter Email",
+        "ENTER_DESCRIPTION":"Enter Description",
+        "ENTER_ADDRESS":"Enter Address"
+      }
+    }
+}

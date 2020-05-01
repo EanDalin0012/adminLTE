@@ -1,0 +1,164 @@
+{
+    "COMMON": {
+        "LABEL": {
+            "SORT": "Sort",
+            "ALL": "All",
+            "NO": "No",
+            "ITEMS": "{{value}} Item(s)",
+            "SELECT_ROW_FOR_DELETE": "Please select row for delete items.",
+            "ADD_NEW": "Add New",
+            "HOME": "Home",
+            "INFORMATION": "Information",
+            "REGISTER": "Register",
+            "CREATE_DATE": "Create Date",
+            "MODIFY_DATE": "Modify Date"
+        },
+        "BUTTON": {
+            "BACK": "Back",
+            "CLOSE": "Close",
+            "REGISTER": "Register",
+            "SAVE": "Save",
+            "EDIT": "edit",
+            "UPDATE": "Update",
+            "CONFIRME": "Confirme",
+            "YES": "Yes",
+            "NO": "No",
+            "DELETE": "Delete"
+        },
+        "MESSAGE": {
+            "INVALID_EMAIL": "Invalid Email"
+        }
+    },
+    "Home2000": {
+        "LABEL": {
+            "COMPANY_NAME": "Company Name",
+            "CONTACT": "Contact",
+            "EMAIL": "Email",
+            "ADDRESS": "Address",
+            "DESCRIPTION": "Description"
+        }
+    },
+    "Home2100": {
+        "LABEL": {
+            "COMPANY_NAME": "Company Name",
+            "CONTACT": "Contact",
+            "EMAIL": "Email",
+            "ADDRESS": "Address",
+            "DESCRIPTION": "Description",
+            "REGISTER_COMPANY": "Register Company"
+        },
+        "PLACE_HOLDER": {
+            "ENTER_COMPANY_NAME": "Please enter company name",
+            "ENTER_CONTACT": "Please enter contact",
+            "ENTER_EMAIL": "Please enter Email",
+            "ENTER_DESCRIPTION": "Please enter Description",
+            "ENTER_ADDRESS": "Please enter Address"
+        },
+        "MESSAGE_ERROR": {
+            "REQUIRE_COMPANY_NAME": "Company name is required",
+            "REQUIRE_CONTACT": "Contact is required",
+            "REQUIRE_EMAIL": "Email is required",
+            "IN_VALID_PHONE_NUMBER": "Invalid Phone Number"
+        }
+    },
+    "Home7100": {
+        "LABEL": {
+
+        },
+        "MESSAGE_ERROR": {
+            "MAIN_CATEGORY_REQUEIRED": "Main category is require",
+            "IN_VALID_PHONE_NUMBER": "Invalid Phone Number"
+        }
+    },
+    "Home8000": {
+        "LABEL": {
+            "SUB_CATEGORY_INQUIRY": "Sub Category Inquiry",
+            "MAIN_CATEGORG": "Main Categorg",
+            "SUB_CATEGORG": "Sub Categorg",
+            "DESCRIPTION": "Description"
+        }
+    },
+    "Home8100": {
+        "LABEL": {
+            "REGISTER_SUB_CATEGORY_INFORMATION": "Register Sub Category Information",
+            "MAIN_CATEGORY": "Main Category",
+            "SUB_CATEGORY": "Sub Category",
+            "MAIN_CATEGORY_ID": "Main Category name is null.",
+            "SUB_CATEGORY_NAME": "Sub Category name is null."
+        },
+        "PLACE_HOLDER": {
+            "PLEASE_ENTER_SUB_CATEGORY_NAME": "Please enter sub category name..."
+        }
+    },
+    "Home7000": {
+        "LABEL": {
+            "HOME": "Home",
+            "INFORMATION": "Information",
+            "MAIN_CATEGORY_INQUIRY": "Main Category Inquiry"
+        },
+        "HOLDER": {
+            "SEARCH_BY": "Search by main category name ... "
+        }
+    },
+    "Home11000": {
+        "LABEL": {
+            "SUPPLIER_INFORMATION": "Supplier Information",
+            "NAME": "Name :",
+            "CONTACT": "Contact :",
+            "OTHER_CONTACT": "Other Contact :",
+            "EMAIL": "Email :",
+            "DESCRIPTION": "Description :"
+        },
+        "HOLDER": {
+            "PLEASE_ENTER_NAME": "Please enter name ...",
+            "PLEASE_ENTER_CONTACT": "Please enter contact ...",
+            "PLEASE_ENTER_EMAIL": "Please enter email ...",
+            "PLEASE_ENTER_DESCRIPTION": "Please enter description ...",
+            "PLEASE_ENTER_OTHER_CONTACT": "Please enter other contact ..."
+        },
+        "MESSAGE": {
+            "SUP_NAME_NULL": "Supplier name is null",
+            "SUP_CANTACT_NULL": "Supplier contact is null",
+            "SUP_EMAIL_NULL": "supplier email is null"
+        }
+    },
+    "Home9000": {
+        "LABEL": {
+            "IMPORT_PRODUCT": "Import Product",
+            "PRODUCT": "Product",
+            "QUANTITY": "Quantity",
+            "SELECT_PRODUCT": "Select Product",
+            "PRICE": "Price",
+            "SUPPLIER": "Supplier",
+            "COMPANY": "Company",
+            "TOTAL": "Total",
+            "DESCRIPTION": "Description",
+            "ADD_NEW_ITEMS": "Add New Items",
+            "PRODUCT_NAME": "Product Name",
+            "SUPPLIER_NAME": "Supplier Name",
+            "SELECT_COMPANY": "Select Company",
+            "SELECT_SUPPLIER": "Select Supplier",
+            "CAL": "Cal",
+            "DISCOUNT": "Discount",
+            "COMPANY_NAME": "Company Name"
+        },
+        "HOLDER": {
+            "ENTER_QUANTITY": "Enter quantity",
+            "ENTER_PRICE": "Enter price",
+            "ENTER_TOTAL": "Enter total",
+            "ENTER_DISCOUNT": "Enter discount"
+        }
+    },
+    "Home9100": {
+        "LABEL": {
+            "IMPORT_NEW_PRODUCT": "Import New Product",
+            "PLEASE_ENTER_QUANTITY": "Please enter quantity",
+            "PLEASE_ENTER_PRICE": "Please enter price",
+            "PLEASE_SELECT_PRODUCT": "Please Select Product",
+            "PLEASE_SELECT_COMPANY": "Please Select Company",
+            "PLEASE_CALCULATE_TOTAL_AMOUNT": "Please calculate total amount",
+            "PLEASE_SELECT_SUPPLIER": "Please select supplier",
+            "THE_SAME_PRODUCT": "You select the same product. Please select other product!"
+        }
+    }
+}
