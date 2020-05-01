@@ -8,6 +8,9 @@ import { SBSharedModule } from './shared/sbshare.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.component';
+import { LayoutComponent } from './layout/layout/layout.component';
+import { MLayoutModule } from './layout/layout.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -16,11 +19,14 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    LayoutBlankComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MLayoutModule,
     SBSharedModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
