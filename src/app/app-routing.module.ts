@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout/layout.component';
+import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'home', loadChildren: './home/home.module#HomeModule'},
-  {path: 'login', component: LoginComponent},
+  {path: 'main', component: LayoutComponent, loadChildren: './module/module.module#MModule'},
+  {path: 'login', component: LayoutBlankComponent, loadChildren: './sign/sign.module#SignModule'},
 ];
 
 @NgModule({

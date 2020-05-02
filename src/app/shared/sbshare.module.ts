@@ -24,10 +24,10 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
   ModalComponent
 ],
   imports: [
-    CommonModule
+   /*  CommonModule */
   ],
   exports : [
-    CommonModule,
+    // CommonModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -43,7 +43,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
     // FilesizePipe
 
     ButtonsModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     ChartsModule,
     DateInputsModule,
     DialogsModule,

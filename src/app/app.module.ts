@@ -11,6 +11,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { MLayoutModule } from './layout/layout.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,7 +25,6 @@ export function createTranslateLoader(http: HttpClient) {
     LayoutComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     MLayoutModule,
     SBSharedModule.forRoot(),
@@ -35,6 +35,8 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       },
     }),
+    BrowserModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

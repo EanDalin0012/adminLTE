@@ -16,4 +16,8 @@ import { SignRoutingModule } from './sign-routing.module';
     SignRoutingModule
   ]
 })
-export class SignModule { }
+export class SignModule {
+  constructor() {
+    console.log('Sign Modole Work');
+  }
+}

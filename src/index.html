@@ -1,13 +1,63 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>AdminLTE</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1">
+  <meta name="format-detection" content="telephone=no" />
+  <title>Admin LTE</title>
   <base href="/">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.ckeditor.com/4.11.3/full-all/ckeditor.js"></script>
+  <script type="text/javascript">
+      function loadYn() {
+          window.$zopim || (function(d, s) {
+              var z = $zopim = function(c) {
+                      console.log(1);
+                      z._.push(c)
+                  },
+                  $ = z.s =
+                  d.createElement(s),
+                  e = d.getElementsByTagName(s)[0];
+              z.set = function(o) {
+                  z.set.
+                  _.push(o)
+              };
+              z._ = [];
+              z.set._ = [];
+              $.async = !0;
+              $.setAttribute('charset', 'utf-8');
+              $.src = 'https://v2.zopim.com/?iisjBGABRGjrx6522dYgf16jS0ImYjQr';
+              z.t = +new Date;
+              $.
+              type = 'text/javascript';
+              e.parentNode.insertBefore($, e)
+          })(document, 'script');
+
+          return loadresult = true;
+      }
+
+      CKEDITOR.plugins.addExternal('inlinetag', '/assets/ckeditor/plugins/inlinetag/', 'plugin.js');
+  </script>
 </head>
-<body>
-  <app-root></app-root>
+<body class="loaded mat-typography hold-transition skin-blue sidebar-mini">
+  <app-root class="kendodialog"></app-root>
+  <div class="loading" style="display: none; z-index: 99999999999999;">
+      <div id="loader-wrapper">
+          <div id="loader"></div>
+          <div class="loader-section section-left"></div>
+          <div class="loader-section section-right"></div>
+          <div class="textLoading"><strong>Loading..</strong><span>Please wait</span></div>
+      </div>
+
+  </div>
+  <div class="zloader"></div>
+  <!-- <app-root></app-root> -->
 </body>
 </html>

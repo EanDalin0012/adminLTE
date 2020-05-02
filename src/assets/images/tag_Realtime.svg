@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="18" viewBox="0 0 48 18">
+  <g id="Group_1916" data-name="Group 1916" transform="translate(-305 -200)">
+    <g id="tag_Realtime" transform="translate(213 -12)">
+      <rect id="Rectangle_350" data-name="Rectangle 350" width="48" height="18" transform="translate(92 212)" fill="#ff1400"/>
+      <text id="Real" transform="translate(113 225)" fill="#fff" font-size="11" font-family="NotoSans-Bold, Noto Sans" font-weight="700" letter-spacing="-0.006em"><tspan x="0" y="0">Real</tspan></text>
+      <g id="ico_18_bottom_Cash_Withdrawa" data-name="ico_18_bottom_Cash Withdrawa" transform="translate(94 212.323)">
+        <g id="Frame_-_24px" transform="translate(0 -0.323)">
+          <rect id="Rectangle_115" data-name="Rectangle 115" width="18" height="18" fill="none"/>
+        </g>
+        <g id="Group_564" data-name="Group 564" transform="translate(2.187 2.596)">
+          <path id="Subtraction_4" data-name="Subtraction 4" d="M3.312,12.547A6.257,6.257,0,0,1,0,11.6V.945a6.274,6.274,0,1,1,3.312,11.6Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1"/>
+          <line id="Line_147" data-name="Line 147" x1="3.549" transform="translate(10.206 6.101)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1"/>
+          <path id="Path_1102" data-name="Path 1102" d="M39,18.258,41.716,15.6,39,12.826" transform="translate(-27.96 -9.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1"/>
+          <line id="Line_156" data-name="Line 156" y2="4.2" transform="translate(3.703 2.212)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1"/>
+          <line id="Line_157" data-name="Line 157" x1="3.5" transform="translate(3.703 6.412)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
