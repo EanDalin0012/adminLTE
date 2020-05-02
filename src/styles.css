@@ -1138,3 +1138,282 @@ input.inp_cal:focus {padding-right:33px !important; background-position:right -2
 
 .ico_RFT { position: absolute; right: 10px; background: url("assets/images/tag_Realtime.svg") center no-repeat; text-indent: -9999999px; width: 48px; height: 18px;}
 .ico_RFT.selected {top:50%; margin-top: -9px; right: 36px;}
+
+
+/* add by ed */
+
+
+kendo-dropdownlist {
+  width: 100% !important;
+  border-bottom: 1px solid #afa79d !important;
+}
+
+kendo-datepicker {
+  width: 100% !important;
+  height: 40px !important;
+  border-bottom: 1px solid #afa79d !important;
+  border-radius: 4px !important;
+}
+
+kendo-datepicker:focus {
+  border-bottom: 2px solid #3f496d !important;
+}
+
+kendo-datepicker .k-picker-wrap .k-dateinput-wrap kendo-dateinput input {
+  border-bottom: 1px solid #afa79d !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  display: inline-block !important;
+  border-radius: 4px !important;
+  width: 100%;
+  background-color: red !important;
+}
+
+.k-dateinput .k-dateinput-wrap .k-input,
+.k-dateinput .k-picker-wrap .k-input,
+.k-datepicker .k-dateinput-wrap .k-input,
+.k-datepicker .k-picker-wrap .k-input,
+.k-datetimepicker .k-dateinput-wrap .k-input,
+.k-datetimepicker .k-picker-wrap .k-input,
+.k-timepicker .k-dateinput-wrap .k-input,
+.k-timepicker .k-picker-wrap .k-input {
+  height: 40px !important;
+  border-bottom: none !important;
+}
+
+.k-dateinput .k-dateinput-wrap .k-input,
+.k-dateinput .k-picker-wrap .k-input,
+.k-datepicker .k-dateinput-wrap .k-input,
+.k-datepicker .k-picker-wrap .k-input,
+.k-datetimepicker .k-dateinput-wrap .k-input,
+.k-datetimepicker .k-picker-wrap .k-input,
+.k-timepicker .k-dateinput-wrap .k-input,
+.k-timepicker .k-picker-wrap .k-input {
+  height: 40px !important;
+}
+
+div.in_box button {
+  display: none;
+}
+
+.kendo-datepicker-value {
+  border-bottom: 2px solid #3f496d !important;
+  border-radius: 4px !important;
+}
+
+.overHidden {
+  overflow: hidden;
+}
+
+.pop_confirm {
+  width: 25%;
+  margin-left: 35%;
+  min-width: 250px;
+}
+
+kendo-notification-container div {
+  right: 8px !important;
+  left: 79% !important;
+  align-items: end !important;
+  top: -41px;
+  float: right;
+}
+
+.btn_add {
+  padding: 5px 5px 5px 20px;
+  background: url("assets/images/60740.svg") no-repeat 2px center;
+  background-size: 25px;
+}
+
+.btn_view {
+  padding: 5px 5px 5px 20px;
+  background: url("assets/images/view.png") no-repeat 2px center;
+  background-size: 20px;
+}
+
+.current {
+  color: white !important;
+}
+
+.current i {
+  color: #00e7ff;
+}
+
+.k-checkbox {
+  border-color: rgba(0, 0, 0, 0.64) !important;
+}
+
+.k-pager-numbers .k-link.k-state-selected {
+  background-color: #4b4b4b !important;
+}
+
+kendo-dialog:focus {
+  outline: -webkit-focus-ring-color auto 0px !important;
+}
+
+.btn-black {
+  border: 1px solid #968e8e80 !important;
+  background-color: #ffffff !important;
+  font-size: .9375rem !important;
+  color: #000 !important;
+}
+
+.add-btn:hover,
+.add-close:hover,
+.save-css:hover,
+.update-css:hover {
+  cursor: pointer;
+}
+
+.add-btn {
+  min-width: 150px;
+  background-color: #ffffff;
+  font-size: .9375rem;
+  color: #000;
+  background: url("assets/images/add-button.svg") left center no-repeat;
+  background-position-x: 5px;
+  background-size: 20%;
+}
+
+.add-close {
+  min-width: 150px;
+  background-color: #ffffff;
+  color: #000;
+  background: url("assets/images/close.svg") left center no-repeat;
+  background-position-x: 4px;
+  background-position-y: 4px;
+  background-size: 20%;
+}
+
+.btn-css {
+  display: inline-block;
+  font-weight: 500;
+  font-size: .9375rem;
+  border-radius: 50px;
+  padding: 8px 50px;
+  min-height: 40px;
+  border: 1px solid #968e8e80;
+}
+
+.save-css {
+  min-width: 180px;
+  background-color: #18191b;
+  font-size: .9375rem;
+  color: #fff;
+  background-image: url("assets/images/save.svg");
+  background-repeat: no-repeat;
+  background-position-x: 2px;
+  background-position-y: 2px;
+  background-size: 19%;
+}
+
+.update-css {
+  min-width: 180px;
+  border: 1px solid #968e8e80;
+  background-color: #18191b;
+  color: #fff;
+  background-image: url("assets/images/refresh.svg");
+  background-repeat: no-repeat;
+  background-position-x: 2px;
+  background-position-y: 2px;
+  background-size: 19%;
+}
+
+.save-css span,
+.update-css span,
+.add-btn span,
+.save-css span,
+.add-close span {
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.margin-right-btn-clos {
+  margin-right: 15px;
+}
+
+.k-calendar .k-calendar-view th {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.k-calendar .k-calendar-monthview .k-link {
+  font-weight: 500;
+  font-family: "Roboto";
+  text-align: center;
+  width: 52px;
+  letter-spacing: -.05em;
+  border-collapse: collapse;
+  font-size: 1.2em;
+}
+
+.k-calendar .k-state-selected .k-link {
+  background: #000000ba;
+  border-radius: 50%;
+}
+
+.k-calendar .k-calendar-view .k-link {
+  border-radius: 50%;
+}
+
+.padding-left-zero {
+  padding-left: 0;
+}
+
+.padding-right-zero {
+  padding-left: 0;
+}
+
+.btn_cancel {
+  width: 100%;
+  padding: 5px 5px 5px 20px;
+  background: url("assets/images/cancel.svg") no-repeat 2px center;
+  background-size: 20%;
+  background-position-x: 5px;
+}
+
+.mbr_introContent .iam-button {
+  display: block;
+  margin: 0 auto 9px;
+  min-width: 240px;
+  border-color: #008cff;
+  color: #575757;
+  background: url("assets/images/save.svg") no-repeat 2px center;
+  background-size: 35px;
+  margin-top: 25px;
+}
+
+.iam-button {
+  min-width: 150px;
+  min-height: 40px;
+  padding: 7px 45px 6px;
+  margin-right: 16px;
+  background: 0 0;
+  border: 1px solid #e1e1e1;
+  border-radius: 42px;
+  color: #000;
+  font-weight: 700;
+  font-size: 1em;
+  line-height: 1.2;
+  letter-spacing: .01em;
+  word-break: break-all;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  font-style: inherit;
+  font-variant: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
