@@ -18,10 +18,12 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { InputsModule } from '@progress/kendo-angular-inputs';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 @NgModule({
   declarations: [
-  ModalComponent
+  ModalComponent,
+  DateFormatPipe,
 ],
   imports: [
    /*  CommonModule */
@@ -51,7 +53,9 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
     InputsModule,
     PDFExportModule,
     SchedulerModule,
-    NotificationModule
+    NotificationModule,
+    // pipe
+    DateFormatPipe
 
   ],
   entryComponents: [
