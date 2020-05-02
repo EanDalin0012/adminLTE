@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '../home/home/home.component';
 import { ExportComponent } from '../exports/export/export.component';
-import { ImportComponent } from '../imports/import/import.component';
+import { RegisterComponent } from '../register/register/register.component';
 
 
 const routes: Routes = [
@@ -16,9 +16,33 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'home1',  loadChildren: './home/home.module#HomeModule' },
-  { path: 'exports', component: ExportComponent, loadChildren: './home/home.module#HomeModule' },
-  { path: 'imports', component: ImportComponent, loadChildren: './home/home.module#HomeModule' },
+  {
+    path: '', component: RegisterComponent,
+    children: [
+      {
+        path: 'register',
+        loadChildren: '../register/register.module#RegisterModule'
+      }
+    ]
+  },
+  {
+    path: '', component: RegisterComponent,
+    children: [
+      {
+        path: 'imports',
+        loadChildren: '../imports/imports.module#ImportsModule'
+      }
+    ]
+  },
+  {
+    path: '', component: ExportComponent,
+    children: [
+      {
+        path: 'exports',
+        loadChildren: '../exports/exports.module#ExportsModule'
+      }
+    ]
+  }
 ];
 
 @NgModule({
