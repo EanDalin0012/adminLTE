@@ -127,7 +127,9 @@ input[type=checkbox].chk_style + * {color:rgba(0,0,0,.4);}
 input[type=checkbox] + span, input[type=radio] + span {cursor:pointer; opacity:.7;}
 input[type=checkbox] + span:before, input[type=radio] + *:before {content:""; display:inline-block; width:24px; height:24px; margin-right:6px; vertical-align:middle;}
 input[type=checkbox] + span:before {background:url("assets/images/checkbox.png") no-repeat left top;}
-input[type=checkbox], .checkbox01 {width:24px; height:24px; margin-right:6px; vertical-align:middle; background:url("assets/images/checkbox.png") no-repeat top center;}
+
+input[type=checkbox], .checkbox01 { margin-right:6px; vertical-align:middle;}
+
 input[type=checkbox]:checked , input[type=checkbox]:checked + *:before {background-position:left bottom;}
 input[type=checkbox].w, input[type=checkbox].w + *:before {background-image:url("assets/images/checkbox_w.png");}
 input[type=radio] + span:before {background:url("assets/images/radio_off.png") no-repeat left center;}
@@ -144,7 +146,9 @@ input::-webkit-input-placeholder {font-weight:normal; opacity:.5;}
 input::-ms-clear,input::-ms-reveal{display: none;}
 
 input:focus, textarea:focus, select:focus {outline:none; -webkit-tap-highlight-color:rgba(0,0,0,0.2);}
-input:focus:not([type=checkbox]):not([type=radio]), textarea:focus, .k-textbox:focus select:focus{padding:3px 10px; border:2px solid #3f496d;}
+
+input:focus:not([type=checkbox]):not([type=radio]), textarea:focus, .k-textbox:focus select:focus{padding:3px 10px; border-bottom:2px solid #3f496d;}
+
 input[readonly=readonly]:not([type=checkbox]):not([type=radio]) {color:#000; background:#d5d2ce;}
 input[readonly=readonly]:focus:not([type=checkbox]):not([type=radio]) {padding:5px 12px; border:none;}
 input:disabled {color:#cdcdcd; background:#f1f1f1;}
@@ -201,7 +205,7 @@ kendo-pdf-export { font-family:"Noto Sans", "Noto Sans CJK TC", "Noto Sans Khmer
 /******** common class ********/
 .vtop {vertical-align:top;}
 .r_btn {padding:5px 0; text-align:right;}
-.c_btn {margin:24px 0; text-align:center; overflow:hidden;}
+.c_btn {margin:24px 0; text-align:center;}
 .c_btn button, .c_btn a {margin:0 5px;}
 .c_btn.item2 a, .c_btn.item2 button {float:left; width:49%; width:calc(50% - 4px);}
 .c_btn.item2 a:last-child, .c_btn.item2 button:last-child {float:right;}
@@ -330,7 +334,7 @@ iframe {display:block; /* vertical-align:top; */ border:none;}
 .btn_top {position:fixed; right:5px; bottom:123px; width:66px; height:67px; text-indent:-999em; background:url("assets/images/btn_top.png") no-repeat center center; z-index:100;}
 
 .container01 {margin:10px 0; padding:25px 24px; background:#fff; border-radius:4px; box-shadow:0 3px 5px rgba(197,197,197,.45);}
-.web_container {max-width:1204px; margin:0 auto;}
+/* .web_container {max-width:1204px; margin:0 auto;} */
 
 .loading {position: fixed; left:0; top:0; width:100%; height:100%; font-size:.75rem; color:#fff; text-align:center; background:rgba(0,0,0,.7); z-index:999999;}
 .loading > *:first-child {position:absolute; left:10%; top:50%; width:80%; padding-top:56px; background:url("assets/images/ico_loading.gif") no-repeat center top; -webkit-transform:translateY(-50%); -moz-transform:translateY(-50%); -ms-transform:translateY(-50%); transform:translateY(-50%);}
@@ -1002,7 +1006,7 @@ input.inp_cal:focus {padding-right:33px !important; background-position:right -2
 .popWrap01.wxxs01 {width:440px;}
 .popWrap01.nofoot {padding-bottom:0;}
 .popWrap01.foot_st02 {padding-bottom:132px;}
-.pop_header {position:absolute; left:0; top:0; width:100%; height:50px; padding:10px 50px 10px 25px; color:#fff; background:#7a6d5c;}
+.pop_header {position:absolute; left:0; top:0; width:100%; height:50px; padding:10px 50px 10px 25px; color:#fff; background:#222d32;}
 .pop_header h1 {font-weight:700; font-size:1.0625rem; line-height:30px; letter-spacing:normal;}
 .pop_header .btn_popclose {position:absolute; right:0; top:0; width:66px; height:100%; text-indent:-999em;}
 .pop_header.w {color:#7a6d5c; background:#fff; border-bottom:1px solid #d7d3ce;}
@@ -1417,3 +1421,34 @@ kendo-dialog:focus {
   word-wrap: break-word;
 }
 
+.k-dialog-wrapper {
+    align-items: normal !important;
+}
+
+.k-dialog-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 90%;
+    float: left;
+    margin-left: 5%;
+    /* min-width: 1140px; */
+    height: 100%;
+    overflow: auto;
+}
+
+.active-input {
+    border-bottom: 2px solid #1428a0 !important;
+}
+
+.in_box .btn_del {
+    position: absolute;
+    display: block;
+    right: 20px;
+    top: 33px;
+    width: 25px;
+    height: 25px;
+    text-indent: -999em;
+    background: url("assets/images/btn_close.png") no-repeat center center;
+    background-size: 12px;
+}

@@ -12,7 +12,6 @@ import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.compone
 import { LayoutComponent } from './layout/layout/layout.component';
 import { MLayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DateFormatPipe } from './pipes/date-format.pipe';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -23,8 +22,7 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     LoginComponent,
     LayoutBlankComponent,
-    LayoutComponent,
-    DateFormatPipe
+    LayoutComponent
   ],
   imports: [
     AppRoutingModule,

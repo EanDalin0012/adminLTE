@@ -1,1 +1,53 @@
-<p>register1100 works!</p>
+<div class="contentsWrap">
+  <div class="container01">
+      <div class="web_container">
+          <!-- header -->
+          <div class="pop_header">
+              <h1>Register Main Category Information</h1>
+              <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
+          </div>
+          <!-- //header -->
+          <div class="web_Wrap">
+
+              <div class="form-row">
+                  <div class="form-group col-md-12">
+                      <label>Main Category Name</label>
+                      <input type="text" [ngClass]="mainCategoryName? 'active-input' : ''" class="form-control" [(ngModel)]="mainCategoryName" placeholder="Please enter suplier name...">
+
+                      <div class="in_box">
+                          <button type="button" [ngClass]="mainCategoryName? 'btn_del' : ''" (click)="onClickBtnMainCategoryName()" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group form-group-last col-md-12">
+                      <label>{{'Home2100.LABEL.DESCRIPTION' | translate}}</label>
+                      <input type="text" [ngClass]="description? 'active-input' : ''" [(ngModel)]="description" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_DESCRIPTION' | translate}}" class="form-control">
+                      <div class="in_box">
+                          <button type="button" [ngClass]="description? 'btn_del' : ''" (click)="onClickBtndescription()" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+
+      <div class="c_btn">
+          <div class="add-close  btn-css margin-right-btn-clos" (click)="close()">
+              <span>{{'COMMON.BUTTON.CLOSE' | translate}}</span>
+          </div>
+
+          <div class="save-css btn-css" (click)="btnRegister()">
+              <span>{{'COMMON.BUTTON.SAVE' | translate}}</span>
+          </div>
+          <!--
+          <button type="button" tabindex=-1 class="btn01 btn-black" id="addMoreTransfer6" (click)="close()"><span>{{'COMMON.BUTTON.CLOSE' | translate}}</span></button>
+          <button type="button" tabindex=-1 class="btn01 st02" id="transfer6" (click)="btnRegister()"><span>{{'COMMON.BUTTON.SAVE' | translate}}</span></button> -->
+      </div>
+  </div>
+</div>
