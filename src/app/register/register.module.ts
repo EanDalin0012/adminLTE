@@ -24,6 +24,7 @@ import { Register7200Component } from './register7200/register7200.component';
 import { Register8200Component } from './register8200/register8200.component';
 import { Register8100Component } from './register8100/register8100.component';
 import { Register8000Component } from './register8000/register8000.component';
+import { RegisterRoutingModule } from './register-routing.module';
 
 
 
@@ -62,7 +63,8 @@ import { Register8000Component } from './register8000/register8000.component';
     Register8000Component
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RegisterRoutingModule
   ]
 })
 export class RegisterModule { }
