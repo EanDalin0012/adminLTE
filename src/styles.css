@@ -282,7 +282,7 @@ kendo-pdf-export { font-family:"Noto Sans", "Noto Sans CJK TC", "Noto Sans Khmer
 .lang_list label input + * {opacity:1;}
 .lang_list label input + *:before {display:none;}
 
-.contentsWrap {padding:15px;}
+.contentsWrap {padding:1px 15px 15px 15px;}
 .contentsWrap .contentsWrap {padding:0;}
 iframe {display:block; /* vertical-align:top; */ border:none;}
 .cont_frame {width:100%; height:max-content; min-height:80vh;}
@@ -315,7 +315,7 @@ iframe {display:block; /* vertical-align:top; */ border:none;}
 
 
 /*** contents area ***/
-.page_title {position:relative; margin:25px 0 12px; padding:0 220px 0 20px;}
+.page_title {position:relative; margin:15px 0 12px;}
 .breadcrumb {line-height:30px; overflow:hidden;}
 .breadcrumb > * {float:left;}
 .page_navi > * {display:inline-block; color:rgba(14,29,74,.7);}
@@ -1281,10 +1281,10 @@ kendo-dialog:focus {
 }
 
 .add-close {
-  min-width: 150px;
+  min-width: 155px;
   background-color: #ffffff;
   color: #000;
-  background: url("assets/images/close.svg") left center no-repeat;
+  background: url("assets/images/icon_close.svg") left center no-repeat;
   background-position-x: 4px;
   background-position-y: 4px;
   background-size: 20%;
@@ -1451,4 +1451,19 @@ kendo-dialog:focus {
     text-indent: -999em;
     background: url("assets/images/btn_close.png") no-repeat center center;
     background-size: 12px;
+}
+
+.web_container+.c_btn {
+  padding-top: 24px;
+  border-top: 1px solid #e4e2de;
+}
+.c_btn {
+  margin: 24px 0;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+}
+.breadcrumb {
+  background-color: #ffffff;
+  margin-bottom: 10px;
 }

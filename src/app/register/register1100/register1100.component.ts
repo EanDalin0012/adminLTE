@@ -41,6 +41,7 @@ export class Register1100Component implements OnInit {
       trReq.body.description        = this.description;
       trReq.body.createBy           = userInfo.id;
       trReq.body.modifyBy           = userInfo.id;
+      console.log(trReq);
       const api = '/api/main_category/save';
       this.serverService.HTTPRequest(api, trReq).then(rest => {
         if ( this.serverService.checkResponse(rest.header) === true) {
