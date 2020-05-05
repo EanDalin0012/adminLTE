@@ -54,27 +54,11 @@ export class Register1100Component implements OnInit {
 private isValid(): boolean {
   if (!this.mainCategoryName || this.mainCategoryName && this.mainCategoryName.trim() === ''
       || this.mainCategoryName && this.mainCategoryName === null) {
-    this.alertMessage(this.translateTxt.MESSAGE_ERROR.MAIN_CATEGORY_REQUEIRED).then(async res => {
-     return await res;
-    });
+        const bool = this.modalService.messageAlert(this.translateTxt.MESSAGE_ERROR.MAIN_CATEGORY_REQUEIRED);
+        return bool;
   } else {
     return true;
   }
-  return;
-}
-
-alertMessage(msg: string): Promise<boolean> {
-  // tslint:disable-next-line: no-shadowed-variable
-  return new Promise((resolve) => {
-    this.modalService.alert({
-      content: msg,
-      btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
-      modalClass: [],
-      callback: rest => {
-        resolve(false);
-      }
-    });
-  });
 }
 
   close() {

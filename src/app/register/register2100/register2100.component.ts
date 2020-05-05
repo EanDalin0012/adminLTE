@@ -64,21 +64,20 @@ export class Register2100Component implements OnInit {
   }
 
   onClickRegister() {
-    this.isValid().then( res => {
-      if (res === true) {
-        const trReq                = new SubCategoryRequest();
-        trReq.body.mainCategoryId  = this.mainCategory.id;
-        trReq.body.subCategoryName = this.subCategoryName;
-        trReq.body.description     = this.description;
-        const api = '/api/sub_category/save';
-        this.serverService.HTTPRequest(api, trReq).then(rest => {
-          const response = rest as ResponseData;
-          if ( this.serverService.checkResponse(response.header) === true) {
-            this.modal.close( {close: BTN_ROLES.SAVE});
-          }
-        });
-      }
-    });
+    if (this.isValid() === true) {
+      const trReq                = new SubCategoryRequest();
+      trReq.body.mainCategoryId  = this.mainCategory.id;
+      trReq.body.subCategoryName = this.subCategoryName;
+      trReq.body.description     = this.description;
+      const api = '/api/sub_category/save';
+      this.serverService.HTTPRequest(api, trReq).then(rest => {
+        const response = rest as ResponseData;
+        if ( this.serverService.checkResponse(response.header) === true) {
+          this.modal.close( {close: BTN_ROLES.SAVE});
+        }
+      });
+    }
+
   }
 
   onClickBtnSubCategory() {
@@ -89,41 +88,19 @@ export class Register2100Component implements OnInit {
     this.description = undefined;
   }
 
-  isValid(): Promise<boolean> {
-    return new Promise( resolve => {
+  isValid(): boolean {
       const mainCategoryText = this.translateTxt.LABEL.MAIN_CATEGORY_ID;
       const subText = this.translateTxt.LABEL.SUB_CATEGORY_NAME;
       if (!this.mainCategory) {
-        this.alertMessage(mainCategoryText, 'list').then( res => {
-          resolve(false);
-         });
+        const bool = this.modalService.messageAlert(mainCategoryText);
+        return bool;
       } else if (this.subCategoryName === undefined) {
-        this.alertMessage(subText, 'subCat').then( res => {
-         resolve(false);
-        });
+        const bool = this.modalService.messageAlert(subText);
+        this.subCate.nativeElement.focus();
+        return bool;
       } else {
-        resolve(true);
+        return true;
       }
-    });
-  }
-
-  alertMessage(msg: string, note: string): Promise<boolean> {
-    // tslint:disable-next-line: no-shadowed-variable
-    return new Promise((resolve, reject) => {
-      this.modalService.alert({
-        content: msg,
-        btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
-        modalClass: [],
-        callback: response => {
-          if (response.text === this.translate.instant('COMMON.BUTTON.CONFIRME') ) {
-            if (note === 'subCat') {
-              this.subCate.nativeElement.focus();
-            }
-          }
-          resolve(false);
-        }
-      });
-    });
   }
 
 }
