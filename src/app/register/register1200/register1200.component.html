@@ -1,1 +1,51 @@
-<p>register1200 works!</p>
+<div class="contentsWrap">
+  <div class="container01">
+      <div class="web_container">
+
+          <div class="pop_header">
+              <h1>Register Main Category Information</h1>
+              <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
+          </div>
+
+          <div class="web_Wrap">
+
+              <div class="form-row">
+                  <div class="form-group col-md-12">
+                      <label>Main Category Name</label>
+                      <input type="text" [ngClass]="mainCategoryName? 'active-input':''" class="form-control" [(ngModel)]="mainCategoryName" placeholder="Please enter suplier name...">
+
+                      <div class="in_box">
+                          <button type="button" [ngClass]="mainCategoryName? 'btn_del':''" tabindex=-1 (click)="onClickBtnMainCategoryName()" class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group form-group-last col-md-12">
+                      <label>{{'Home2100.LABEL.DESCRIPTION' | translate}}</label>
+                      <input type="text" [ngClass]="description? 'active-input' : ''" [(ngModel)]="description" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_DESCRIPTION' | translate}}" class="form-control">
+                      <div class="in_box">
+                          <button type="button" [ngClass]="description? 'btn_del' : ''" (click)="onClickBtndescription()" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+      <div class="c_btn">
+
+          <div class="add-close btn-css margin-right-btn-clos" (click)="close()">
+              <span>{{'COMMON.BUTTON.CLOSE' | translate}}</span>
+          </div>
+
+          <div class="iam-btn-container mbr_introContent" style="display: inline-block;">
+            <button class="iam-button update" (click)="btnUpdate()">{{'COMMON.BUTTON.UPDATE' | translate}}</button>
+        </div>
+
+      </div>
+  </div>
+</div>

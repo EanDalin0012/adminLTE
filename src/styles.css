@@ -1288,6 +1288,7 @@ kendo-dialog:focus {
   background-position-x: 4px;
   background-position-y: 4px;
   background-size: 20%;
+  border: 1px solid #f0000061 !important;
 }
 
 .btn-css {
@@ -1315,13 +1316,19 @@ kendo-dialog:focus {
 .update-css {
   min-width: 180px;
   border: 1px solid #968e8e80;
-  background-color: #18191b;
-  color: #fff;
+  color: #575757;
   background-image: url("assets/images/refresh.svg");
   background-repeat: no-repeat;
   background-position-x: 2px;
   background-position-y: 2px;
   background-size: 19%;
+}
+
+.mbr_introContent .update {
+  background: url("assets/images/refresh.svg") no-repeat 2px center;
+}
+.mbr_introContent .save {
+  background: url("assets/images/save.svg") no-repeat 2px center;
 }
 
 .save-css span,
@@ -1383,7 +1390,6 @@ kendo-dialog:focus {
   min-width: 240px;
   border-color: #008cff;
   color: #575757;
-  background: url("assets/images/save.svg") no-repeat 2px center;
   background-size: 35px;
   margin-top: 25px;
 }
@@ -1466,4 +1472,51 @@ kendo-dialog:focus {
 .breadcrumb {
   background-color: #ffffff;
   margin-bottom: 10px;
+}
+.web_container{
+  margin-top: 35px;
+}
+/* kendo-dialog.message-alert{
+  align-items: center !important;
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+}
+kendo-dialog.testing {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+
+.testing kendo-dialog.k-dialog {
+  align-items: center !important;
+  margin: auto;
+  padding: 10px;
+} */
+
+/* .testing div:nth-child(2) {
+  min-width: 20%;
+    width: auto;
+    margin: auto;
+} */
+
+.addAlertCender div:nth-child(2) {
+  margin: auto;
+  min-width: 175px;
+  width: auto;
+}
+
+
+.addAlertCender div kendo-dialog-actions button.k-button {
+  display: inline-block !important;
+  /* min-width: 202px; */
+  min-height: 40px !important;
+  padding: 8px 20px !important;
+  font-weight: 500 !important;
+  font-size: .9375rem !important;
+  color: #fff !important;
+  background: #2e210e !important;
+  border-radius: 50px !important;
+  border: none !important;
+  float: right !important;
 }

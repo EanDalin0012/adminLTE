@@ -118,6 +118,7 @@ public rowCallback = (context: RowClassArgs) => {
     this.modalService.open({
       content: Register1100Component,
       message: {},
+      modalClass: ['testingabc'],
       callback: async (res) => {
         console.log('res', res);
         if (await res.close === BTN_ROLES.SAVE) {
@@ -134,6 +135,7 @@ public rowCallback = (context: RowClassArgs) => {
       this.modalService.open({
           content: Register1200Component,
           message: dataItem,
+          modalClass: [''],
           callback: async ( res ) => {
             if (await res.close === BTN_ROLES.EDIT) {
               this.inquiry();

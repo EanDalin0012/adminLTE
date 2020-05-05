@@ -9,6 +9,7 @@ import { MODAL_STORE_KEY } from '../constants/common.const';
 import { ModalDataService } from '../component/modal.service';
 import { ModalComponent } from '../component/modal/modal.component';
 import { SBSharedModule } from '../sbshare.module';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: SBSharedModule
@@ -21,6 +22,7 @@ export class ModalService {
   constructor(
     private dialogService: DialogService,
     private modalData: ModalDataService,
+    private translate: TranslateService
     // private notificationService: NotificationService
   ) { }
 
@@ -187,7 +189,6 @@ export class ModalService {
   }
 
   /**
-
    * @param content (component) component
    * @param message (object)
    * @param opener (object)
@@ -247,4 +248,16 @@ export class ModalService {
       }
     }
   }
+
+  messageAlert(msg: string): boolean {
+    this.alert({
+      content: msg,
+      btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
+      modalClass: ['message-alert testing'],
+      callback: rest => {
+      }
+    });
+    return false;
+  }
+
 }
