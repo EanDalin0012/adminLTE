@@ -127,7 +127,7 @@
           </li>
 
           <li class="treeview" [ngClass]="{active: path == 'product' || path == 'company'
-                              || path == 'mainCategory' || path == 'subCategory'
+                              || path == 'main-category' || path == 'sub-category'
                               || path == 'supplier'}">
               <a href="#">
                   <i class="fa fa-table"></i> <span>Register</span>
@@ -138,8 +138,8 @@
               <ul class="treeview-menu">
                   <li (click)="onOpenPage(2000)"><a [ngClass]="{current: path == 'company'}"><i class="fa fa-circle-o"></i>Company</a></li>
                   <li (click)="onOpenPage(3000)"><a [ngClass]="{current: path == 'product'}"><i class="fa fa-circle-o"></i>Product</a></li>
-                  <li (click)="onOpenPage(7000)"><a [ngClass]="{current: path == 'mainCategory'}"><i class="fa fa-circle-o"></i>Main Category</a></li>
-                  <li (click)="onOpenPage(8000)"><a [ngClass]="{current: path == 'subCategory'}"><i class="fa fa-circle-o"></i>Sub Category</a></li>
+                  <li (click)="onOpenPage(7000)"><a [ngClass]="{current: path == 'main-category'}"><i class="fa fa-circle-o"></i>Main Category</a></li>
+                  <li (click)="onOpenPage(8000)"><a [ngClass]="{current: path == 'sub-category'}"><i class="fa fa-circle-o"></i>Sub Category</a></li>
                   <li (click)="onOpenPage(9000)"><a [ngClass]="{current: path == 'import-product'}"><i class="fa fa-circle-o"></i>Import Product</a></li>
                   <li (click)="onOpenPage(11000)"><a [ngClass]="{current: path == 'supplier'}"><i class="fa fa-circle-o"></i>Supplier Info</a></li>
                   <li><a><i class="fa fa-circle-o"></i> Data tables</a></li>

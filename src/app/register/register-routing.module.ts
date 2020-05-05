@@ -6,7 +6,7 @@ import { Register3000Component } from './register3000/register3000.component';
 
 
 const routes: Routes = [
-  {path: '', component: Register1000Component},
+  {path: 'main-category', component: Register1000Component},
   {path: 'sub-category', component: Register2000Component},
   {path: 'company', component: Register3000Component},
 ];

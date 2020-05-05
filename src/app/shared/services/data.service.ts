@@ -12,6 +12,7 @@ export class DataService {
 
 
   visitMessage(message: any) {
+    console.log('message', message);
     this.visitSource.next(message);
   }
 }

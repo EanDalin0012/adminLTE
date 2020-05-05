@@ -13,7 +13,7 @@
 
                   <div class="form-group col-md-6">
                       <label for="inputPassword4">{{'Home8100.LABEL.MAIN_CATEGORY' | translate}}</label>
-                      <kendo-dropdownlist [ngClass]="ngClassList" id="cateList" [data]="mainCategoryList" [textField]="'mainCategoryName'" [valueField]="'id'" [(ngModel)]="mainCategory" (selectionChange)="selectionChange($event)"></kendo-dropdownlist>
+                      <kendo-dropdownlist [ngClass]="ngClassList" [data]="mainCategoryList" [textField]="'mainCategoryName'" [valueField]="'id'" [(ngModel)]="mainCategory" (valueChange)="selectionChange($event)"></kendo-dropdownlist>
                       <!-- <div class="in_box">
                           <button type="button" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
                       </div> -->
