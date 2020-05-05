@@ -43,7 +43,6 @@ export class Register2200Component implements OnInit {
     this.getMainCategoryList();
   }
 
-
   close() {
     this.modal.close();
   }
@@ -57,9 +56,7 @@ export class Register2200Component implements OnInit {
   }
 
   onClickUpdate() {
-    this.isValid().then( res => {
-      console.log(res);
-      if (res === true) {
+    if ( this.isValid() === true ) {
         const trReq                = new SubCategoryRequest();
         trReq.body.id              = this.subCategoryId;
         trReq.body.mainCategoryId  = this.mainCategory.id;
@@ -72,8 +69,7 @@ export class Register2200Component implements OnInit {
             this.modal.close( {close: BTN_ROLES.EDIT});
           }
         });
-      }
-    });
+    }
   }
 
   selectionChange() {
@@ -108,41 +104,19 @@ export class Register2200Component implements OnInit {
     });
   }
 
-  isValid(): Promise<boolean> {
-    return new Promise( resolve => {
-      const mainCategoryText = this.translateTxt.LABEL.MAIN_CATEGORY_ID;
-      const subText = this.translateTxt.LABEL.SUB_CATEGORY_NAME;
-      if (!this.mainCategory) {
-        this.alertMessage(mainCategoryText, 'list').then( res => {
-          resolve(false);
-         });
-      } else if (this.subCategoryName === undefined) {
-        this.alertMessage(subText, 'subCat').then( res => {
-         resolve(false);
-        });
-      } else {
-        resolve(true);
-      }
-    });
-  }
-
-  alertMessage(msg: string, note: string): Promise<boolean> {
-    // tslint:disable-next-line: no-shadowed-variable
-    return new Promise((resolve, reject) => {
-      this.modalService.alert({
-        content: msg,
-        btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
-        modalClass: [],
-        callback: response => {
-          if (response.text === this.translate.instant('COMMON.BUTTON.CONFIRME') ) {
-            if (note === 'subCat') {
-              this.subCate.nativeElement.focus();
-            }
-          }
-          resolve(false);
-        }
-      });
-    });
+  isValid(): boolean {
+    const mainCategoryText = this.translateTxt.LABEL.MAIN_CATEGORY_ID;
+    const subText = this.translateTxt.LABEL.SUB_CATEGORY_NAME;
+    if (!this.mainCategory) {
+      const bool = this.modalService.messageAlert(mainCategoryText);
+      return bool;
+    } else if (this.subCategoryName === undefined) {
+      const bool = this.modalService.messageAlert(subText);
+      this.subCate.nativeElement.focus();
+      return bool;
+    } else {
+      return true;
+    }
   }
 
 }
