@@ -19,11 +19,13 @@ import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { DateFormatPipe } from './pipes/date-format.pipe';
+import { PhoneNumberPipe } from './pipes/phone-number.pipe';
 
 @NgModule({
   declarations: [
   ModalComponent,
   DateFormatPipe,
+  PhoneNumberPipe,
 ],
   imports: [
    /*  CommonModule */
@@ -55,7 +57,8 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     SchedulerModule,
     NotificationModule,
     // pipe
-    DateFormatPipe
+    DateFormatPipe,
+    PhoneNumberPipe
 
   ],
   entryComponents: [

@@ -1,1 +1,103 @@
-<p>register3000 works!</p>
+<!-- User Management -->
+<!-- contents Area -->
+<div class="contentsWrap">
+  <!-- Navigation Tab -->
+  <div class="naviWrap">
+
+  </div>
+  <!-- //Navigation Tab -->
+  <!-- page title -->
+  <div class="page_title">
+      <div class="breadcrumb">
+          <div class="page_navi">
+              <span>Register</span>
+              <span>Information Management</span>
+          </div>
+          <h1><span>Company</span></h1>
+          <!-- <button type="button" tabindex=-1 class="btn_add_fav"><span>Add or removeFavorites</span></button> -->
+          <!-- add Class "on" -->
+      </div>
+      <!-- <div class="guideWrap">
+        <button type="button" tabindex=-1 class="btn_livechat" onclick="javascript:window.toggle();"><span>Live Chat</span></button>
+        <button type="button" tabindex=-1 class="btn_guide" (click)="openGuide()"><span>Guide</span></button>
+    </div> -->
+  </div>
+  <!-- //page title -->
+  <!-- box -->
+
+  <div class="container01">
+
+      <div class="form-row col-md-12" style="height: 55px; padding: 0px;">
+          <div class="form-group form-group-last col-md-6" style="padding: 0px;">
+              <input style="border-bottom: 2px solid #3f496d !important;" type="text" [ngClass]="search ? 'active-input': ''" (input)="inputSearch($event)" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_DESCRIPTION' | translate}}" class="form-control">
+              <div class="in_box">
+                  <button style="top: 8px; right: 8px;" class="btn_del btn" (click)="onClickBtnSearch()" type="button" tabindex=-1 tabindex=-1 tabindex=-1><span>Delete text</span></button>
+              </div>
+
+          </div>
+      </div>
+
+      <div class="col-md-12" style="margin-bottom: 15px; padding: 0px;">
+          <strong>{{totalRecord}} Item(s)</strong>
+      </div>
+
+      <div>
+          <kendo-grid scrollable="virtual" [data]="gridView" [selectable]="selectableSettings" [sortable]="true" [sort]="sort" (sortChange)="sortChange($event)" [pageSize]="pageSize" [rowClass]="rowCallback" [skip]="skip" [pageable]="{
+            buttonCount: buttonCount,
+            info: info,
+            type: type,
+            pageSizes: pageSizes,
+            previousNext: previousNext
+          }" [height]="height" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" [selectedKeys]="mySelection" (cellClick)="rowclick($event)" class="table01 overflow-x">
+              <kendo-grid-checkbox-column (click)="check()" class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true">
+
+              </kendo-grid-checkbox-column>
+
+              <kendo-grid-column width="150" class="cen" [sortable]="false" field="no" title="{{'COMMON.LABEL.NO' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{rowIndex + 1}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+              <kendo-grid-column width="150" class="subj" field="name" title="{{'Home2000.LABEL.COMPANY_NAME' | translate}}">
+              </kendo-grid-column>
+              <kendo-grid-column width="200" class="subj" field="contact" title="{{'Home2000.LABEL.CONTACT' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <span>{{dataItem.contact | phoneNumberFormat}}</span>
+                  </ng-template>
+
+              </kendo-grid-column>
+              <kendo-grid-column width="200" class="subj" field="email" title="{{'Home2000.LABEL.EMAIL' | translate}}" [sortable]="true">
+              </kendo-grid-column>
+              <kendo-grid-column width="300" class="subj" field="address" title="{{'Home2000.LABEL.ADDRESS' | translate}}">
+              </kendo-grid-column>
+              <kendo-grid-column width="300" class="subj" field="description" title="{{'Home2000.LABEL.DESCRIPTION' | translate}}">
+              </kendo-grid-column>
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="edit">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="clickEdit(dataItem)"><span>{{'COMMON.BUTTON.EDIT' | translate}}</span></button>
+                  </ng-template>
+              </kendo-grid-column>
+
+          </kendo-grid>
+      </div>
+      <!-- //table -->
+
+      <!-- table buttons -->
+      <div class="table_control">
+          <div class="btn_area">
+              <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()" [disabled]="disabled"><span>Delete</span></button>
+              <!-- <button type="button" tabindex=-1 class="btn03 r"><span>DEACTIVATE</span></button>
+              <button type="button" tabindex=-1 class="btn03 r"><span>ACTIVE</span></button> -->
+          </div>
+      </div>
+      <!-- //table buttons -->
+
+      <div class="c_btn">
+          <div class="add-btn btn-css" (click)="REGISTER()">
+              <span>{{'COMMON.LABEL.ADD_NEW' | translate}}</span>
+          </div>
+
+      </div>
+  </div>
+  <!-- //box -->
+</div>
