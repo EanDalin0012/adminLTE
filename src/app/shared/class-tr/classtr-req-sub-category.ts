@@ -1,6 +1,15 @@
 import { Header } from '../Class/class-header';
-import { SubCategory } from '../Class/class-sub-category';
 export class SubCategoryRequest {
   header = new Header();
-  body: SubCategory;
+  body = {
+    id: 0,
+    mainCategoryId: 0,
+    subCategoryName: '',
+    description: '',
+    createBy: 0,
+    modifyBy: 0,
+    createDate: '',
+    modifyDate: '',
+    status: ''
+  };
 }

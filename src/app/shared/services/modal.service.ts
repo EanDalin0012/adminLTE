@@ -10,6 +10,7 @@ import { ModalDataService } from '../component/modal.service';
 import { ModalComponent } from '../component/modal/modal.component';
 import { SBSharedModule } from '../sbshare.module';
 import { TranslateService } from '@ngx-translate/core';
+import { NotificationService } from '@progress/kendo-angular-notification';
 
 @Injectable({
   providedIn: SBSharedModule
@@ -22,8 +23,8 @@ export class ModalService {
   constructor(
     private dialogService: DialogService,
     private modalData: ModalDataService,
-    private translate: TranslateService
-    // private notificationService: NotificationService
+    private translate: TranslateService,
+    private notificationService: NotificationService
   ) { }
 
   /**
@@ -227,16 +228,16 @@ export class ModalService {
     });
   }
 
-  // showNotificationService() {
-  //   this.notificationService.show({
-  //     content: 'Your data has been saved. Time for tea!',
-  //     cssClass: 'button-notification',
-  //     animation: { type: 'slide', duration: 400 },
-  //     position: { horizontal: 'center', vertical: 'bottom' },
-  //     type: { style: 'success', icon: true },
-  //     closable: false
-  //   });
-  // }
+  showNotificationService() {
+    this.notificationService.show({
+      content: 'Your data has been saved. Time for tea!',
+      cssClass: 'button-notification',
+      animation: { type: 'slide', duration: 400 },
+      position: { horizontal: 'center', vertical: 'bottom' },
+      type: { style: 'success', icon: true },
+      closable: false
+    });
+  }
 
   closeAllDialog() {
     const modalStore = this.store.get(MODAL_STORE_KEY.MODAL_STORE_KEY) as DialogRef[];

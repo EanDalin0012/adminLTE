@@ -1,1 +1,79 @@
-<p>register2000 works!</p>
+<div class="contentsWrap">
+
+  <div class="page_title">
+      <div class="breadcrumb">
+          <div class="page_navi">
+              <span>Home</span>
+              <span>Information</span>
+          </div>
+          <h1><span>Sub Category Inquiry</span></h1>
+      </div>
+
+  </div>
+
+  <div class="container01">
+      <div class="form-row col-md-12" style="height: 55px; padding: 0px;">
+          <div class="form-group form-group-last col-md-6" style="padding: 0px;">
+              <input style="border-bottom: 2px solid #3f496d !important;" type="text" [ngClass]="search ? 'active-input': ''" [(ngModel)]="search" (ngModelChange)="onChangeSearch($event)" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_DESCRIPTION' | translate}}" class="form-control">
+              <div class="in_box">
+                  <button style="top: 8px; right: 8px;" class="btn_del btn" (click)="onClickBtnSearch()" type="button" tabindex=-1 tabindex=-1 tabindex=-1><span>Delete text</span></button>
+              </div>
+
+          </div>
+      </div>
+
+      <div class="col-md-12" style="margin-bottom: 15px; padding: 0px;">
+          <strong> {{'COMMON.LABEL.ITEMS' | translate: { value: totalRecord} }}</strong>
+      </div>
+      <div>
+          <kendo-grid scrollable="virtual" [data]="gridView" [selectable]="selectableSettings" [sortable]="true" [sort]="sort" (sortChange)="sortChange($event)" [pageSize]="pageSize" [rowClass]="rowCallback" [skip]="skip" [pageable]="{
+            buttonCount: buttonCount,
+            info: info,
+            type: type,
+            pageSizes: pageSizes,
+            previousNext: previousNext}" [height]="height" kendoGridSelectBy="subCatId" [scrollable]="'true'" (pageChange)="pageChange($event)" class="table01 overflow-x" [selectedKeys]="mySelection">
+
+              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="false" showSelectAll="true"></kendo-grid-checkbox-column>
+
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="No">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{rowIndex + 1}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="150" class="subj" field="mainCatName" title="Main Categorg"></kendo-grid-column>
+              <kendo-grid-column width="150" class="subj" field="subCatName" title="Sub Categorg"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="description" title="Description"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="createDate" title="Create Date">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{dataItem.createDate | dateFormat}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+              <kendo-grid-column width="240" class="subj" field="modifyDate" title="Modify Date">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{dataItem.modifyDate | dateFormat}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="edit">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="clickEdit(dataItem)"><span>edit</span></button>
+                  </ng-template>
+              </kendo-grid-column>
+
+          </kendo-grid>
+      </div>
+
+      <div class="table_control">
+          <div class="btn_area">
+              <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()"><span>Delete</span></button>
+          </div>
+      </div>
+
+      <div class="c_btn">
+          <div class="add-btn btn-css" (click)="REGISTER()">
+              <span>{{'COMMON.LABEL.ADD_NEW' | translate}}</span>
+          </div>
+      </div>
+  </div>
+</div>

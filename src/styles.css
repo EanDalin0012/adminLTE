@@ -519,7 +519,7 @@ input[type=radio]:checked, .contset_box input[type=radio]:checked + *:before {ba
 .k-dropdown {height:40px; color:#000; background:#eff2f5; border:none; border-radius:4px;}
 .k-dropdown:only-child {width:100%;}
 .k-dropdown .k-dropdown-wrap, .k-dropdown .k-dropdown-wrap.k-state-focused  {color:#000; background:none; box-shadow:none; border:none;}
-.k-dropdown .k-dropdown-wrap.k-state-focused {border:2px solid #3f496d !important;border-radius:4px;box-sizing: border-box;}
+.k-dropdown .k-dropdown-wrap.k-state-focused {border-bottom:2px solid #3f496d !important;border-radius:4px;box-sizing: border-box;}
 .k-dropdown .k-dropdown-wrap:hover {background:none;}
 .k-dropdown-wrap>.k-input {height:100%; padding-left:12px;}
 .k-dropdown-wrap .k-select {background:url("assets/images/select_arrow.png") no-repeat right center;}
@@ -1402,9 +1402,7 @@ kendo-dialog:focus {
   background: 0 0;
   border: 1px solid #e1e1e1;
   border-radius: 42px;
-  color: #000;
   font-weight: 700;
-  font-size: 1em;
   line-height: 1.2;
   letter-spacing: .01em;
   word-break: break-all;
@@ -1425,6 +1423,9 @@ kendo-dialog:focus {
   user-select: none;
   word-break: keep-all;
   word-wrap: break-word;
+
+  font-size: 0.9375rem;
+  color: #000;
 }
 
 .k-dialog-wrapper {

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '../home/home/home.component';
 import { ExportComponent } from '../exports/export/export.component';
 import { RegisterComponent } from '../register/register/register.component';
+import { SaleComponent } from '../sales/sale/sale.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,15 @@ const routes: Routes = [
       {
         path: 'exports',
         loadChildren: '../exports/exports.module#ExportsModule'
+      }
+    ]
+  },
+  {
+    path: '', component: SaleComponent,
+    children: [
+      {
+        path: 'sales',
+        loadChildren: '../sales/sales.module#SalesModule'
       }
     ]
   }
