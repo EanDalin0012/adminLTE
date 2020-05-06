@@ -72,7 +72,7 @@ export class Register3100Component implements OnInit {
     // }
   }
 
-  keyupEmail() {
+  keyupEmail(event) {
     if ( !this.cEmail || this.cEmail && this.cEmail === '') {
       this.errorEmail = 'error_show';
     } else {
@@ -139,48 +139,23 @@ export class Register3100Component implements OnInit {
 
    isValid(): boolean {
     if ( !this.cName || this.cName && this.cName.trim() === '') {
-      this.alertMessage(this.translateTxt.MESSAGE_ERROR.REQUIRE_COMPANY_NAME).then(async res => {
-        this.inputCompayName.nativeElement.focus();
-        return await res;
-      });
+      const bool = this.modalService.messageAlert(this.translateTxt.MESSAGE_ERROR.REQUIRE_COMPANY_NAME);
+      return bool;
     } else if ( !this.contact || this.contact && this.contact.trim() === '') {
-       this.alertMessage(this.translateTxt.MESSAGE_ERROR.REQUIRE_CONTACT).then( async res => {
-        this.inputContact.nativeElement.focus();
-        return await res;
-      });
+      const bool = this.modalService.messageAlert(this.translateTxt.MESSAGE_ERROR.REQUIRE_CONTACT);
+      return bool;
     } else if ( !this.cEmail || this.cEmail && this.cEmail.trim() === '') {
-       this.alertMessage(this.translateTxt.MESSAGE_ERROR.REQUIRE_EMAIL).then( async res => {
-        this.inputEmail.nativeElement.focus();
-        return await res;
-      });
+      const bool = this.modalService.messageAlert(this.translateTxt.MESSAGE_ERROR.REQUIRE_EMAIL);
+      return bool;
     } else if ( this.formatterService.isValid(this.contact, 'PHONE_NUM') === false) {
-      this.alertMessage(this.translateTxt.MESSAGE_ERROR.IN_VALID_PHONE_NUMBER).then( async res => {
-        this.inputContact.nativeElement.focus();
-        return await res;
-     });
+      const bool = this.modalService.messageAlert(this.translateTxt.MESSAGE_ERROR.IN_VALID_PHONE_NUMBER);
+      return bool;
    } else if ( this.formatterService.isValid(this.cEmail, 'EMAIL') === false) {
-    this.alertMessage(this.translate.instant('COMMON.MESSAGE.INVALID_EMAIL')).then( async res => {
-      this.inputEmail.nativeElement.focus();
-      return await res;
-    });
+    const bool = this.modalService.messageAlert(this.translate.instant('COMMON.MESSAGE.INVALID_EMAIL'));
+    return bool;
    } else {
       return true;
     }
-    return;
-  }
-
-  alertMessage(msg: string): Promise<boolean> {
-    // tslint:disable-next-line: no-shadowed-variable
-    return new Promise((resolve, reject) => {
-      this.modalService.alert({
-        content: msg,
-        btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
-        modalClass: [],
-        callback: rest => {
-          resolve(false);
-        }
-      });
-    });
   }
 
 }

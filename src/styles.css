@@ -118,8 +118,10 @@ button {margin:0; padding:0; font:normal 1em 'Noto Sans', 'Noto Sans Khmer', 'Ve
 button:focus {outline:none; -webkit-tap-highlight-color:rgba(0,0,0,0.2);}
 input[type=text], input[type=password], input[type=number], input[type=tel], input[type=rang], input[type=email], input[type=url], input[type=date], input[type=datetime], input[type=month], input[type=tel], input[type=search], input[type=color], input[type=file],
 .k-textbox {
+  background-color: rgb(232, 240, 254);
+  /* background:#eff2f5; */
 	display:inline-block; height:40px; margin:0; padding:3px 12px; font-weight:normal; font-size:1rem; font-family:'Noto Sans', 'Noto Sans Khmer', 'Verdana', 'Geneva', 'Tahoma', 'sans-serif'; color:#000; vertical-align:middle;
-	background:#eff2f5; border:none; border-radius:4px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none; -moz-appearance:none; -o-appearance:none; appearance:none;
+	 border:none; border-radius:4px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none; -moz-appearance:none; -o-appearance:none; appearance:none;
 }
 
 input[type=checkbox]:not(.k-checkbox), input[type=radio]:not(.k-radio) {position:absolute; left:0; top:0; margin:0; vertical-align:middle; font-size:1em; border:none; border-radius:0; -webkit-appearance:none; cursor:pointer; z-index:2; opacity:0;}
@@ -516,7 +518,7 @@ input[type=radio]:checked, .contset_box input[type=radio]:checked + *:before {ba
 .k-combobox .k-dropdown-wrap:hover .k-select {background:url("assets/images/select_arrow.png") no-repeat right center;}
 .k-popup {background:#fff;}
 
-.k-dropdown {height:40px; color:#000; background:#eff2f5; border:none; border-radius:4px;}
+.k-dropdown {height:40px; color:#000; background: rgb(232, 240, 254); border:none; border-radius:4px;}
 .k-dropdown:only-child {width:100%;}
 .k-dropdown .k-dropdown-wrap, .k-dropdown .k-dropdown-wrap.k-state-focused  {color:#000; background:none; box-shadow:none; border:none;}
 .k-dropdown .k-dropdown-wrap.k-state-focused {border-bottom:2px solid #3f496d !important;border-radius:4px;box-sizing: border-box;}
@@ -1387,7 +1389,7 @@ kendo-dialog:focus {
 .mbr_introContent .iam-button {
   display: block;
   margin: 0 auto 9px;
-  min-width: 240px;
+  min-width: 200px;
   border-color: #008cff;
   color: #575757;
   background-size: 35px;
