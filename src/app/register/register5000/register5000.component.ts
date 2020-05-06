@@ -166,7 +166,7 @@ export class Register5000Component implements OnInit {
   }
 
   onClickImportNewItem() {
-  this.router.navigate(['/main/home/import-product']);
+  this.router.navigate(['/main/register/import-product']);
   }
 
 }

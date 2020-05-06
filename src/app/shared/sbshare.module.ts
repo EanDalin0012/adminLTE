@@ -22,6 +22,7 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
 import { PhoneNumberPipe } from './pipes/phone-number.pipe';
 import { AmountFormatPipe } from './pipes/amount-format.pipe';
 import { DiscountFormatPipe } from './pipes/discount-format.pipe';
+import { AutoFocusDirective } from './directives/auto-focus.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DiscountFormatPipe } from './pipes/discount-format.pipe';
   PhoneNumberPipe,
   AmountFormatPipe,
   DiscountFormatPipe,
+  AutoFocusDirective
 ],
   imports: [
    /*  CommonModule */
@@ -64,7 +66,9 @@ import { DiscountFormatPipe } from './pipes/discount-format.pipe';
     DateFormatPipe,
     PhoneNumberPipe,
     AmountFormatPipe,
-    DiscountFormatPipe
+    DiscountFormatPipe,
+
+    AutoFocusDirective
 
   ],
   entryComponents: [
