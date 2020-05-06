@@ -1,12 +1,4 @@
-<!-- User Management -->
-<!-- contents Area -->
 <div class="contentsWrap">
-  <!-- Navigation Tab -->
-  <div class="naviWrap">
-
-  </div>
-  <!-- //Navigation Tab -->
-  <!-- page title -->
   <div class="page_title">
       <div class="breadcrumb">
           <div class="page_navi">
@@ -14,22 +6,15 @@
               <span>Information Management</span>
           </div>
           <h1><span>Company</span></h1>
-          <!-- <button type="button" tabindex=-1 class="btn_add_fav"><span>Add or removeFavorites</span></button> -->
-          <!-- add Class "on" -->
       </div>
-      <!-- <div class="guideWrap">
-        <button type="button" tabindex=-1 class="btn_livechat" onclick="javascript:window.toggle();"><span>Live Chat</span></button>
-        <button type="button" tabindex=-1 class="btn_guide" (click)="openGuide()"><span>Guide</span></button>
-    </div> -->
+
   </div>
-  <!-- //page title -->
-  <!-- box -->
 
   <div class="container01">
 
       <div class="form-row col-md-12" style="height: 55px; padding: 0px;">
           <div class="form-group form-group-last col-md-6" style="padding: 0px;">
-              <input style="border-bottom: 2px solid #3f496d !important;" type="text" [ngClass]="search ? 'active-input': ''" (input)="inputSearch($event)" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_DESCRIPTION' | translate}}" class="form-control">
+              <input style="border-bottom: 2px solid #3f496d !important;" type="text" [(ngModel)] = "search" [ngClass]="search ? 'active-input': ''" (input)="inputSearch($event)" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_DESCRIPTION' | translate}}" class="form-control">
               <div class="in_box">
                   <button style="top: 8px; right: 8px;" class="btn_del btn" (click)="onClickBtnSearch()" type="button" tabindex=-1 tabindex=-1 tabindex=-1><span>Delete text</span></button>
               </div>

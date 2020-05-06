@@ -22,7 +22,7 @@
 
                   <div class="form-group col-md-6">
                       <label for="inputPassword4">{{'Home2100.LABEL.CONTACT' | translate}}</label>
-                      <input #inputContact type="text" [ngClass]="cContact?'active-input':''" (input)="keyupContact($event)" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_CONTACT' | translate}}" class="form-control">
+                      <input #inputContact type="text" [ngClass]="cContact?'active-input':''" [(ngModel)] = "cContact" (input)="keyupContact($event)" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_CONTACT' | translate}}" class="form-control">
 
                       <div class="in_box">
                           <button (click)="onClickBntCross('contact')" type="button" [ngClass]="cContact?'btn_del':''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>

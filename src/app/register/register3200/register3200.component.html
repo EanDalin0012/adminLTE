@@ -1,1 +1,84 @@
-<p>register3200 works!</p>
+<div class="contentsWrap">
+  <div class="container01">
+      <div class="web_container">
+          <!-- header -->
+          <div class="pop_header">
+              <h1>{{'Home2100.LABEL.REGISTER_COMPANY' | translate}}</h1>
+              <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
+          </div>
+          <!-- //header -->
+          <div class="web_Wrap">
+
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label>{{'Home2100.LABEL.COMPANY_NAME' | translate}}</label>
+                      <input type="text" [ngClass] = "cName? 'active-input': ''" [(ngModel)]="cName" class="form-control" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_COMPANY_NAME' | translate}}">
+
+                      <div class="in_box">
+                          <button type="button" [ngClass]="cContact?'btn_del':''" (click)="crossBtnClick('cName')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                      <label for="inputPassword4">{{'Home2100.LABEL.CONTACT' | translate}}</label>
+                      <input type="text" [ngClass] = "cContact? 'active-input': ''" (keyup)="keyupContact('cContact')" [(ngModel)]="cContact" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_CONTACT' | translate}}" class="form-control">
+
+                      <div class="in_box">
+                          <button type="button" [ngClass]="cContact?'btn_del':''" (click)="crossBtnClick('cContact')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label>{{'Home2100.LABEL.EMAIL' | translate}}</label>
+                      <input type="text" [ngClass] = "cEmail? 'active-input': ''" (keyup)="keyupEmail('cemail')" [(ngModel)]="cEmail" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_EMAIL' | translate}}" class="form-control">
+
+                      <div class="in_box">
+                          <button type="button" [ngClass]="cEmail?'btn_del':''" (click)="crossBtnClick('cemail')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label>{{'Home2100.LABEL.ADDRESS' | translate}}</label>
+                      <input type="text" [ngClass] = "cAddress? 'active-input': ''" [(ngModel)]="cAddress" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_ADDRESS' | translate}}" class="form-control">
+
+                      <div class="in_box">
+                          <button type="button" [ngClass]="cAddress?'btn_del':''" (click)="crossBtnClick('caddress')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+
+                  </div>
+
+              </div>
+
+
+
+              <div class="form-row">
+                  <div class="form-group form-group-last col-md-12">
+                      <label>{{'Home2100.LABEL.DESCRIPTION' | translate}}</label>
+                      <input type="text" [ngClass] = "cDescription? 'active-input': ''" [(ngModel)]="cDescription" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_DESCRIPTION' | translate}}" class="form-control">
+                      <div class="in_box">
+                          <button type="button" [ngClass]="cDescription?'btn_del':''"  (click)="crossBtnClick('cDescription')" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+
+      <div class="c_btn">
+          <div class="add-close btn-css margin-right-btn-clos" (click)="close()">
+              <span>{{'COMMON.BUTTON.CLOSE' | translate}}</span>
+          </div>
+
+          <div class="iam-btn-container mbr_introContent" style="display: inline-block;">
+            <button class="iam-button update" (click)="update()">{{'COMMON.BUTTON.UPDATE' | translate}}</button>
+          </div>
+
+      </div>
+  </div>
+</div>

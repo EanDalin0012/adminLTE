@@ -58,7 +58,7 @@ export class Register3200Component implements OnInit {
     }
   }
 
-  keyupEmail() {
+  keyupEmail(val) {
     if ( !this.cEmail || this.cEmail && this.cEmail === '') {
       this.errorEmail = 'error_show';
     } else {
@@ -87,16 +87,24 @@ export class Register3200Component implements OnInit {
 
   }
 
-  KEYUPCNAME() {
-    this.cName = '';
-  }
-
-  keyup(val: string) {
-    this.isValid();
-  }
-
-  crossBtnClick(jqueryId: string, note: string) {
-
+  crossBtnClick(note: string) {
+    switch (note) {
+      case 'cName':
+        this.cName = undefined;
+        break;
+      case 'cContact':
+        this.cContact = undefined;
+        break;
+      case 'cemail':
+        this.cEmail = undefined;
+        break;
+      case 'caddress':
+        this.cAddress = undefined;
+        break;
+      case 'cDescription':
+        this.cDescription = undefined;
+        break;
+    }
   }
 
   isValid(): boolean {
