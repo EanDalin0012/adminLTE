@@ -1,1 +1,80 @@
-<p>register4100 works!</p>
+<div class="contentsWrap">
+  <div class="container01">
+      <div class="web_container">
+          <div class="pop_header">
+              <h1>{{'Home11000.LABEL.SUPPLIER_INFORMATION' | translate}}}Supplier Information</h1>
+              <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
+          </div>
+          <div class="web_Wrap">
+
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label>{{'Home11000.LABEL.NAME' | translate}}</label>
+                      <input #supNameDir type="text" [ngClass]="supName?'active-input':''" [(ngModel)]="supName" class="form-control" placeholder="{{'Home11000.HOLDER.PLEASE_ENTER_NAME' | translate}}">
+
+                      <div class="in_box">
+                          <button (click)="onClickBntCross('supName')" [ngClass]="supName?'btn_del':''" type="button" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+
+                  </div>
+
+                  <div class="form-group col-md-6">
+                      <label for="inputPassword4">{{'Home11000.LABEL.CONTACT' | translate}}</label>
+                      <input type="text" [ngClass]="supContactTrm?'active-input':''" [(ngModel)]="supContactTrm" (input)="inputContact($event)" placeholder="{{'Home11000.HOLDER.PLEASE_ENTER_CONTACT' | translate}}" class="form-control">
+
+                      <div class="in_box">
+                          <button (click)="onClickBntCross('supContact')" type="button" [ngClass]="supContact?'btn_del':''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+
+                  </div>
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label>{{'Home11000.LABEL.OTHER_CONTACT' | translate}}</label>
+                      <input #inputEmail type="text" [ngClass]="supContactTwo?'active-input':''" [(ngModel)]="supContactTwo" placeholder="{{'Home11000.HOLDER.PLEASE_ENTER_OTHER_CONTACT' | translate}}" class="form-control">
+
+                      <div class="in_box">
+                          <button (click)="onClickBntCross('supContactTwo')" type="button" [ngClass]="supContactTwo?'btn_del':''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                      <label>{{'Home11000.LABEL.EMAIL' | translate}}</label>
+                      <input #inputEmail type="text" [ngClass]="supEmail?'active-input':''" [(ngModel)]="supEmail" placeholder="{{'Home11000.HOLDER.PLEASE_ENTER_EMAIL' | translate}}" class="form-control">
+
+                      <div class="in_box">
+                          <button (click)="onClickBntCross('supEmail')" type="button" [ngClass]="supEmail?'btn_del':''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+                  </div>
+
+              </div>
+
+              <div class="form-row">
+                  <div class="form-group form-group-last col-md-12">
+                      <label>{{'Home11000.LABEL.DESCRIPTION' | translate}}</label>
+                      <input type="text" [ngClass]="description?'active-input':''" [(ngModel)]="description" placeholder="{{'Home11000.HOLDER.PLEASE_ENTER_DESCRIPTION' | translate}}" class="form-control">
+                      <div class="in_box">
+                          <button (click)="onClickBntCross('description')" type="button" [ngClass]="description?'btn_del':''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                      </div>
+
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+
+      <div class="c_btn">
+          <div class="add-close  btn-css margin-right-btn-clos" (click)="close()">
+              <span>{{'COMMON.BUTTON.CLOSE' | translate}}</span>
+          </div>
+
+          <div class="iam-btn-container mbr_introContent" style="display: inline-block;">
+            <button class="iam-button save" (click)="onClickSave()">{{'COMMON.BUTTON.SAVE' | translate}}</button>
+          </div>
+
+      </div>
+  </div>
+</div>

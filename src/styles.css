@@ -1512,7 +1512,6 @@ kendo-dialog.testing {
 
 .addAlertCender div kendo-dialog-actions button.k-button {
   display: inline-block !important;
-  /* min-width: 202px; */
   min-height: 40px !important;
   padding: 8px 20px !important;
   font-weight: 500 !important;
@@ -1522,4 +1521,8 @@ kendo-dialog.testing {
   border-radius: 50px !important;
   border: none !important;
   float: right !important;
+}
+.content-wrapper {
+  min-height: 1302.2px;
+  height: 100vh;
 }

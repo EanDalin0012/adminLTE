@@ -136,7 +136,7 @@ export class Register4000Component implements OnInit {
   clickEdit(dataItem) {
     if ( dataItem ) {
       this.modalService.open({
-          content: Register4100Component,
+          content: Register4200Component,
           message: dataItem,
           callback: async ( res ) => {
             if (await res.close === BTN_ROLES.EDIT) {
@@ -198,7 +198,7 @@ export class Register4000Component implements OnInit {
 
   onClickRegister() {
     this.modalService.open({
-      content: Register4200Component,
+      content: Register4100Component,
       message: {},
       callback: async (res) => {
         console.log('res', res);

@@ -133,6 +133,7 @@ export enum URLCODE {
   Register2000       = 'sub-category',
   Register3000       = 'company',
   Register4000       = 'supplier',
+  Register5000       = 'import-product-list'
 }
 
 export enum CURRENCY_CODE {

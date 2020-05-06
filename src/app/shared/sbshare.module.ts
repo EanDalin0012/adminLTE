@@ -20,12 +20,16 @@ import { NotificationModule } from '@progress/kendo-angular-notification';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { PhoneNumberPipe } from './pipes/phone-number.pipe';
+import { AmountFormatPipe } from './pipes/amount-format.pipe';
+import { DiscountFormatPipe } from './pipes/discount-format.pipe';
 
 @NgModule({
   declarations: [
   ModalComponent,
   DateFormatPipe,
   PhoneNumberPipe,
+  AmountFormatPipe,
+  DiscountFormatPipe,
 ],
   imports: [
    /*  CommonModule */
@@ -58,7 +62,9 @@ import { PhoneNumberPipe } from './pipes/phone-number.pipe';
     NotificationModule,
     // pipe
     DateFormatPipe,
-    PhoneNumberPipe
+    PhoneNumberPipe,
+    AmountFormatPipe,
+    DiscountFormatPipe
 
   ],
   entryComponents: [

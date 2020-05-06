@@ -110,6 +110,9 @@ export class SideNavComponent implements OnInit {
       case 'register4000':
         url += 'register/' + URLCODE.Register4000;
         break;
+      case 'register5000':
+          url += 'register/' + URLCODE.Register5000;
+          break;
       case 11000:
       case 7000:
       case 9100:
