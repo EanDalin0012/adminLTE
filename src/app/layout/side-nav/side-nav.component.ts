@@ -97,18 +97,19 @@ export class SideNavComponent implements OnInit {
 
   onOpenPage(urlCode: any) {
     let url = '/main/';
-    console.log(URLCODE[urlCode], urlCode);
     switch (urlCode) {
       case 'register1000':
-        url += 'register/' + URLCODE.register1000;
+        url += 'register/' + URLCODE.Register1000;
         break;
       case 'register2000':
-          url += 'register/' + URLCODE.register2000;
+          url += 'register/' + URLCODE.Register2000;
           break;
       case 'register3000':
-        url += 'register/' + URLCODE.register3000;
+        url += 'register/' + URLCODE.Register3000;
         break;
-      case 8000:
+      case 'register4000':
+        url += 'register/' + URLCODE.Register4000;
+        break;
       case 11000:
       case 7000:
       case 9100:

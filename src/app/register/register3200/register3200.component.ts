@@ -50,7 +50,7 @@ export class Register3200Component implements OnInit {
     this.modal.close( {close: BTN_ROLES.CLOSE});
   }
 
-  keyupContact() {
+  keyupContact(val) {
     if ( !this.cContact || this.cContact && this.cName === '') {
       this.errorContact = 'error_show';
     } else {

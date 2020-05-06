@@ -129,9 +129,10 @@ export enum STATUS {
 }
 
 export enum URLCODE {
-  register1000       = 'main-category',
-  register2000       = 'sub-category',
-  register3000       = 'company',
+  Register1000       = 'main-category',
+  Register2000       = 'sub-category',
+  Register3000       = 'company',
+  Register4000       = 'supplier',
 }
 
 export enum CURRENCY_CODE {
