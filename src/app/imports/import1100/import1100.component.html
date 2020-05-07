@@ -1,1 +1,179 @@
-<p>import1100 works!</p>
+<div class="contentsWrap">
+  <div class="page_title">
+      <div class="breadcrumb">
+          <h1><span>{{'Home9100.LABEL.IMPORT_NEW_PRODUCT' | translate}}</span></h1>
+      </div>
+
+  </div>
+
+  <div class="container01">
+      <div class="tableWrap" id="grid_list">
+
+          <div class="form-row">
+              <div class="form-group col-md-6" style="padding-left: 0px;">
+                  <label>{{'Home9000.LABEL.PRODUCT' | translate}} :</label>
+                  <kendo-dropdownlist [ngClass]="ngClassProduct" [data]="proList" [filterable]="true" [textField]="'proName'" [valueField]="'proId'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="productInfo" [ngModelOptions]="{standalone: true}"
+                      [valuePrimitive]="valuePrimitivePro" [defaultItem]="defaultProductInfo" (valueChange)="valueChangeProduct($event)"></kendo-dropdownlist>
+              </div>
+
+              <div class="form-group col-md-6" style="padding-left: 0px;">
+                  <label>{{'Home9000.LABEL.COMPANY' | translate}} :</label>
+                  <kendo-dropdownlist [ngClass]="ngClassCompany" [data]="compList" [filterable]="true" [textField]="'name'" [valueField]="'id'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="companyInfo" [ngModelOptions]="{standalone: true}"
+                      [valuePrimitive]="valuePrimitiveCompany" [defaultItem]="defaultCompanyInfo" (valueChange)="valueChangeCompany($event)"></kendo-dropdownlist>
+              </div>
+          </div>
+
+          <div class="form-row">
+              <div class="form-group col-md-6 padding-left-zero">
+                  <label for="inputPassword4">{{'Home9000.LABEL.Quantity' | translate}} :</label>
+                  <input [appAutoFocus]="focus == 'focusQty'" type="number" [ngClass]="qty?'active-input': ''" [(ngModel)]="qty" placeholder="{{'Home9000.HOLDER.ENTER_QUANTITY' | translate}}" class="form-control">
+
+                  <div class="in_box">
+                      <button (click)="btnDel('qty')" type="button" [ngClass]="qty ? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                  </div>
+
+              </div>
+
+              <div class="form-group col-md-6 padding-right-zero">
+
+                  <div class="form-group col-md-10 padding-left-zero">
+                      <label>{{'Home9000.LABEL.PRICE' | translate}} :</label>
+                      <input [appAutoFocus]="focus == 'focusPrice'" type="number" [ngClass]="price? 'active-input': ''" [(ngModel)]="price" class="form-control" placeholder="{{'Home9000.HOLDER.ENTER_PRICE' | translate}}">
+                      <div class="in_box">
+                          <button (click)="btnDel('price')" [ngClass]="price ? 'btn_del': ''" type="button" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+                  </div>
+
+                  <div class="form-group col-md-2 " style="margin-top: 25px; padding: 0px 0px;">
+                      <kendo-dropdownlist class="active-input" [data]="currencyList" [textField]="'currencyCode'" [valueField]="'currencyCode'" [(ngModel)]="currencyCode"></kendo-dropdownlist>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="form-row">
+              <div class="form-group col-md-6 padding-left-zero">
+                  <label for="inputPassword4"> {{'Home9000.LABEL.DISCOUNT' | translate}} :</label>
+                  <input type="number" [ngClass]="discountCss" [(ngModel)]="discount" placeholder="{{'Home9000.HOLDER.ENTER_DISCOUNT' | translate}}" class="form-control">
+
+                  <div class="in_box">
+                      <button type="button" (click)="btnDel('dis')" [ngClass]="discount ? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                  </div>
+
+              </div>
+
+              <div class="form-group col-md-6 padding-right-zero">
+                  <div class="form-group col-md-10 padding-left-zero">
+                      <label>{{'Home9000.LABEL.TOTAL' | translate}} :</label>
+                      <input disabled class="tatal" [ngClass]="total ? 'active-input': ''" [(ngModel)]="total" type="number" class="form-control" placeholder="{{'Home9000.HOLDER.ENTER_TOTAL' | translate}}">
+                      <div class="in_box">
+                          <button type="button" (click)="btnDel('total')" [ngClass]="total ? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1></button>
+                      </div>
+                  </div>
+                  <div class="form-group col-md-2 " style="margin-top: 25px; padding: 0px 0px;">
+                      <div style="visibility: visible;">
+                          <button (click)="onClickCalc()" class="btn-calulator">Calc</button>
+                      </div>
+                  </div>
+
+              </div>
+
+          </div>
+
+          <div class="form-row">
+              <div class="form-group col-md-6 padding-left-zero">
+                  <label>Supplier :</label>
+                  <kendo-dropdownlist [ngClass]="ngClassSupplier" [data]="suppliertList" [filterable]="true" [textField]="'supName'" [valueField]="'id'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="supplierInfo"
+                      [ngModelOptions]="{standalone:
+              true}" [valuePrimitive]="valuePrimitiveSupplier" [defaultItem]="defaultSupplierInfo" (valueChange)="valueChangeSupplier($event)"></kendo-dropdownlist>
+              </div>
+
+              <div class="form-group col-md-6 padding-right-zero">
+                  <label for="inputPassword4">{{'Home9000.LABEL.DESCRIPTION' | translate}} :</label>
+                  <input type="text" [ngClass]="description ? 'active-input' : ''" [(ngModel)]="description" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_CONTACT' | translate}}" class="form-control">
+
+                  <div class="in_box">
+                      <button (click)="btnDel('descr')" type="button" [ngClass]="description ? 'btn_del' : ''" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+
+      <div class="c_btn">
+          <div class="add-btn btn-css btn-add-new-items" (click)="addNewItems()">
+              <span>{{'Home9000.LABEL.ADD_NEW_ITEMS' | translate}}</span>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="contentsWrap">
+  <div class="container01">
+      <kendo-grid scrollable="virtual" [data]="gridView" [selectable]="selectableSettings" [sortable]="true" [sort]="sort" (sortChange)="sortChange($event)" [pageSize]="pageSize" [rowClass]="rowCallback" [skip]="skip" [pageable]="{
+    buttonCount: buttonCount,
+    info: info,
+    type: type,
+    pageSizes: pageSizes,
+    previousNext: previousNext
+  }" [height]="height" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" [selectedKeys]="mySelection" class="table01 overflow-x">
+          <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
+          <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="No">
+              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <p>{{rowIndex + 1}}</p>
+              </ng-template>
+          </kendo-grid-column>
+
+          <kendo-grid-column width="150" class="subj" field="productName" title="Product Name"></kendo-grid-column>
+          <kendo-grid-column width="190" class="subj" field="companyName" title="Company Name"></kendo-grid-column>
+          <kendo-grid-column width="190" class="subj" field="supplierName" title="Supplier Name"></kendo-grid-column>
+          <kendo-grid-column width="190" class="cen" field="quantity" title="Quantity"></kendo-grid-column>
+          <kendo-grid-column width="190" class="cen" field="price" title="Price">
+              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <span>{{dataItem.price | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
+              </ng-template>
+          </kendo-grid-column>
+
+          <kendo-grid-column width="190" class="cen" field="discount" title="Discount">
+              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <span>{{dataItem.discount | discountFormat}}</span>
+              </ng-template>
+          </kendo-grid-column>
+
+          <kendo-grid-column width="190" class="cen" field="total" title="total">
+              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <span>{{dataItem.total | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
+              </ng-template>
+          </kendo-grid-column>
+          <kendo-grid-column width="300" class="subj" field="description" title="Description"></kendo-grid-column>
+
+          <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="Edit">
+              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="onClickEdit(dataItem)"><span>edit</span></button>
+              </ng-template>
+          </kendo-grid-column>
+
+          <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="Delete">
+              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <button type="button" tabindex=-1 class="btn_cancel" id="rowIndex" (click)="onClickDelet(dataItem)"><span>delete</span></button>
+              </ng-template>
+          </kendo-grid-column>
+
+      </kendo-grid>
+
+      <div class="table_control">
+          <div class="btn_area">
+              <button type="button" tabindex=-1 class="btn03 r"><span>{{'COMMON.BUTTON.DELETE' | translate}}</span></button>
+          </div>
+      </div>
+
+
+      <div class="iam-btn-container mbr_introContent">
+        <button class="iam-button save" (click)="onClickSave()">{{'COMMON.BUTTON.SAVE' | translate}}</button>
+      </div>
+
+  </div>
+</div>

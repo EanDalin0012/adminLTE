@@ -1,1 +1,119 @@
-<p>import1000 works!</p>
+<div class="contentsWrap">
+
+  <div class="page_title">
+      <div class="breadcrumb">
+          <h1><span> {{'Home9000.LABEL.IMPORT_PRODUCT' | translate}}</span></h1>
+      </div>
+
+  </div>
+
+  <div class="container01">
+
+      <div class="form-row col-md-12" style="height: 55px; padding: 0px;">
+          <div class="form-group col-md-2 padding-left-zero">
+              <kendo-dropdownlist [ngClass]="sortItem?'active-input': ''" [data]="sortItems" [textField]="'key'" [valueField]="'value'" [(ngModel)]="sortItem"></kendo-dropdownlist>
+          </div>
+
+          <div class="form-group form-group-last col-md-6" style="padding: 0px;">
+              <input style="border-bottom: 2px solid #3f496d !important;" type="text" [ngClass]="search ? 'active-input': ''" [(ngModel)]="search" (input)="inputSearch($event)" placeholder="Search by name ..." class="form-control">
+              <div class="in_box">
+                  <button style="top: 8px; right: 8px;" class="btn_del btn" (click)="onClickBtnSearch()" type="button" tabindex=-1 tabindex=-1 tabindex=-1><span>Delete text</span></button>
+              </div>
+
+          </div>
+      </div>
+
+      <div class="col-md-12" style="margin-bottom: 15px; padding: 0px;">
+          <strong>{{'COMMON.LABEL.ITEMS' | translate: {'value': recordsTotal} }}</strong>
+      </div>
+
+      <div>
+          <kendo-grid scrollable="virtual" [data]="gridView" [selectable]="selectableSettings" [sortable]="true" [sort]="sort" (sortChange)="sortChange($event)" [pageSize]="pageSize" [rowClass]="rowCallback" [skip]="skip" [pageable]="{
+        buttonCount: buttonCount,
+        info: info,
+        type: type,
+        pageSizes: pageSizes,
+        previousNext: previousNext
+      }" [height]="height" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" [selectedKeys]="mySelection" (cellClick)="rowclick($event)" class="table01 overflow-x">
+              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true">
+
+              </kendo-grid-checkbox-column>
+
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'COMMON.LABEL.NO' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{rowIndex + 1}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="150" class="subj" field="productName" title="{{'Home9000.LABEL.PRODUCT_NAME' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="companyName" title="{{'Home9000.LABEL.COMPANY_NAME' | translate}}"></kendo-grid-column>
+
+              <kendo-grid-column width="190" class="subj" field="supplierName" title="{{'Home9000.LABEL.SUPPLIER_NAME' | translate}}">
+              </kendo-grid-column>
+              <kendo-grid-column width="95" class="num" field="price" title="{{'Home9000.LABEL.PRICE' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <span>{{dataItem.price | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
+                  </ng-template>
+              </kendo-grid-column>
+              <kendo-grid-column width="95" class="num" field="discount" title="{{'Home9000.LABEL.DISCOUNT' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <span>{{dataItem.discount | discountFormat}}</span>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="95" class="num" field="quantity" title="{{'Home9000.LABEL.QUANTITY' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <span>{{dataItem.quantity | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="95" class="num" field="total" title="{{'Home9000.LABEL.TOTAL' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <span>{{dataItem.total | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="230" class="subj" field="description" title="{{'Home9000.LABEL.DESCRIPTION' | translate}}"></kendo-grid-column>
+
+              <kendo-grid-column width="80" class="cen" [sortable]="false" field="edit" title="edit">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="onClickEdit(dataItem)"><span>edit</span></button>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="120" class="subj" field="createDate" title="{{'COMMON.LABEL.CREATE_DATE' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{dataItem.createDate | dateFormat}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="120" class="subj" field="modifyDate" title="{{'COMMON.LABEL.MODIFY_DATE' | translate}}">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{dataItem.modifyDate | dateFormat}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+
+          </kendo-grid>
+      </div>
+
+      <div class="table_control">
+          <div class="btn_area">
+              <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()"><span>{{'COMMON.BUTTON.DELETE' | translate}}</span></button>
+          </div>
+      </div>
+
+
+      <!-- <div class="c_btn">
+          <div class="add-btn btn-css" (click)="onClickImportNewItem()">
+              <span>{{'Home9000.LABEL.ADD_NEW_ITEMS' | translate}}</span>
+          </div>
+      </div> -->
+
+      <div class="c_btn">
+        <div class="add-btn btn-css" (click)="onClickImportNewItem()">
+            <span>{{'COMMON.BUTTON.ADD_NEW' | translate}}</span>
+        </div>
+    </div>
+  </div>
+
+</div>
