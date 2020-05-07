@@ -509,7 +509,7 @@ onClickSave() {
   this.serverService.HTTPRequest(url, request).then( response => {
     const res = response as ResponseData;
     if (this.serverService.checkResponse(res.header)) {
-      this.router.navigate(['/main/home/list-import-product']);
+      this.router.navigate(['/main/register/import-product-list']);
     }
   });
 

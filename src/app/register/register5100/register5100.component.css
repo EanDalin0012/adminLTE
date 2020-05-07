@@ -1,0 +1,96 @@
+.btn-calulate {
+  min-width: 35px !important;
+  width: 80px !important;
+  padding: 0px !important;
+  min-width: 80px !important;
+}
+
+#iddd {
+  background-color: #FFF;
+  border: 1px solid #968e8e80;
+  border-radius: 16px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 12px;
+  height: 35px;
+  line-height: 30px;
+  margin-bottom: 0;
+  max-width: 537px;
+  width: 115px;
+  overflow: hidden;
+  padding: 0 16px;
+  pointer-events: all;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* background-image: url('../../../assets/images/floppy-disk.svg');
+  background-repeat: no-repeat;
+  background-size: 30%; */
+}
+
+#idd {
+  background-color: #FFF;
+  border: 1px solid #968e8e80;
+  border-radius: 16px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 12px;
+  height: 35px;
+  line-height: 30px;
+  margin-bottom: 0;
+  max-width: 537px;
+  width: 115px;
+  overflow: hidden;
+  padding: 0 16px;
+  pointer-events: all;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* background-image: url('../../../assets/images/cancel.svg');
+  background-repeat: no-repeat; */
+}
+
+.btn-calulator {
+  border-color: #008cff;
+  border: 1px solid #968e8e80;
+  border-radius: 16px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  height: 35px;
+  line-height: 30px;
+  margin-bottom: 0;
+  max-width: 537px;
+  width: 85px;
+  overflow: hidden;
+  padding: 0 16px;
+  pointer-events: all;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-image: url('/../../../assets/images/calculator.svg');
+  background-repeat: no-repeat;
+  display: block;
+  margin: 0 auto 9px;
+  border-color: #008cff;
+  color: #575757;
+  text-align: right;
+  background-position-x: 2px;
+  background-size: 35%;
+}
+
+.btn001 {
+  background-color: #18191b;
+}
+
+.btn-add-new-items {
+  background-size: 17%;
+}
+
+.add-btn {
+  background-size: 15%;
+}
+
+input:disabled {
+  color: #000;
+}
