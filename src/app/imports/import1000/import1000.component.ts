@@ -165,67 +165,64 @@ export class Import1000Component implements OnInit {
 
   inquiry() {
     const trReq = new RequestData();
-    const api = '/api/import-product/getList';
+    console.log('trReq', trReq);
+    const api = '/api/import-product/getListDetails';
     this.serverService.HTTPRequest(api, trReq).then(res => {
       console.log('res import product', res);
-      // const response = res as SupplierList;
-      // if (this.serverService.checkResponse(response.header)) {
-      //   this.supList = response.body;
-      //   this.gridData = this.supList;
-      //   // this.totalRecord = this.list.length;
-      //   this.loadingData(this.gridData);
-      // }
-      // console.log('response', this.supList);
+      if (this.serverService.checkResponse(res.header)) {
+        this.list = res.body.list;
+        console.log('list', this.list);
+        this.loadingData(this.list);
+      }
     });
-    this.list = importProductDetialList;
     this.loadingData(this.list);
   }
 
   onClickImportNewItem() {
-  this.router.navigate(['/main/register/import-product']);
+  this.router.navigate(['/main/imports/import-product']);
   }
 
 }
 
-const importProductDetialList: ImportProductDetails[] = [
-{
-  id: 1,
-  productId: 1,
-  productName: 'productName 1',
-  supplierId: 1,
-  supplierName: 'Supplier 1',
-  companyId: 1,
-  companyName: 'Company 1',
-  quantity: 2,
-  price: 2,
-  discount: 0,
-  total: 4,
-  currencyCode: 'USD',
-  description: 'Import Product 1',
-  createBy: 1,
-  modifyBy: 1,
-  createDate: '20201010',
-  modifyDate: '20201010',
-  status: '01'
-},
-{
-  id: 2,
-  productId: 2,
-  productName: 'productName 2',
-  supplierId: 2,
-  supplierName: 'Supplier 2',
-  companyId: 2,
-  companyName: 'Company 2',
-  quantity: 2,
-  price: 2,
-  discount: 0,
-  total: 4,
-  currencyCode: 'USD',
-  description: 'Import Product 2',
-  createBy: 1,
-  modifyBy: 1,
-  createDate: '20201010',
-  modifyDate: '20201010',
-  status: '01'
-}
-];
+// const importProductDetialList: ImportProductDetails[] = [
+// {
+//   id: 1,
+//   productId: 1,
+//   productName: 'productName 1',
+//   supplierId: 1,
+//   supplierName: 'Supplier 1',
+//   companyId: 1,
+//   companyName: 'Company 1',
+//   quantity: 2,
+//   price: 2,
+//   discount: 0,
+//   total: 4,
+//   currencyCode: 'USD',
+//   description: 'Import Product 1',
+//   createBy: 1,
+//   modifyBy: 1,
+//   createDate: '20201010',
+//   modifyDate: '20201010',
+//   status: '01'
+// },
+// {
+//   id: 2,
+//   productId: 2,
+//   productName: 'productName 2',
+//   supplierId: 2,
+//   supplierName: 'Supplier 2',
+//   companyId: 2,
+//   companyName: 'Company 2',
+//   quantity: 2,
+//   price: 2,
+//   discount: 0,
+//   total: 4,
+//   currencyCode: 'USD',
+//   description: 'Import Product 2',
+//   createBy: 1,
+//   modifyBy: 1,
+//   createDate: '20201010',
+//   modifyDate: '20201010',
+//   status: '01'
+// }
+// ];

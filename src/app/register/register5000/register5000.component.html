@@ -1,1 +1,73 @@
-<span>register 500</span>
+<div class="contentsWrap">
+  <div class="page_title">
+      <div class="breadcrumb">
+          <div class="page_navi">
+              <span>Home</span>
+              <span>Information</span>
+          </div>
+          <h1><span>Product Management</span></h1>
+      </div>
+
+  </div>
+
+  <div class="container01">
+      <div class="tableWrap" id="grid_list">
+          <kendo-grid scrollable="virtual" [data]="gridView" [sortable]="true" [sort]="sort" (sortChange)="sortChange($event)" [pageSize]="pageSize" [rowClass]="rowCallback" [skip]="skip" [pageable]="{
+          buttonCount: buttonCount,
+          info: info,
+          type: type,
+          pageSizes: pageSizes,
+          previousNext: previousNext
+        }" [height]="height" kendoGridSelectBy="Id" (pageChange)="pageChange($event)" class="table01" [selectedKeys]="mySelection">
+              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="false" showSelectAll="true"></kendo-grid-checkbox-column>
+
+              <kendo-grid-column width="150" class="cen" [sortable]="false" field="no" title="No">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{rowIndex + 1}}</p>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="150" class="subj" field="productName" title="Product Name"></kendo-grid-column>
+              <kendo-grid-column width="200" class="subj" field="productCategory" title="Category"></kendo-grid-column>
+              <kendo-grid-column width="100" class="cen" field="price" title="Price"></kendo-grid-column>
+              <kendo-grid-column width="100" class="subj" field="unitPrice" title="Unit Price"></kendo-grid-column>
+              <kendo-grid-column width="100" class="subj" field="discount" title="Discount"></kendo-grid-column>
+              <kendo-grid-column width="150" class="subj" field="afterDiscount" title="After Discount"></kendo-grid-column>
+              <kendo-grid-column width="300" class="subj" field="description" title="Description"></kendo-grid-column>
+
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="edit">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button type="button" tabindex=-1 class="btn_add" id="rowIndex" (click)="clickEdit(dataItem)"><span style="margin-left: 10px;">Add Image</span></button>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="edit">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button type="button" tabindex=-1 class="btn_view" id="rowIndex" (click)="clickEdit(dataItem)"><span style="margin-left: 5px;">View</span></button>
+                  </ng-template>
+              </kendo-grid-column>
+
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="edit">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="clickEdit(dataItem)"><span>edit</span></button>
+                  </ng-template>
+              </kendo-grid-column>
+
+          </kendo-grid>
+      </div>
+
+      <div class="table_control">
+          <div class="btn_area">
+              <button type="button" tabindex=-1 class="btn03 r"><span>Delete</span></button>
+          </div>
+      </div>
+
+
+      <div class="c_btn">
+          <div class="add-btn btn-css" (click)="REGISTER()">
+              <span>Add New</span>
+          </div>
+      </div>
+  </div>
+
+</div>

@@ -1,19 +1,15 @@
 import { commonClass } from './class-commondto';
 export interface ImportProductDetails extends commonClass {
   id: number;
-
   productId: number;
   productName: string;
-
-  supplierId: number;
-  supplierName: string;
-
   companyId: number;
   companyName: string;
-
-  quantity: number;
+  supplierId: number;
+  supplierName: string;
   price: number;
   discount: number;
+  qty: number;
   total: number;
   currencyCode: string;
   description: string;

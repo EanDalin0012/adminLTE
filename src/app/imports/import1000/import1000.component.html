@@ -48,32 +48,32 @@
               <kendo-grid-column width="150" class="subj" field="productName" title="{{'Home9000.LABEL.PRODUCT_NAME' | translate}}"></kendo-grid-column>
               <kendo-grid-column width="190" class="subj" field="companyName" title="{{'Home9000.LABEL.COMPANY_NAME' | translate}}"></kendo-grid-column>
 
-              <kendo-grid-column width="190" class="subj" field="supplierName" title="{{'Home9000.LABEL.SUPPLIER_NAME' | translate}}">
+              <kendo-grid-column width="200" class="subj" field="supplierName" title="{{'Home9000.LABEL.SUPPLIER_NAME' | translate}}">
               </kendo-grid-column>
-              <kendo-grid-column width="95" class="num" field="price" title="{{'Home9000.LABEL.PRICE' | translate}}">
+              <kendo-grid-column width="130" class="num" field="price" title="{{'Home9000.LABEL.PRICE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <span>{{dataItem.price | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
                   </ng-template>
               </kendo-grid-column>
-              <kendo-grid-column width="95" class="num" field="discount" title="{{'Home9000.LABEL.DISCOUNT' | translate}}">
+              <kendo-grid-column width="110" class="num" field="discount" title="{{'Home9000.LABEL.DISCOUNT' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <span>{{dataItem.discount | discountFormat}}</span>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="95" class="num" field="quantity" title="{{'Home9000.LABEL.QUANTITY' | translate}}">
+              <kendo-grid-column width="110" class="num" field="quantity" title="{{'Home9000.LABEL.QUANTITY' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <span>{{dataItem.quantity | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
+                      <span>{{dataItem.qty | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="95" class="num" field="total" title="{{'Home9000.LABEL.TOTAL' | translate}}">
+              <kendo-grid-column width="110" class="num" field="total" title="{{'Home9000.LABEL.TOTAL' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <span>{{dataItem.total | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="230" class="subj" field="description" title="{{'Home9000.LABEL.DESCRIPTION' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="300" class="subj" field="description" title="{{'Home9000.LABEL.DESCRIPTION' | translate}}"></kendo-grid-column>
 
               <kendo-grid-column width="80" class="cen" [sortable]="false" field="edit" title="edit">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
@@ -81,13 +81,13 @@
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="120" class="subj" field="createDate" title="{{'COMMON.LABEL.CREATE_DATE' | translate}}">
+              <kendo-grid-column width="150" class="subj" field="createDate" title="{{'COMMON.LABEL.CREATE_DATE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <p>{{dataItem.createDate | dateFormat}}</p>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="120" class="subj" field="modifyDate" title="{{'COMMON.LABEL.MODIFY_DATE' | translate}}">
+              <kendo-grid-column width="150" class="subj" field="modifyDate" title="{{'COMMON.LABEL.MODIFY_DATE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <p>{{dataItem.modifyDate | dateFormat}}</p>
                   </ng-template>
@@ -101,13 +101,6 @@
               <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()"><span>{{'COMMON.BUTTON.DELETE' | translate}}</span></button>
           </div>
       </div>
-
-
-      <!-- <div class="c_btn">
-          <div class="add-btn btn-css" (click)="onClickImportNewItem()">
-              <span>{{'Home9000.LABEL.ADD_NEW_ITEMS' | translate}}</span>
-          </div>
-      </div> -->
 
       <div class="c_btn">
         <div class="add-btn btn-css" (click)="onClickImportNewItem()">
