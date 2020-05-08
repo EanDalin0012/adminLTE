@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { DialogModule, DialogsModule } from '@progress/kendo-angular-dialog';
 import { DropDownsModule, SharedModule } from '@progress/kendo-angular-dropdowns';
-import { GridModule } from '@progress/kendo-angular-grid';
+import { GridModule, PDFModule } from '@progress/kendo-angular-grid';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { SortableModule } from '@progress/kendo-angular-sortable';
 import { ModalComponent } from './component/modal/modal.component';
@@ -48,6 +48,7 @@ import { AutoFocusDirective } from './directives/auto-focus.directive';
     SharedModule,
     SortableModule,
     DropDownsModule,
+    PDFModule,
     // AccountFormatePipe,
     // CurrencyFormatePipe,
     // FilesizePipe

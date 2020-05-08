@@ -14,8 +14,6 @@ import { Register1200Component } from '../register1200/register1200.component';
 import { RequestData } from 'src/app/shared/class-tr/classtr-req-data';
 import { MainCategoryList } from 'src/app/shared/class-tr/classtr-main-category-list';
 import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
-import { ExcelExportData } from '@progress/kendo-angular-excel-export';
-import { process } from '@progress/kendo-data-query';
 
 @Component({
   selector: 'app-register1000',
@@ -55,7 +53,6 @@ public sort: SortDescriptor[] = [{
 // grid datas
 public gridView: GridDataResult;
 public gridData: any[];
-recordsTotal: any;
 // check setting
 public checkboxOnly = false;
 public mode = 'multiple';
@@ -156,7 +153,7 @@ public rowCallback = (context: RowClassArgs) => {
       data: orderBy(this.gridData.slice(this.skip, this.skip + this.pageSize), this.sort),
       total: this.gridData.length
     };
-    this.recordsTotal = 10;
+    this.totalRecord = this.gridData.length;
   }
 
   inquiry() {
@@ -180,9 +177,9 @@ public rowCallback = (context: RowClassArgs) => {
   loadingData(data) {
     this.gridView = {
       data: orderBy(data.slice(this.skip, this.skip + this.pageSize), this.sort),
-      total: this.list.length
+      total: data.length
     };
-    this.recordsTotal = 10;
+    this.totalRecord = data.length;
   }
 
   onClickDelete() {
@@ -264,11 +261,12 @@ public rowCallback = (context: RowClassArgs) => {
     this.loadingData(this.list);
   }
 
-  onChangeSearch(val) {
-    console.log(val);
-    const resultSearch  = this.list.filter( data => data.mainCategoryName.toLowerCase().includes(val));
-    this.totalRecord    = resultSearch.length;
-    this.loadingData(resultSearch);
+  onChangeSearch(event) {
+    if (event) {
+      const resultSearch  = this.list.filter( data => data.mainCategoryName.toLowerCase().includes(event.target.value));
+      this.totalRecord    = resultSearch.length;
+      this.loadingData(resultSearch);
+    }
   }
 
   public setSelectableSettings() {
@@ -295,6 +293,11 @@ public rowCallback = (context: RowClassArgs) => {
     });
 
     component.save(options);
+  }
+
+  onClickBtnMainCategoryName() {
+    this.search = undefined;
+    this.loadingData(this.list);
   }
 
 }

@@ -77,6 +77,7 @@ IDList: IDDto[];
 modal;
 totalRecord: number;
 public selectedCallback = (args) => args.dataItem;
+public data: any[];
 
   ngOnInit() {
     this.search = '';
@@ -191,6 +192,7 @@ public rowCallback = (context: RowClassArgs) => {
       const response = rest as SubCategoryDetailList;
       if (this.serverService.checkResponse(response.header)) {
         this.list    = response.body;
+        this.data    = this.list;
         this.gridData = this.list;
         this.totalRecord = this.list.length;
         this.loadingData(this.list);
@@ -283,7 +285,24 @@ public rowCallback = (context: RowClassArgs) => {
         checkboxOnly: this.checkboxOnly,
         mode: 'multiple'
     };
+  }
 
+  public save(component): void {
+    const options = component.workbookOptions();
+    const rows = options.sheets[0].rows;
+
+    let altIdx = 0;
+    rows.forEach((row) => {
+        if (row.type === 'data') {
+            if (altIdx % 2 !== 0) {
+                row.cells.forEach((cell) => {
+                    cell.background = '#aabbcc';
+                });
+            }
+            altIdx++;
+        }
+    });
+    component.save(options);
   }
 
 }
