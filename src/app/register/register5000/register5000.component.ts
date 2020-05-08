@@ -20,6 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./register5000.component.css']
 })
 export class Register5000Component implements OnInit {
+  public data: any[];
 
   constructor(
     private serverService: ServerService,
@@ -180,10 +181,10 @@ export class Register5000Component implements OnInit {
     this.serverService.HTTPRequest(api, trReq).then(response => {
       console.log('response response', response);
       if (this.serverService.checkResponse(response.header)) {
-        this.list    = response.body.list;
-        console.log(this.list);
-        this.gridData = this.list;
-        this.totalRecord = this.list.length;
+        this.list         = response.body.list;
+        this.data         = this.list;
+        this.gridData     = this.list;
+        this.totalRecord  = this.list.length;
         this.loadingData(this.gridData);
       }
     });
@@ -275,6 +276,25 @@ export class Register5000Component implements OnInit {
       }
     });
     return name;
+  }
+
+  public save(component): void {
+    const options = component.workbookOptions();
+    const rows = options.sheets[0].rows;
+
+    let altIdx = 0;
+    rows.forEach((row) => {
+        if (row.type === 'data') {
+            if (altIdx % 2 !== 0) {
+                row.cells.forEach((cell) => {
+                    cell.background = '#aabbcc';
+                });
+            }
+            altIdx++;
+        }
+    });
+
+    component.save(options);
   }
 
 }

@@ -53,11 +53,11 @@
             "REGISTER_COMPANY": "Register Company"
         },
         "PLACE_HOLDER": {
-            "ENTER_COMPANY_NAME": "Please enter company name",
-            "ENTER_CONTACT": "Please enter contact",
-            "ENTER_EMAIL": "Please enter Email",
-            "ENTER_DESCRIPTION": "Please enter Description",
-            "ENTER_ADDRESS": "Please enter Address"
+            "ENTER_COMPANY_NAME": "Enter company name",
+            "ENTER_CONTACT": "Enter contact",
+            "ENTER_EMAIL": "Enter Email",
+            "ENTER_DESCRIPTION": "Enter Description",
+            "ENTER_ADDRESS": "Enter Address"
         },
         "MESSAGE_ERROR": {
             "REQUIRE_COMPANY_NAME": "Company name is required",
@@ -92,7 +92,7 @@
             "SUB_CATEGORY_NAME": "Sub Category name is null."
         },
         "PLACE_HOLDER": {
-            "PLEASE_ENTER_SUB_CATEGORY_NAME": "Please enter sub category name..."
+            "PLEASE_ENTER_SUB_CATEGORY_NAME": "Enter sub category name..."
         }
     },
     "Home7000": {
@@ -116,11 +116,11 @@
             "DESCRIPTION": "Description :"
         },
         "HOLDER": {
-            "PLEASE_ENTER_NAME": "Please enter name ...",
-            "PLEASE_ENTER_CONTACT": "Please enter contact ...",
-            "PLEASE_ENTER_EMAIL": "Please enter email ...",
-            "PLEASE_ENTER_DESCRIPTION": "Please enter description ...",
-            "PLEASE_ENTER_OTHER_CONTACT": "Please enter other contact ..."
+            "PLEASE_ENTER_NAME": "Enter name ...",
+            "PLEASE_ENTER_CONTACT": "Enter contact ...",
+            "PLEASE_ENTER_EMAIL": "Enter email ...",
+            "PLEASE_ENTER_DESCRIPTION": "Enter description ...",
+            "PLEASE_ENTER_OTHER_CONTACT": "Enter other contact ..."
         },
         "MESSAGE": {
             "SUP_NAME_NULL": "Supplier name is null",
@@ -159,8 +159,8 @@
         "LABEL": {
             "IMPORT_NEW_PRODUCT": "Import New Product",
             "PLEASE_ENTER_QUANTITY": "Please enter quantity",
-            "PLEASE_ENTER_PRICE": "Please enter price",
-            "PLEASE_SELECT_PRODUCT": "Please Select Product",
+            "PLEASE_ENTER_PRICE": "Enter price",
+            "PLEASE_SELECT_PRODUCT": "Eelect Product",
             "PLEASE_SELECT_COMPANY": "Please Select Company",
             "PLEASE_CALCULATE_TOTAL_AMOUNT": "Please calculate total amount",
             "PLEASE_SELECT_SUPPLIER": "Please select supplier",
@@ -190,12 +190,23 @@
         "MAIN_CATEGORY_NAME":"Main Category Name"
       },
       "HOLDER": {
-        "PLEASE_ENTER_SUPLIER_NAME":"Please enter suplier name"
+        "PLEASE_ENTER_SUPLIER_NAME":"Enter suplier name"
       }
     },
     "Register2000":{
       "HOLDER": {
         "SEARCH_BY_SUB_CATEGORY_NAME":"Search by sub category name"
+      }
+    },
+    "Register5000": {
+      "LABEL": {
+        "PRODUCT_MANAGEMENT":"Product Management",
+        "PRODUCT_NAME":"Product Name",
+        "SUB_CATEGORY_NAME":"Sub Category Name",
+        "SEARCH_BY_PRODUCT_NAME":"Search by product name"
+      },
+      "HOLDER": {
+        "ENTER_PRODUCT_NAME":"Enter product Name"
       }
     }
 }
