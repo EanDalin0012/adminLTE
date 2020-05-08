@@ -1570,12 +1570,19 @@ kendo-dialog.testing {
     background-size: 15%;
     background-position-x: 3px;
 }
-.k-button:hover, .k-button.k-state-hover {
+.pdf:hover {
   border-color: rgba(0,0,0,0.15);
   color: #656565;
   background: url("assets/images/file.svg") no-repeat left center !important;
   background-size: 15% !important;
   border-color: #008cff;
-background-position-x: 3px;
+  background-position-x: 3px;
   color: #575757;
 }
+
+
+/* .email {
+  background-image: url("assets/images/icon-excel.svg") !important;
+  background-size: 15%;
+  background-position-x: 3px;
+} */

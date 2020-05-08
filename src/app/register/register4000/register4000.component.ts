@@ -21,6 +21,7 @@ import { IDDto } from 'src/app/shared/class/class-id';
   styleUrls: ['./register4000.component.css']
 })
 export class Register4000Component implements OnInit {
+  public data: any[];
 
   supList: Supplier[];
   // grid info
@@ -230,6 +231,7 @@ export class Register4000Component implements OnInit {
       const response = res as SupplierList;
       if (this.serverService.checkResponse(response.header)) {
         this.supList = response.body;
+        this.data    = this.supList;
         this.gridData = this.supList;
         // this.totalRecord = this.list.length;
         this.loadingData(this.gridData);
@@ -248,6 +250,25 @@ export class Register4000Component implements OnInit {
         this.inquiry();
       }
     });
+  }
+
+  public save(component): void {
+    const options = component.workbookOptions();
+    const rows = options.sheets[0].rows;
+
+    let altIdx = 0;
+    rows.forEach((row) => {
+        if (row.type === 'data') {
+            if (altIdx % 2 !== 0) {
+                row.cells.forEach((cell) => {
+                    cell.background = '#aabbcc';
+                });
+            }
+            altIdx++;
+        }
+    });
+
+    component.save(options);
   }
 
 }

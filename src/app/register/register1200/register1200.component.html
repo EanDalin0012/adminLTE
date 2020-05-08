@@ -3,7 +3,7 @@
       <div class="web_container">
 
           <div class="pop_header">
-              <h1>Register Main Category Information</h1>
+              <h1>{{'Register1100.LABEL.TITLE_UPDATE' | translate}}</h1>
               <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
           </div>
 
@@ -11,8 +11,8 @@
 
               <div class="form-row">
                   <div class="form-group col-md-12">
-                      <label>Main Category Name</label>
-                      <input type="text" [ngClass]="mainCategoryName? 'active-input':''" class="form-control" [(ngModel)]="mainCategoryName" placeholder="Please enter suplier name...">
+                      <label>{{'Register1100.LABEL.MAIN_CATEGORY_NAME' | translate}}</label>
+                      <input type="text" [ngClass]="mainCategoryName? 'active-input':''" class="form-control" [(ngModel)]="mainCategoryName" placeholder="{{'Register1100.HOLDER.PLEASE_ENTER_SUPLIER_NAME' | translate}} ...">
 
                       <div class="in_box">
                           <button type="button" [ngClass]="mainCategoryName? 'btn_del':''" tabindex=-1 (click)="onClickBtnMainCategoryName()" class="btn" tabindex=-1 tabindex=-1></button>

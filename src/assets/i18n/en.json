@@ -12,7 +12,8 @@
             "REGISTER": "Register",
             "CREATE_DATE": "Create Date",
             "MODIFY_DATE": "Modify Date",
-            "PAGE_OF_TOTAL": "Page {{ pageNum }} of {{ totalPages }}"
+            "PAGE_OF_TOTAL": "Page {{ pageNum }} of {{ totalPages }}",
+            "ID": "ID"
         },
         "BUTTON": {
             "BACK": "Back",
@@ -172,7 +173,28 @@
     },
     "Register3000": {
       "LABEL": {
-        "COMPANY":"Company"
+        "COMPANY":"Company",
+        "SEARCH_BY_COMPANY_NAME":"Search by company name"
+      }
+    },
+    "Register1000": {
+      "LABEL": {
+        "PRODUCT_ID":"Product ID"
+      }
+    },
+    "Register1100": {
+      "LABEL": {
+        "TITLE":"Register Main Category Information",
+        "TITLE_UPDATE":"Update Main Category Information",
+        "MAIN_CATEGORY_NAME":"Main Category Name"
+      },
+      "HOLDER": {
+        "PLEASE_ENTER_SUPLIER_NAME":"Please enter suplier name"
+      }
+    },
+    "Register2000":{
+      "HOLDER": {
+        "SEARCH_BY_SUB_CATEGORY_NAME":"Search by sub category name"
       }
     }
 }

@@ -39,7 +39,7 @@ export class Register2100Component implements OnInit {
   }
 
   close() {
-    this.modalService.closeAllDialog();
+    this.modal.close();
     // this.modal.close( {close: BTN_ROLES.CLOSE});
   }
 

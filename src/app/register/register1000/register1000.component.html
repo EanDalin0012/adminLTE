@@ -2,8 +2,7 @@
   <div class="page_title">
       <div class="breadcrumb">
           <div class="page_navi">
-              <span>{{'Home7000.LABEL.HOME' | translate}}</span>
-              <span>{{'Home7000.LABEL.INFORMATION' | translate}}</span>
+              <span>{{'COMMON.LABEL.REGISTER' | translate}}</span>
           </div>
           <h1><span>{{'Home7000.LABEL.MAIN_CATEGORY_INQUIRY' | translate}}</span></h1>
       </div>
@@ -39,9 +38,9 @@
                 </div>
 
                 <div class="form-group col-md-4">
-                  <button kendoGridExcelCommand class="export excel" type="button" style="width: 155px;" icon="file-excel" (click)="save(excelexport)">Export to Excel</button>
+                  <button kendoGridExcelCommand class="export excel" type="button" style="width: 155px;" icon="file-excel" (click)="save(excelexport)"> {{'COMMON.BUTTON.EXPORT_EXCEL' | translate}}</button>
                   <button kendoGridPDFCommand class="pdf export" type="button" icon="file-pdf" style="float:right; width: 165px;">
-                    <span>Export to PDF</span>
+                    <span>{{'COMMON.BUTTON.EXPORT_PDF' | translate}}</span>
                   </button>
                 </div>
               </div>
@@ -49,28 +48,28 @@
 
               <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
 
-              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="No">
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'COMMON.LABEL.NO' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <p>{{rowIndex + 1}}</p>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="150" class="subj" field="mainCategoryName" title="Main Categorg"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="description" title="Description"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="createDate" title="Create Date">
+              <kendo-grid-column width="150" class="subj" field="mainCategoryName" title="{{'Home8000.LABEL.MAIN_CATEGORG' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Home8000.LABEL.DESCRIPTION' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="createDate" title="{{'COMMON.LABEL.CREATE_DATE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <p>{{dataItem.createDate | dateFormat}}</p>
                   </ng-template>
               </kendo-grid-column>
-              <kendo-grid-column width="240" class="subj" field="modifyDate" title="Modify Date">
+              <kendo-grid-column width="240" class="subj" field="modifyDate" title="{{'COMMON.LABEL.MODIFY_DATE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <p>{{dataItem.modifyDate | dateFormat}}</p>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="edit">
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="{{'COMMON.BUTTON.EDIT' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="clickEdit(dataItem)"><span>edit</span></button>
+                      <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="clickEdit(dataItem)"><span>{{'COMMON.BUTTON.EDIT' | translate}}</span></button>
                   </ng-template>
               </kendo-grid-column>
 
@@ -89,9 +88,9 @@
 
               <!-- excele -->
               <kendo-excelexport [data]="data" fileName="main-category.xlsx" #excelexport>
-                <kendo-excelexport-column field="id" title="Product ID"></kendo-excelexport-column>
-                <kendo-excelexport-column field="mainCategoryName" title="Product Name" [width]="350"></kendo-excelexport-column>
-                <kendo-excelexport-column field="description" title="Product Name" [width]="350"></kendo-excelexport-column>
+                <kendo-excelexport-column field="id" title="{{'Register1000.LABEL.PRODUCT_ID' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="mainCategoryName" title="{{'Home9000.LABEL.PRODUCT_NAME' | translate}}" [width]="350"></kendo-excelexport-column>
+                <kendo-excelexport-column field="description" title="{{'Home8000.LABEL.DESCRIPTION' | translate}}" [width]="350"></kendo-excelexport-column>
             </kendo-excelexport>
 
           </kendo-grid>
@@ -99,7 +98,7 @@
 
       <div class="table_control">
           <div class="btn_area">
-              <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()"><span>Delete</span></button>
+              <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()"><span>{{'COMMON.BUTTON.DELETE' | translate}}</span></button>
           </div>
       </div>
       <div class="c_btn">

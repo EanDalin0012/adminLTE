@@ -3,7 +3,6 @@
       <div class="breadcrumb">
           <div class="page_navi">
               <span>{{'Home7000.LABEL.HOME' | translate}}</span>
-              <span>{{'Home7000.LABEL.INFORMATION' | translate}}</span>
           </div>
           <h1><span>{{'Register4000.LABEL.SUPPLIER_INQUIRY' | translate}}</span></h1>
       </div>
@@ -33,52 +32,94 @@
           pageSizes: pageSizes,
           previousNext: previousNext
         }" [height]="height" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" [selectedKeys]="mySelection" (cellClick)="rowclick($event)" class="table01 overflow-x">
-              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true">
+          
+         <ng-template kendoGridToolbarTemplate>
+          <div class="form-row" style="width: 100%; border-left: none !important;">
+            <div class="form-group col-md-8">
+                <input type="text" style="height: 34px;" [ngClass]="search? 'active-input' : ''" class="form-control" [(ngModel)]="search" (input)="inputSearch($event)" placeholder="{{'Register3000.LABEL.SEARCH_BY_COMPANY_NAME' | translate}}">
+                <div class="in_box">
+                    <button type="button" style="top: 5px;" (click)="onClickBtnSearch()" tabindex=-1 class="btn btn_del" tabindex=-1 tabindex=-1></button>
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+              <button kendoGridExcelCommand class="export excel" type="button" style="width: 155px;" icon="file-excel" (click)="save(excelexport)">{{'COMMON.BUTTON.EXPORT_EXCEL' | translate}}</button>
+              <button kendoGridPDFCommand class="pdf export" type="button" icon="file-pdf" style="float:right; width: 165px;">
+                <span>{{'COMMON.BUTTON.EXPORT_PDF' | translate}}</span>
+              </button>
+            </div>
+          </div>
+        </ng-template>
+
+          <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true">
 
               </kendo-grid-checkbox-column>
 
-              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="No">
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'COMMON.BUTTON.NO' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <p>{{rowIndex + 1}}</p>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="150" class="subj" field="supName" title="Name"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="supContact" title="Contact">
+              <kendo-grid-column width="150" class="subj" field="supName" title="{{'Home11000.LABEL.NAME' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="supContact" title="{{'Home11000.LABEL.CONTACT' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <span>{{dataItem.supContact | phoneNumberFormat}}</span>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="190" class="subj" field="supContactTwo" title="Other Contact">
+              <kendo-grid-column width="190" class="subj" field="supContactTwo" title="{{'Home11000.LABEL.OTHER_CONTACT' | translate}}">
               </kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="supEmail" title="Email"></kendo-grid-column>
-              <kendo-grid-column width="190" class="subj" field="description" title="Description"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="supEmail" title="{{'Home2000.LABEL.EMAIL' | translate}}"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="description" title="{{'Home2000.LABEL.DESCRIPTION' | translate}}"></kendo-grid-column>
 
-              <kendo-grid-column width="190" class="subj" field="createDate" title="Create Date">
+              <kendo-grid-column width="190" class="subj" field="createDate" title="{{'COMMON.LABEL.CREATE_DATE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <p>{{dataItem.createDate | dateFormat}}</p>
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="190" class="subj" field="modifyDate" title="Modify Date">
+              <kendo-grid-column width="190" class="subj" field="modifyDate" title="{{'COMMON.LABEL.MODIFY_DATE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <p>{{dataItem.modifyDate | dateFormat}}</p>
                   </ng-template>
               </kendo-grid-column>
 
 
-              <kendo-grid-column width="80" class="cen" [sortable]="false" field="edit" title="edit">
+              <kendo-grid-column width="80" class="cen" [sortable]="false" field="edit" title="{{'COMMON.BUTTON.EDIT' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="clickEdit(dataItem)"><span>edit</span></button>
+                      <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="clickEdit(dataItem)"><span>{{'COMMON.BUTTON.EDIT' | translate}}</span></button>
                   </ng-template>
               </kendo-grid-column>
+
+               <!-- pdf -->
+               <kendo-grid-pdf fileName="Company.pdf" [allPages]="true" paperSize="A5" [repeatHeaders]="true" [landscape]="true">
+                <!-- <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin> -->
+                <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                 <div class="page-template">
+                    <div class="header">
+                      <div style="float: right">{{'COMMON.LABEL.PAGE_OF_TOTAL' | translate: {pageNum:pageNum, totalPages: totalPages } }}</div>
+                    </div>
+                  </div>
+                </ng-template>
+            </kendo-grid-pdf>
+
+              <!-- excele -->
+              <kendo-excelexport [data]="data" fileName="Company.xlsx" #excelexport>
+                <kendo-excelexport-column field="id" title="{{'COMMON.LABEL.NO' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="name" title="{{'Home2000.LABEL.COMPANY_NAME' | translate}}" ></kendo-excelexport-column>
+                <kendo-excelexport-column field="contact" title="{{'Home2000.LABEL.CONTACT' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="email" title="{{'Home2000.LABEL.EMAIL' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="address" title="{{'Home2000.LABEL.ADDRESS' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="description" title="{{'Home2000.LABEL.DESCRIPTION' | translate}}"></kendo-excelexport-column>
+            </kendo-excelexport>
+
 
           </kendo-grid>
       </div>
       <div class="table_control">
           <div class="btn_area">
-              <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()"><span>Delete</span></button>
+              <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()"><span>{{'COMMON.BUTTON.DELETE' | translate}}</span></button>
           </div>
       </div>
 

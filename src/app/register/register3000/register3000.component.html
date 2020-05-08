@@ -26,7 +26,7 @@
               <ng-template kendoGridToolbarTemplate>
                 <div class="form-row" style="width: 100%; border-left: none !important;">
                   <div class="form-group col-md-8">
-                      <input type="text" style="height: 34px;" [ngClass]="search? 'active-input' : ''" class="form-control" [(ngModel)]="search" (input)="inputSearch($event)" placeholder="Please enter suplier name...">
+                      <input type="text" style="height: 34px;" [ngClass]="search? 'active-input' : ''" class="form-control" [(ngModel)]="search" (input)="inputSearch($event)" placeholder="{{'Register3000.LABEL.SEARCH_BY_COMPANY_NAME' | translate}}">
                       <div class="in_box">
                           <button type="button" style="top: 5px;" (click)="onClickBtnSearch()" tabindex=-1 class="btn btn_del" tabindex=-1 tabindex=-1></button>
                       </div>
@@ -64,7 +64,7 @@
               </kendo-grid-column>
               <kendo-grid-column width="300" class="subj" field="description" title="{{'Home2000.LABEL.DESCRIPTION' | translate}}">
               </kendo-grid-column>
-              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="edit">
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="{{'COMMON.BUTTON.EDIT' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                       <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="clickEdit(dataItem)"><span>{{'COMMON.BUTTON.EDIT' | translate}}</span></button>
                   </ng-template>
@@ -97,8 +97,7 @@
 
       <div class="table_control">
           <div class="btn_area">
-              <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()" [disabled]="disabled"><span>Delete</span></button>
-
+              <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()" [disabled]="disabled"><span>{{'COMMON.BUTTON.DELETE' | translate}}</span></button>
           </div>
       </div>
 
