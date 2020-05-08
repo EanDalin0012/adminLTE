@@ -10,7 +10,7 @@
   </div>
   <div class="container01">
 
-      <div class="form-row col-md-12" style="height: 55px; padding: 0px;">
+      <!-- <div class="form-row col-md-12" style="height: 55px; padding: 0px;">
           <div class="form-group form-group-last col-md-6" style="padding: 0px;">
               <input style="border-bottom: 2px solid #3f496d !important;" type="text" [ngClass]="search ? 'active-input': ''" [(ngModel)]="search" (input)="inputSearch($event)" placeholder="Search by name ..." class="form-control">
               <div class="in_box">
@@ -18,7 +18,7 @@
               </div>
 
           </div>
-      </div>
+      </div> -->
 
       <div class="col-md-12" style="margin-bottom: 15px; padding: 0px;">
           <strong>{{'COMMON.LABEL.ITEMS' | translate: {'value': recordsTotal} }}</strong>
@@ -105,12 +105,13 @@
             </kendo-grid-pdf>
 
               <!-- excele -->
-              <kendo-excelexport [data]="data" fileName="Company.xlsx" #excelexport>
+              <kendo-excelexport [data]="data" fileName="Supplier.xlsx" #excelexport>
                 <kendo-excelexport-column field="id" title="{{'COMMON.LABEL.NO' | translate}}"></kendo-excelexport-column>
-                <kendo-excelexport-column field="name" title="{{'Home2000.LABEL.COMPANY_NAME' | translate}}" ></kendo-excelexport-column>
-                <kendo-excelexport-column field="contact" title="{{'Home2000.LABEL.CONTACT' | translate}}"></kendo-excelexport-column>
-                <kendo-excelexport-column field="email" title="{{'Home2000.LABEL.EMAIL' | translate}}"></kendo-excelexport-column>
-                <kendo-excelexport-column field="address" title="{{'Home2000.LABEL.ADDRESS' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="supName" title="{{'Home2000.LABEL.COMPANY_NAME' | translate}}" ></kendo-excelexport-column>
+                <kendo-excelexport-column field="supContact" title="{{'Home2000.LABEL.CONTACT' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="supContactTwo" title="{{'Home11000.LABEL.OTHER_CONTACT' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="supEmail" title="{{'Home2000.LABEL.EMAIL' | translate}}"></kendo-excelexport-column>
+                
                 <kendo-excelexport-column field="description" title="{{'Home2000.LABEL.DESCRIPTION' | translate}}"></kendo-excelexport-column>
             </kendo-excelexport>
 

@@ -107,7 +107,8 @@
     },
     "Home11000": {
         "LABEL": {
-            "SUPPLIER_INFORMATION": "Supplier Information",
+            "SUPPLIER_INFORMATION": "Register Supplier Information",
+            "UPDATE_SUPPLIER_INFORMATION": "Update Supplier Information",
             "NAME": "Name :",
             "CONTACT": "Contact :",
             "OTHER_CONTACT": "Other Contact :",
