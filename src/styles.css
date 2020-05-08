@@ -1576,6 +1576,6 @@ kendo-dialog.testing {
   background: url("assets/images/file.svg") no-repeat left center !important;
   background-size: 15% !important;
   border-color: #008cff;
+background-position-x: 3px;
   color: #575757;
-  background-position-x: 3px;
 }

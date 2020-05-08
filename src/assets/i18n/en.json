@@ -11,7 +11,8 @@
             "INFORMATION": "Information",
             "REGISTER": "Register",
             "CREATE_DATE": "Create Date",
-            "MODIFY_DATE": "Modify Date"
+            "MODIFY_DATE": "Modify Date",
+            "PAGE_OF_TOTAL": "Page {{ pageNum }} of {{ totalPages }}"
         },
         "BUTTON": {
             "BACK": "Back",
@@ -24,7 +25,9 @@
             "YES": "Yes",
             "NO": "No",
             "DELETE": "Delete",
-            "ADD_NEW":"Add New"
+            "ADD_NEW":"Add New",
+            "EXPORT_PDF":"Export to PDF",
+            "EXPORT_EXCEL":"Export to Excel"
         },
         "MESSAGE": {
             "INVALID_EMAIL": "Invalid Email"
@@ -165,6 +168,11 @@
     "Register4000": {
       "LABEL": {
         "SUPPLIER_INQUIRY": "Supplier Inquiry"
+      }
+    },
+    "Register3000": {
+      "LABEL": {
+        "COMPANY":"Company"
       }
     }
 }

@@ -2,28 +2,17 @@
   <div class="page_title">
       <div class="breadcrumb">
           <div class="page_navi">
-              <span>Register</span>
-              <span>Information Management</span>
+              <span>{{'COMMON.LABEL.REGISTER' | translate}}</span>
           </div>
-          <h1><span>Company</span></h1>
+          <h1><span>{{'Register3000.LABEL.COMPANY' | translate}}</span></h1>
       </div>
 
   </div>
 
   <div class="container01">
 
-      <div class="form-row col-md-12" style="height: 55px; padding: 0px;">
-          <div class="form-group form-group-last col-md-6" style="padding: 0px;">
-              <input style="border-bottom: 2px solid #3f496d !important;" type="text" [(ngModel)] = "search" [ngClass]="search ? 'active-input': ''" (input)="inputSearch($event)" placeholder="{{'Home2100.PLACE_HOLDER.ENTER_DESCRIPTION' | translate}}" class="form-control">
-              <div class="in_box">
-                  <button style="top: 8px; right: 8px;" class="btn_del btn" (click)="onClickBtnSearch()" type="button" tabindex=-1 tabindex=-1 tabindex=-1><span>Delete text</span></button>
-              </div>
-
-          </div>
-      </div>
-
       <div class="col-md-12" style="margin-bottom: 15px; padding: 0px;">
-          <strong>{{totalRecord}} Item(s)</strong>
+          <strong>{{'COMMON.LABEL.ITEMS' | translate: {'value': totalRecord} }}</strong>
       </div>
 
       <div>
@@ -34,8 +23,26 @@
             pageSizes: pageSizes,
             previousNext: previousNext
           }" [height]="height" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" [selectedKeys]="mySelection" (cellClick)="rowclick($event)" class="table01 overflow-x">
-              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true">
+              <ng-template kendoGridToolbarTemplate>
+                <div class="form-row" style="width: 100%; border-left: none !important;">
+                  <div class="form-group col-md-8">
+                      <input type="text" style="height: 34px;" [ngClass]="search? 'active-input' : ''" class="form-control" [(ngModel)]="search" (input)="inputSearch($event)" placeholder="Please enter suplier name...">
+                      <div class="in_box">
+                          <button type="button" style="top: 5px;" (click)="onClickBtnSearch()" tabindex=-1 class="btn btn_del" tabindex=-1 tabindex=-1></button>
+                      </div>
+                  </div>
 
+                  <div class="form-group col-md-4">
+                    <button kendoGridExcelCommand class="export excel" type="button" style="width: 155px;" icon="file-excel" (click)="save(excelexport)">{{'COMMON.BUTTON.EXPORT_EXCEL' | translate}}</button>
+                    <button kendoGridPDFCommand class="pdf export" type="button" icon="file-pdf" style="float:right; width: 165px;">
+                      <span>{{'COMMON.BUTTON.EXPORT_PDF' | translate}}</span>
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+
+
+              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true">
               </kendo-grid-checkbox-column>
 
               <kendo-grid-column width="150" class="cen" [sortable]="false" field="no" title="{{'COMMON.LABEL.NO' | translate}}">
@@ -43,7 +50,7 @@
                       <p>{{rowIndex + 1}}</p>
                   </ng-template>
               </kendo-grid-column>
-              <kendo-grid-column width="150" class="subj" field="name" title="{{'Home2000.LABEL.COMPANY_NAME' | translate}}">
+              <kendo-grid-column width="200" class="subj" field="name" title="{{'Home2000.LABEL.COMPANY_NAME' | translate}}">
               </kendo-grid-column>
               <kendo-grid-column width="200" class="subj" field="contact" title="{{'Home2000.LABEL.CONTACT' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
@@ -63,19 +70,37 @@
                   </ng-template>
               </kendo-grid-column>
 
+              <!-- pdf -->
+              <kendo-grid-pdf fileName="Company.pdf" [allPages]="true" paperSize="A5" [repeatHeaders]="true" [landscape]="true">
+                <!-- <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin> -->
+                <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                 <div class="page-template">
+                    <div class="header">
+                      <div style="float: right">{{'COMMON.LABEL.PAGE_OF_TOTAL' | translate: {pageNum:pageNum, totalPages: totalPages } }}</div>
+                    </div>
+                  </div>
+                </ng-template>
+            </kendo-grid-pdf>
+
+              <!-- excele -->
+              <kendo-excelexport [data]="data" fileName="Company.xlsx" #excelexport>
+                <kendo-excelexport-column field="id" title="{{'COMMON.LABEL.NO' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="name" title="{{'Home2000.LABEL.COMPANY_NAME' | translate}}" ></kendo-excelexport-column>
+                <kendo-excelexport-column field="contact" title="{{'Home2000.LABEL.CONTACT' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="email" title="{{'Home2000.LABEL.EMAIL' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="address" title="{{'Home2000.LABEL.ADDRESS' | translate}}"></kendo-excelexport-column>
+                <kendo-excelexport-column field="description" title="{{'Home2000.LABEL.DESCRIPTION' | translate}}"></kendo-excelexport-column>
+            </kendo-excelexport>
+
           </kendo-grid>
       </div>
-      <!-- //table -->
 
-      <!-- table buttons -->
       <div class="table_control">
           <div class="btn_area">
               <button type="button" tabindex=-1 class="btn03 r" (click)="onClickDelete()" [disabled]="disabled"><span>Delete</span></button>
-              <!-- <button type="button" tabindex=-1 class="btn03 r"><span>DEACTIVATE</span></button>
-              <button type="button" tabindex=-1 class="btn03 r"><span>ACTIVE</span></button> -->
+
           </div>
       </div>
-      <!-- //table buttons -->
 
       <div class="c_btn">
           <div class="add-btn btn-css" (click)="REGISTER()">
@@ -84,5 +109,4 @@
 
       </div>
   </div>
-  <!-- //box -->
 </div>

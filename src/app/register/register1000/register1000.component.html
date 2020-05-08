@@ -80,12 +80,9 @@
                 <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
                  <div class="page-template">
                     <div class="header">
-                      <div style="float: right">Page {{ pageNum }} of {{ totalPages }}</div>
-                      <!-- Multi-page grid with automatic page breaking -->
+                      <div style="float: right">{{'COMMON.LABEL.PAGE_OF_TOTAL' | translate: {pageNum:pageNum, totalPages: totalPages } }}</div>
+
                     </div>
-                    <!-- <div class="footer">
-                      Page {{ pageNum }} of {{ totalPages }}
-                    </div> -->
                   </div>
                 </ng-template>
             </kendo-grid-pdf>

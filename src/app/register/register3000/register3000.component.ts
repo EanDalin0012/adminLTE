@@ -20,7 +20,7 @@ import { Company } from 'src/app/shared/Class/class-company';
   styleUrls: ['./register3000.component.css']
 })
 export class Register3000Component implements OnInit {
-
+  public data: any[];
   constructor(
     private serverService: ServerService,
     private translate: TranslateService,
@@ -162,7 +162,7 @@ export class Register3000Component implements OnInit {
         data: orderBy(list.slice(this.skip, this.skip + this.pageSize), this.sort),
         total: list.length
       };
-      this.recordsTotal = 10;
+      this.recordsTotal = list.length;
   }
 
   public setSelectableSettings() {
@@ -181,6 +181,7 @@ export class Register3000Component implements OnInit {
       console.log(resp);
       const response = resp as CompanyList;
       this.list    = response.body;
+      this.data    = this.list;
       this.gridData = this.list;
       this.totalRecord = this.list.length;
       this.loadingData(this.gridData);
@@ -273,6 +274,25 @@ export class Register3000Component implements OnInit {
       }
     });
     return name;
+  }
+
+  public save(component): void {
+    const options = component.workbookOptions();
+    const rows = options.sheets[0].rows;
+
+    let altIdx = 0;
+    rows.forEach((row) => {
+        if (row.type === 'data') {
+            if (altIdx % 2 !== 0) {
+                row.cells.forEach((cell) => {
+                    cell.background = '#aabbcc';
+                });
+            }
+            altIdx++;
+        }
+    });
+
+    component.save(options);
   }
 
 }
