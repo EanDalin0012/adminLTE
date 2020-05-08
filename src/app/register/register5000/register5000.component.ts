@@ -7,6 +7,12 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import { Register5100Component } from '../register5100/register5100.component';
 import { Register5200Component } from '../register5200/register5200.component';
+import { RequestData } from 'src/app/shared/class-tr/classtr-req-data';
+import { DeleteList } from 'src/app/shared/class-tr/classtr-delete-list-req';
+import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
+import { Product } from '../../shared/class/class-product';
+import { ProductDetail } from '../../shared/class/class-product-detial';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register5000',
@@ -15,56 +21,57 @@ import { Register5200Component } from '../register5200/register5200.component';
 })
 export class Register5000Component implements OnInit {
 
+  constructor(
+    private serverService: ServerService,
+    private translate: TranslateService,
+    private modalService: ModalService,
+    private dataService: DataService,
+  ) {
+    this.setSelectableSettings();
+  }
   public info = true;
   public buttonCount = 5;
   public type: 'numeric' | 'input' = 'numeric';
   public previousNext = false;
-  public pageSizes: any[] = [10, 20, 30, 50, 100];
-
-  public listData: any[];
+  public gridData: any[];
+  disabled: boolean;
   public multiple = false;
   public allowUnsort = true;
-  public height = 'auto';
   search: string;
+  public height = '450';
+  public pageSize = 10;
+  public pageSizes: any[] = [10, 20, 30, 50, 100];
   public sort: SortDescriptor[] = [{
-    field: 'Id',
+    field: 'id',
     dir: 'asc'
   }];
 
-  // grid datas
+  deleteListById: any[];
+
   public gridView: GridDataResult;
-  public gridData: any[];
   recordsTotal: any;
-  // check setting
-  public checkboxOnly = true;
+  public checkboxOnly = false;
   public mode = 'multiple';
   public selectableSettings: SelectableSettings;
-  userInfo: any;
-  ///////////
-  viewText: any;
+
   gridheight = screen.height * 0.5;
-  // public gridView: any[] = sampleCustomers;
   @ViewChild('container', {static: true, read: ViewContainerRef })
   public containerRef: ViewContainerRef;
-  // selection row get data
   public mySelection: any[] = [];
-  public selectedCallback = (args) => args.dataItem;
-  public pageSize = 10;
   public skip = 0;
-
-  constructor(
-      private serverService: ServerService,
-      private modalService: ModalService,
-      private dataService: DataService,
-    ) { }
+  list: ProductDetail[];
+  totalRecord: number;
+  public selectedCallback = (args) => args.dataItem;
 
   ngOnInit() {
-      const url = (window.location.href).split('/');
-      this.dataService.visitMessage(url[5]);
-      this.search = '';
-      // this.gridData = customers;
-      this.gridData = customers;
-      this.loadData();
+    const url = (window.location.href).split('/');
+    this.dataService.visitMessage(url[5]);
+
+    this.inquiry();
+    this.translate.get('COMMON.LABEL').subscribe((res) => {
+     console.log(res);
+    });
+    this.disabled = true;
   }
 
   public sortChange(sort: SortDescriptor[]): void {
@@ -79,7 +86,15 @@ export class Register5000Component implements OnInit {
     };
   }
 
-   pageChange({ skip, take }: PageChangeEvent) {
+  loadData() {
+    this.gridView = {
+      data: orderBy(this.gridData.slice(this.skip, this.skip + this.pageSize), this.sort),
+      total: this.gridData.length
+    };
+    this.recordsTotal = 10;
+  }
+
+  pageChange({ skip, take }: PageChangeEvent) {
     this.skip = skip;
     this.pageSize = take;
     this.paging();
@@ -93,63 +108,173 @@ export class Register5000Component implements OnInit {
         default:
           return {};
           break;
-       }
-  }
-
-  REGISTER() {
-      this.modalService.open({
-        content: Register5100Component,
-        message: {},
-        callback: async (res) => {
-          console.log('res', res);
-          if (await res.close === BTN_ROLES.SAVE) {
-
-          }
-        },
-      });
-  }
-
-  async clickEdit(dataItem) {
-      if ( dataItem ) {
-        this.modalService.open({
-            content: Register5200Component,
-            message: dataItem,
-            callback: async ( res ) => {
-              console.log('res', res);
-              if (await res.close === BTN_ROLES.EDIT) {
-
-              }
-            },
-          });
       }
   }
 
-  loadData() {
+  DELETE() {
+    this.requestDelete(this.mySelection);
+  }
+
+  check(id) {
+    console.log(id);
+  }
+
+  REGISTER() {
+    this.modalService.open({
+          content: Register5100Component,
+          message: {},
+          callback: async (res) => {
+            console.log('res', res);
+            if (await res.close === BTN_ROLES.SAVE) {
+              this.inquiry();
+            }
+          },
+    });
+   }
+
+  async clickEdit(dataItem) {
+    if ( dataItem ) {
+      this.modalService.open({
+          content: Register5200Component,
+          message: dataItem,
+          callback: async ( res ) => {
+            console.log('res', res);
+            if (await res.close === BTN_ROLES.EDIT) {
+              this.inquiry();
+            }
+          },
+        });
+    }
+  }
+
+  click(Id) {
+     console.log(Id);
+  }
+
+  rowclick(event) {
+    const id = event.dataItem.Id;
+    console.log(this.mySelection, id);
+    this.disabled = false;
+  }
+
+  loadingData(list: any[]) {
       this.gridView = {
-        data: orderBy(this.gridData.slice(this.skip, this.skip + this.pageSize), this.sort),
-        total: this.gridData.length
+        data: orderBy(list.slice(this.skip, this.skip + this.pageSize), this.sort),
+        total: list.length
       };
       this.recordsTotal = 10;
   }
 
-}
+  public setSelectableSettings() {
+    this.selectableSettings = {
+        checkboxOnly: this.checkboxOnly,
+        mode: 'multiple'
+    };
 
-export const customers = [{
-  Id: '1',
-  productName: 'Key board',
-  productCategory: 'Electonice',
-  price: '10',
-  unitPrice: '7',
-  discount: '1',
-  afterDiscount: '9',
-  description: 'from china',
-}, {
-  Id: '2',
-  productName: 'Flash 3.0',
-  productCategory: 'Electonice',
-  price: '10',
-  unitPrice: '7',
-  discount: '1',
-  afterDiscount: '9',
-  description: 'from china',
-}];
+  }
+
+  inquiry() {
+    const trReq = new RequestData();
+    const api = '/api/product/getProductDetailsList';
+    console.log('trReq data', trReq);
+    this.serverService.HTTPRequest(api, trReq).then(response => {
+      console.log('response response', response);
+      if (this.serverService.checkResponse(response.header)) {
+        this.list    = response.body.list;
+        console.log(this.list);
+        this.gridData = this.list;
+        this.totalRecord = this.list.length;
+        this.loadingData(this.gridData);
+      }
+    });
+  }
+
+  onClickDelete() {
+    if (this.mySelection) {
+      if (this.mySelection.length === 0) {
+        this.modalService.alert({
+          content: this.translate.instant('COMMON.LABEL.SELECT_ROW_FOR_DELETE'),
+          btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
+          modalClass: [],
+          callback: rest => {
+          }
+        });
+      } else {
+        if ( this.mySelection.length > 0) {
+          this.deleteListById = [];
+          let name = '';
+          let i = 0;
+          this.mySelection.forEach(element => {
+              const companyName = this.getMainCategoryNameById(element);
+              if (companyName !== '') {
+                if (i === this.mySelection.length - 1) {
+                  name += companyName;
+                } else {
+                  name += companyName   + ', ';
+                }
+              }
+              this.deleteListById.push({
+                id: Number(element)
+              });
+              ++i;
+            });
+
+          this.modalService.confirm({
+              content: 'Do you want to delete main category name : ' + name,
+              lBtn: this.translate.instant('COMMON.BUTTON.NO'),
+              rBtn: this.translate.instant('COMMON.BUTTON.YES'),
+              modalClass: ['pop_confirm'],
+              callback: ( rest) => {
+                if ( rest.text === this.translate.instant('COMMON.BUTTON.YES')) {
+                  this.requestDelete(this.deleteListById);
+                }
+              }
+
+          });
+        }
+      }
+    }
+  }
+
+  requestDelete(deleteListById: any[]) {
+    if ( deleteListById.length > 0) {
+      const trReq      = new DeleteList();
+      const api        = '/api/company_access/updateListByID';
+      console.log(trReq);
+      this.serverService.HTTPRequest(api, trReq).then(rest => {
+        console.log(rest);
+        const response = rest as ResponseData;
+        if ( this.serverService.checkResponse(response.header) === true) {
+          this.inquiry();
+        }
+      });
+    }
+
+  }
+
+  onClickBtnSearch() {
+    this.search = undefined;
+    this.loadingData(this.list);
+  }
+
+  inputSearch(event) {
+    console.log(event);
+    if (event) {
+      this.search = event.target.value;
+      const searchResult = this.gridData.filter(data => data.name.toLowerCase().includes(event.target.value));
+      this.totalRecord = searchResult.length;
+      this.loadingData(searchResult);
+    }
+  }
+
+  getMainCategoryNameById(val: number): string {
+    let name = '';
+    this.list.forEach(element => {
+      if (element.productId === val) {
+        name = element.productName + '(' + element.productId + ')';
+      }
+    });
+    return name;
+  }
+
+}

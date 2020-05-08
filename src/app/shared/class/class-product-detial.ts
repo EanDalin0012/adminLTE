@@ -1,4 +1,8 @@
 import { commonClass } from './class-commondto';
-export class ProductDetail extends commonClass {
-
+export interface ProductDetail extends commonClass {
+  productId: number;
+  productName: string;
+  subCategoryId: number;
+  subCategoryName: string;
+  description: string;
 }

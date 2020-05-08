@@ -14,6 +14,8 @@ import { Register1200Component } from '../register1200/register1200.component';
 import { RequestData } from 'src/app/shared/class-tr/classtr-req-data';
 import { MainCategoryList } from 'src/app/shared/class-tr/classtr-main-category-list';
 import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
+import { ExcelExportData } from '@progress/kendo-angular-excel-export';
+import { process } from '@progress/kendo-data-query';
 
 @Component({
   selector: 'app-register1000',
@@ -26,7 +28,10 @@ export class Register1000Component implements OnInit {
   public type: 'numeric' | 'input' = 'numeric';
   public previousNext = false;
   public pageSizes: any[] = [10, 20, 30, 50, 100];
-
+  public group: any[] = [{
+    field: ''
+  }];
+  public data: any[];
   constructor(
     private serverService: ServerService,
     private modalService: ModalService,
@@ -34,6 +39,7 @@ export class Register1000Component implements OnInit {
     private dataService: DataService
   ) {
     this.setSelectableSettings();
+    // this.allData = this.allData.bind(this);
   }
 
 public listData: any[];
@@ -153,19 +159,6 @@ public rowCallback = (context: RowClassArgs) => {
     this.recordsTotal = 10;
   }
 
-  // clickSupplyingStatus(dataItem, remark: string) {
-  //   if ( dataItem ) {
-  //     this.modalService.open({
-  //         content: Home6110Component,
-  //         message: dataItem,
-  //         callback: async ( res ) => {
-  //           if (await res.close === BTN_ROLES.EDIT) {
-  //           }
-  //         },
-  //       });
-  //   }
-  // }
-
   inquiry() {
     const trReq = new RequestData();
     const api = '/api/main_category/getList';
@@ -175,6 +168,7 @@ public rowCallback = (context: RowClassArgs) => {
       const response   = resp as MainCategoryList;
       if (this.serverService.checkResponse(response.header)) {
         this.list        = response.body;
+        this.data        = this.list;
         this.gridData    = this.list;
         this.totalRecord = this.list.length;
         this.loadingData(this.list);
@@ -282,6 +276,25 @@ public rowCallback = (context: RowClassArgs) => {
         checkboxOnly: this.checkboxOnly,
         mode: 'multiple'
     };
+  }
+
+  public save(component): void {
+    const options = component.workbookOptions();
+    const rows = options.sheets[0].rows;
+
+    let altIdx = 0;
+    rows.forEach((row) => {
+        if (row.type === 'data') {
+            if (altIdx % 2 !== 0) {
+                row.cells.forEach((cell) => {
+                    cell.background = '#aabbcc';
+                });
+            }
+            altIdx++;
+        }
+    });
+
+    component.save(options);
   }
 
 }
