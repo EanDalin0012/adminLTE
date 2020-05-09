@@ -23,7 +23,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN NAVIGATION</li>
-          <li (click)="onOpenPage(1)" class="treeview" [ngClass]="{active: path == 'init'}">
+          <li (click)="onOpenPage('1')" class="treeview" [ngClass]="{active: path == 'init'}">
               <a>
                   <i class="fa fa-th"></i> <span>Home</span>
                   <span class="pull-right-container">
@@ -41,7 +41,7 @@
           </span>
               </a>
               <ul class="treeview-menu">
-                  <li (click)="onOpenPage(10000)"><a [ngClass]="{current: path == 'dash-board1000'}"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                  <li (click)="onOpenPage('10000')"><a [ngClass]="{current: path == 'dash-board1000'}"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
                   <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
               </ul>
           </li>
@@ -136,11 +136,11 @@
           </span>
               </a>
               <ul class="treeview-menu">
-                  <li (click)="onOpenPage('register3000')"><a [ngClass]="{current: path == 'company'}"><i class="fa fa-circle-o"></i>Company</a></li>
-                  <li (click)="onOpenPage(3000)"><a [ngClass]="{current: path == 'product'}"><i class="fa fa-circle-o"></i>Product</a></li>
-                  <li (click)="onOpenPage('register1000')"><a [ngClass]="{current: path == 'main-category'}"><i class="fa fa-circle-o"></i>Main Category</a></li>
-                  <li (click)="onOpenPage('register2000')"><a [ngClass]="{current: path == 'sub-category'}"><i class="fa fa-circle-o"></i>Sub Category</a></li>
-                  <li (click)="onOpenPage('register4000')"><a [ngClass]="{current: path == 'supplier'}"><i class="fa fa-circle-o"></i>Supplier Info</a></li>
+                  <li (click)="onOpenPage('Register3000')"><a [ngClass]="{current: path == 'company'}"><i class="fa fa-circle-o"></i>Company</a></li>
+                  <li (click)="onOpenPage('Register5000')"><a [ngClass]="{current: path == 'product'}"><i class="fa fa-circle-o"></i>Product</a></li>
+                  <li (click)="onOpenPage('Register1000')"><a [ngClass]="{current: path == 'main-category'}"><i class="fa fa-circle-o"></i>Main Category</a></li>
+                  <li (click)="onOpenPage('Register2000')"><a [ngClass]="{current: path == 'sub-category'}"><i class="fa fa-circle-o"></i>Sub Category</a></li>
+                  <li (click)="onOpenPage('Register4000')"><a [ngClass]="{current: path == 'supplier'}"><i class="fa fa-circle-o"></i>Supplier Info</a></li>
                   <li><a><i class="fa fa-circle-o"></i> Data tables</a></li>
               </ul>
           </li>

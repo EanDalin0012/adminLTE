@@ -26,6 +26,7 @@ import { Register8100Component } from './register8100/register8100.component';
 import { Register8000Component } from './register8000/register8000.component';
 import { RegisterRoutingModule } from './register-routing.module';
 import { SBSharedModule } from '../shared/sbshare.module';
+import { Register5110Component } from './register5110/register5110.component';
 
 
 
@@ -61,12 +62,16 @@ import { SBSharedModule } from '../shared/sbshare.module';
 
     Register8200Component,
     Register8100Component,
-    Register8000Component
+    Register8000Component,
+    Register5110Component
   ],
   imports: [
     CommonModule,
     RegisterRoutingModule,
     SBSharedModule
+  ],
+  entryComponents: [
+    Register5110Component
   ]
 })
 export class RegisterModule { }

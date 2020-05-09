@@ -954,7 +954,7 @@ input.inp_cal:focus {padding-right:33px !important; background-position:right -2
 .fileupWrap .btn04 {min-width:96px; max-height:40px; margin-left:4px;}
 .k-upload {background:none; border:none;}
 .k-button:active, .k-button.k-state-active {box-shadow:none;}
-.k-upload .k-upload-button {width:100%; height:40px; margin:0; padding:5px 12px; text-align:left; line-height:30px; -ms-flex-pack:center; justify-content:inherit; background:#eff2f5; border-radius:4px;}
+.k-upload .k-upload-button { background-color: rgb(193, 212, 246) !important; width:100%; height:40px; margin:0; padding:5px 12px; text-align:left; line-height:30px; -ms-flex-pack:center; justify-content:inherit; background:#eff2f5; border-radius:4px;}
 .k-upload .k-upload-files {position:absolute; left:0; top:0; width:100%; padding:0; background:#eff2f5; border:none; border-radius:4px;}
 .k-upload .k-upload-files .k-file {padding:5px 12px; background:none; border:none;}
 .k-upload .k-upload-files .k-file-extension-wrapper {display:none;}
@@ -1586,3 +1586,40 @@ kendo-dialog.testing {
   background-size: 15%;
   background-position-x: 3px;
 } */
+
+
+.uploadi-img ul.k-upload-files{
+  position: relative !important;
+}
+
+.uploadi-img ul.k-upload-files li{
+  width: 35%;
+  float: left;
+  background-color: rgb(193, 212, 246) !important;
+  margin-left: 10px;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+kendo-upload div:nth-child(0) {
+  position: absolute;
+  background: red;
+}
+
+.k-upload .k-upload-files .k-file-name, .k-upload .k-upload-files .k-file-size {
+  margin: 0px 0px 0px 40px !important;
+}
+.k-upload .k-upload-files .k-file-group-wrapper .k-file-group, .k-upload .k-upload-files .k-file-invalid-group-wrapper .k-file-group, .k-upload .k-upload-files .k-multiple-files-group-wrapper .k-file-group, .k-upload .k-upload-files .k-multiple-files-invalid-group-wrapper .k-file-group {
+  margin-top: -4px;
+}
+.k-upload .k-action-buttons .k-upload-selected {
+  margin-top: 7px;
+  width: 200px;
+  border-color: #008cff !important;
+  background-image: url("assets/images/icon-upload.svg") !important;
+  background-size: 15% !important;
+  background-position-x: 3px;
+  background-repeat: no-repeat !important;
+  background-position-x: 5px !important;
+  background-position-y: 5px !important;
+}

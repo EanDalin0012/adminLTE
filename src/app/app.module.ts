@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SBSharedModule } from './shared/sbshare.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { MLayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './shared/services/auth-interceptor.service';
+import { UploadModule } from '@progress/kendo-angular-upload';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,6 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [
     {

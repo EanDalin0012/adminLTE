@@ -95,36 +95,23 @@ export class SideNavComponent implements OnInit {
     // }
   }
 
-  onOpenPage(urlCode: any) {
+  onOpenPage(urlCode: string) {
     let url = '/main/';
     switch (urlCode) {
-      case 'register1000':
-        url += 'register/' + URLCODE.Register1000;
+      case 'Register1000':
+      case 'Register2000':
+      case 'Register3000':
+      case 'Register4000':
+      case 'Register5000':
+        url += `register/${URLCODE[urlCode]}`;
         break;
-      case 'register2000':
-          url += 'register/' + URLCODE.Register2000;
-          break;
-      case 'register3000':
-        url += 'register/' + URLCODE.Register3000;
-        break;
-      case 'register4000':
-        url += 'register/' + URLCODE.Register4000;
-        break;
-      case 'register5000':
-          url += 'register/' + URLCODE.Register5000;
-          break;
       case 'Import1000':
-        url += 'imports/' + URLCODE.Register5000;
+        url += `imports/${URLCODE[urlCode]}`; // 'imports/' + ${URLCODE[urlCode]} // URLCODE.Register5000;
         break;
-      case 7000:
-      case 9100:
-      case 9000:
-      case 2000:
-      case 3000: // setting
+      case '3000': // setting
         url += `home/${URLCODE[urlCode]}`;
         break;
     }
-    // console.log(url);
     this.router.navigate([url]);
   }
 

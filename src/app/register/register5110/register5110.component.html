@@ -1,0 +1,76 @@
+<div class="contentsWrap">
+  <div class="container01">
+      <div class="web_container">
+
+          <div class="pop_header">
+              <h1>{{'Home8100.LABEL.REGISTER_SUB_CATEGORY_INFORMATION' | translate}}</h1>
+              <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
+          </div>
+
+          <div class="web_Wrap">
+            <div class="form-row">
+              <div class="form-group col-md-10">
+                <kendo-upload
+                class="uploadi-img"
+                [autoUpload]="false"
+                [saveUrl]="uploadSaveUrl"
+                [removeUrl]="uploadRemoveUrl"
+                [restrictions]="uploadRestrictions"
+                (select)="selectEventHandler($event)"
+                (clear)="clearEventHandler($event)"
+                (remove)="removeEventHandler($event)"
+                (complete)="completeEventHandler($event)">
+              </kendo-upload>
+              </div>
+
+            </div>
+
+
+
+            <div *ngIf="imagePreviews.length" class="img-preview example-config">
+              <h3>Preview selected images</h3>
+              <img *ngFor="let image of imagePreviews"
+                [src]="image.src"
+                alt="image preview"
+                style="width: 200px; margin: 10px;" />
+            </div>
+
+
+          </div>
+
+      </div>
+
+
+      <div class="c_btn">
+          <div class="add-close  btn-css margin-right-btn-clos" (click)="close()">
+              <span>{{'COMMON.BUTTON.CLOSE' | translate}}</span>
+          </div>
+          <!--
+          <div class="iam-btn-container mbr_introContent" style="display: inline-block;">
+            <button class="iam-button save" (click)="onClickRegister()">{{'COMMON.BUTTON.SAVE' | translate}}</button>
+          </div> -->
+      </div>
+  </div>
+</div>
+
+
+
+<!-- <kendo-upload
+        [autoUpload]="false"
+        [saveUrl]="uploadSaveUrl"
+        [removeUrl]="uploadRemoveUrl"
+        [restrictions]="uploadRestrictions"
+        (select)="selectEventHandler($event)"
+        (clear)="clearEventHandler($event)"
+        (remove)="removeEventHandler($event)"
+        (complete)="completeEventHandler($event)">
+      </kendo-upload>
+
+
+      <div *ngIf="imagePreviews.length" class="img-preview example-config">
+        <h3>Preview selected images</h3>
+        <img *ngFor="let image of imagePreviews"
+          [src]="image.src"
+          alt="image preview"
+          style="width: 200px; margin: 10px;" />
+      </div> -->

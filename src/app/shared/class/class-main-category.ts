@@ -2,6 +2,6 @@ import { commonClass } from './class-commondto';
 
 export interface MainCategory extends commonClass {
   id: number;
-  mainCategoryName: '';
+  mainCategoryName: string;
   description: string;
 }

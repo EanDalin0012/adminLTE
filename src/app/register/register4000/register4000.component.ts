@@ -14,6 +14,7 @@ import { SupplierList } from 'src/app/shared/class-tr/classtr-res-supplier-list'
 import { DeleteList } from 'src/app/shared/class-tr/classtr-delete-list-req';
 import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
 import { IDDto } from 'src/app/shared/class/class-id';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register4000',
@@ -57,9 +58,11 @@ export class Register4000Component implements OnInit {
     private serverService: ServerService,
     private modalService: ModalService,
     private translate: TranslateService,
-    private dataService: DataService
+    private dataService: DataService,
+    private title: Title
   ) {
     this.setSelectableSettings();
+    this.title.setTitle('Supplier');
   }
 
   ngOnInit() {

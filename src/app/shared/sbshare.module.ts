@@ -23,6 +23,7 @@ import { PhoneNumberPipe } from './pipes/phone-number.pipe';
 import { AmountFormatPipe } from './pipes/amount-format.pipe';
 import { DiscountFormatPipe } from './pipes/discount-format.pipe';
 import { AutoFocusDirective } from './directives/auto-focus.directive';
+import { UploadModule } from '@progress/kendo-angular-upload';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AutoFocusDirective } from './directives/auto-focus.directive';
     PDFExportModule,
     SchedulerModule,
     NotificationModule,
+    UploadModule,
     // pipe
     DateFormatPipe,
     PhoneNumberPipe,

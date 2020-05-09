@@ -13,6 +13,8 @@ import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
 import { Product } from '../../shared/class/class-product';
 import { ProductDetail } from '../../shared/class/class-product-detial';
 import { TranslateService } from '@ngx-translate/core';
+import { Title } from '@angular/platform-browser';
+import { Register5110Component } from '../register5110/register5110.component';
 
 @Component({
   selector: 'app-register5000',
@@ -27,8 +29,10 @@ export class Register5000Component implements OnInit {
     private translate: TranslateService,
     private modalService: ModalService,
     private dataService: DataService,
+    private title: Title
   ) {
     this.setSelectableSettings();
+    this.title.setTitle('Product');
   }
   public info = true;
   public buttonCount = 5;
@@ -295,6 +299,21 @@ export class Register5000Component implements OnInit {
     });
 
     component.save(options);
+  }
+
+  addImage(dataItem) {
+    if ( dataItem ) {
+      this.modalService.open({
+          content: Register5110Component,
+          message: dataItem,
+          callback: async ( res ) => {
+            console.log('res', res);
+            if (await res.close === BTN_ROLES.EDIT) {
+              this.inquiry();
+            }
+          },
+        });
+    }
   }
 
 }

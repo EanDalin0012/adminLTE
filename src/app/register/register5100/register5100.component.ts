@@ -7,6 +7,9 @@ import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
 import { MainCategoryList } from 'src/app/shared/class-tr/classtr-main-category-list';
 import { SubCategoryRequest } from 'src/app/shared/class-tr/classtr-req-sub-category';
 import { BTN_ROLES } from 'src/app/shared/constants/common.const';
+import { SubCategory } from '../../shared/class/class-sub-category';
+import { DataService } from '../../shared/services/data.service';
+import { RequestDataService } from '../../shared/services/get-data.service';
 
 @Component({
   selector: 'app-register5100',
@@ -18,24 +21,58 @@ export class Register5100Component implements OnInit {
   @ViewChild('subCate', {static: true}) subCate;
   modal;
   typeList: any[] = [];
-  mainCategory: MainCategory;
+  mainCategoryInfo: MainCategory;
+  subCategoryInfo: SubCategory;
+
   subCategoryName: string;
   description: string;
   translateTxt: any;
   mainCategoryList = new Array<MainCategory>();
+  valuePrimitiveMainCategory: boolean;
+  defaultMainCategoryInfo: MainCategory = {
+    id: 0,
+    mainCategoryName: 'Select Main Category',
+    description: null,
+    createBy: null,
+    modifyBy: null,
+    createDate: null,
+    modifyDate: null,
+    status: null
+  };
+
+
+  subCategoryList = new Array<SubCategory>();
+  subCatListTrm: SubCategory[];
+  valuePrimitiveSubCategory: boolean;
+  defaultSubCategoryInfo: SubCategory = {
+    id: 0,
+    mainCategoryId: 0,
+    subCategoryName: 'Select Sub Category',
+    description: null,
+    createBy: null,
+    modifyBy: null,
+    createDate: null,
+    modifyDate: null,
+    status: null
+  };
+
   ngClassList: string;
 
   constructor(
     private serverService: ServerService,
     private translate: TranslateService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private dataService: RequestDataService
   ) { }
 
   ngOnInit() {
+    this.valuePrimitiveMainCategory = true;
+    this.valuePrimitiveSubCategory = true;
     this.translate.get('Home8100').subscribe((res) => {
       this.translateTxt = res;
      });
-    this.doRequestMainCategory();
+    this.inquiryMainCategory();
+    this.inquirySubCategory();
   }
 
   close() {
@@ -43,7 +80,7 @@ export class Register5100Component implements OnInit {
     // this.modal.close( {close: BTN_ROLES.CLOSE});
   }
 
-  doRequestMainCategory() {
+  inquiryMainCategory() {
     const trReq = new ResponseData();
     const api = '/api/main_category/getList';
     this.serverService.HTTPRequest(api, trReq).then(rest => {
@@ -54,9 +91,17 @@ export class Register5100Component implements OnInit {
     });
   }
 
-  selectionChange(value) {
+  valueChangeMainCategory(value) {
     if (value) {
-      this.mainCategory = value;
+      this.subCategoryInfo = undefined;
+      this.valuePrimitiveSubCategory = true;
+      this.subCategoryList = [];
+      this.subCatListTrm.forEach(element => {
+        console.log(value, element.mainCategoryId);
+        if (value === element.mainCategoryId) {
+          this.subCategoryList.push(element);
+        }
+      });
       this.ngClassList = 'active-input';
     } else {
       this.ngClassList = '';
@@ -66,7 +111,7 @@ export class Register5100Component implements OnInit {
   onClickRegister() {
     if (this.isValid() === true) {
       const trReq                = new SubCategoryRequest();
-      trReq.body.mainCategoryId  = this.mainCategory.id;
+      trReq.body.mainCategoryId  = this.mainCategoryInfo.id;
       trReq.body.subCategoryName = this.subCategoryName;
       trReq.body.description     = this.description;
       const api = '/api/sub_category/save';
@@ -91,7 +136,7 @@ export class Register5100Component implements OnInit {
   isValid(): boolean {
       const mainCategoryText = this.translateTxt.LABEL.MAIN_CATEGORY_ID;
       const subText = this.translateTxt.LABEL.SUB_CATEGORY_NAME;
-      if (!this.mainCategory) {
+      if (!this.mainCategoryInfo) {
         const bool = this.modalService.messageAlert(mainCategoryText);
         return bool;
       } else if (this.subCategoryName === undefined) {
@@ -102,5 +147,15 @@ export class Register5100Component implements OnInit {
         return true;
       }
   }
+
+  inquirySubCategory() {
+    this.dataService.inquirySubCategoryList().then(response => {
+      // this.subCategoryList = response;
+      this.subCatListTrm = response;
+      console.log('sun category response', this.subCatListTrm);
+    });
+  }
+
+
 
 }

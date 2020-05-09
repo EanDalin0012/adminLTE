@@ -18,7 +18,7 @@
           pageSizes: pageSizes,
           previousNext: previousNext
         }" [height]="height" kendoGridSelectBy="productId" (pageChange)="pageChange($event)" class="table01" [selectedKeys]="mySelection">
-              
+
         <ng-template kendoGridToolbarTemplate>
           <div class="form-row" style="width: 100%; border-left: none !important;">
             <div class="form-group col-md-8">
@@ -57,6 +57,12 @@
                   </ng-template>
               </kendo-grid-column>
 
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="{{'COMMON.BUTTON.ADD_IMG' | translate}}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="addImage(dataItem)"><span>add img</span></button>
+                </ng-template>
+            </kendo-grid-column>
+
                <!-- pdf -->
                <kendo-grid-pdf fileName="Product.pdf" [allPages]="true" paperSize="A5" [repeatHeaders]="true" [landscape]="true">
                 <!-- <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin> -->
@@ -74,7 +80,7 @@
                 <kendo-excelexport-column field="id" title="{{'COMMON.LABEL.NO' | translate}}"></kendo-excelexport-column>
                 <kendo-excelexport-column field="productName" title="{{'Register5000.LABEL.PRODUCT_NAME' | translate}}" ></kendo-excelexport-column>
                 <kendo-excelexport-column field="subCategoryName" title="{{'Register5000.LABEL.SUB_CATEGORY_NAME' | translate}}"></kendo-excelexport-column>
-                
+
                 <kendo-excelexport-column field="description" title="{{'Home2000.LABEL.DESCRIPTION' | translate}}"></kendo-excelexport-column>
             </kendo-excelexport>
 

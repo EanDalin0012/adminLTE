@@ -13,6 +13,7 @@ import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
 import { RequestData } from 'src/app/shared/class-tr/classtr-req-data';
 import { CompanyList } from 'src/app/shared/class-tr/classtr-company-list';
 import { Company } from 'src/app/shared/Class/class-company';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register3000',
@@ -26,8 +27,10 @@ export class Register3000Component implements OnInit {
     private translate: TranslateService,
     private modalService: ModalService,
     private dataService: DataService,
+    private titleService: Title
   ) {
     this.setSelectableSettings();
+    this.titleService.setTitle('Company');
   }
   public info = true;
   public buttonCount = 5;

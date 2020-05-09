@@ -1,0 +1,8 @@
+kendo-upload div:nth-child(0) {
+  position: absolute;
+  background: red;
+}
+
+.k-upload .k-upload-files{
+  margin-top: 60px;
+}

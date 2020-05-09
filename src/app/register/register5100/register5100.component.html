@@ -13,13 +13,30 @@
 
                   <div class="form-group col-md-6">
                       <label for="inputPassword4">{{'Home8100.LABEL.MAIN_CATEGORY' | translate}} :</label>
-                      <kendo-dropdownlist [ngClass]="ngClassList" [data]="mainCategoryList" [textField]="'mainCategoryName'" [valueField]="'id'" [(ngModel)]="mainCategory" (valueChange)="selectionChange($event)"></kendo-dropdownlist>
+                      <kendo-dropdownlist
+                        [ngClass]="ngClassList"
+                        [data]="mainCategoryList"
+                        [textField]="'mainCategoryName'"
+                        [valueField]="'id'"
+                        [(ngModel)]="mainCategoryInfo"
+                        [ngModelOptions]="{standalone: true}"
+                        [valuePrimitive]="valuePrimitiveMainCategory"
+                        [defaultItem]="defaultMainCategoryInfo"
+                        (valueChange)="valueChangeMainCategory($event)"></kendo-dropdownlist>
                   </div>
 
                   <div class="form-group col-md-6">
                       <label>{{'Home8100.LABEL.SUB_CATEGORY' | translate}} :</label>
-                      <!-- <input type="text" #subCate [ngClass]="subCategoryName ? 'active-input' : ''" class="form-control" [(ngModel)]="subCategoryName" placeholder="{{'Home8100.PLACE_HOLDER.PLEASE_ENTER_SUB_CATEGORY_NAME' | translate}}"> -->
-                      <kendo-dropdownlist [ngClass]="ngClassList" [data]="mainCategoryList" [textField]="'mainCategoryName'" [valueField]="'id'" [(ngModel)]="mainCategory" (valueChange)="selectionChange($event)"></kendo-dropdownlist>
+                      <kendo-dropdownlist
+                        [ngClass]="ngClassList"
+                        [data]="subCategoryList"
+                        [textField]="'subCategoryName'"
+                        [valueField]="'id'"
+                        [(ngModel)]="mainCategoryInfo"
+                        [ngModelOptions]="{standalone: true}"
+                        [valuePrimitive]="valuePrimitiveMainCategory"
+                        [defaultItem]="defaultSubCategoryInfo">
+                      </kendo-dropdownlist>
 
                   </div>
 

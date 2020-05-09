@@ -14,6 +14,7 @@ import { Register1200Component } from '../register1200/register1200.component';
 import { RequestData } from 'src/app/shared/class-tr/classtr-req-data';
 import { MainCategoryList } from 'src/app/shared/class-tr/classtr-main-category-list';
 import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register1000',
@@ -34,10 +35,11 @@ export class Register1000Component implements OnInit {
     private serverService: ServerService,
     private modalService: ModalService,
     private translate: TranslateService,
-    private dataService: DataService
+    private dataService: DataService,
+    private titleService: Title
   ) {
     this.setSelectableSettings();
-    // this.allData = this.allData.bind(this);
+    this.titleService.setTitle('Main Category');
   }
 
 public listData: any[];
