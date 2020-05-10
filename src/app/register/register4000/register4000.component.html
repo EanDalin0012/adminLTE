@@ -1,4 +1,4 @@
-<div class="contentsWrap">
+<div class="contentsWrap contentsWrap01">
   <div class="page_title">
       <div class="breadcrumb">
           <div class="page_navi">
@@ -32,7 +32,7 @@
           pageSizes: pageSizes,
           previousNext: previousNext
         }" [height]="height" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" [selectedKeys]="mySelection" (cellClick)="rowclick($event)" class="table01 overflow-x">
-          
+
          <ng-template kendoGridToolbarTemplate>
           <div class="form-row" style="width: 100%; border-left: none !important;">
             <div class="form-group col-md-8">
@@ -111,7 +111,7 @@
                 <kendo-excelexport-column field="supContact" title="{{'Home2000.LABEL.CONTACT' | translate}}"></kendo-excelexport-column>
                 <kendo-excelexport-column field="supContactTwo" title="{{'Home11000.LABEL.OTHER_CONTACT' | translate}}"></kendo-excelexport-column>
                 <kendo-excelexport-column field="supEmail" title="{{'Home2000.LABEL.EMAIL' | translate}}"></kendo-excelexport-column>
-                
+
                 <kendo-excelexport-column field="description" title="{{'Home2000.LABEL.DESCRIPTION' | translate}}"></kendo-excelexport-column>
             </kendo-excelexport>
 

@@ -65,6 +65,27 @@
                   </div>
               </div>
 
+              <div class="form-row">
+                <div class="form-group form-group-last col-md-10">
+                    <label>{{'Home2100.LABEL.DESCRIPTION' | translate}}</label>
+                    <kendo-upload
+                      class="uploadi-img"
+                      [autoUpload]="false"
+                      [saveUrl]="uploadSaveUrl"
+                      [multiple]="false"
+                      [removeUrl]="uploadRemoveUrl"
+                      [restrictions]="uploadRestrictions"
+                      (select)="onSelect($event)"
+                      (clear)="onClear($event)"
+                      (remove)="onRemove($event)"
+                      (complete)="completeEventHandler($event)"
+                      (upload)="uploadEventHandler($event)">
+              </kendo-upload>
+                  <img class="upload-img" *ngIf="imagePreviews" [src]="imagePreviews.src" />
+                </div>
+
+            </div>
+
           </div>
 
       </div>

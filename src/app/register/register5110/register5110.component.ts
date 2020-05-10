@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FileRestrictions, SelectEvent, RemoveEvent } from '@progress/kendo-angular-upload';
+import { FileRestrictions, SelectEvent, RemoveEvent, UploadEvent } from '@progress/kendo-angular-upload';
 @Component({
   selector: 'app-register5110',
   templateUrl: './register5110.component.html',
@@ -39,6 +39,7 @@ export class Register5110Component implements OnInit {
     }
   }
 
+
   public selectEventHandler(e: SelectEvent): void {
     const that = this;
 
@@ -63,10 +64,21 @@ export class Register5110Component implements OnInit {
   }
 
   private log(event: string): void {
+    console.log('event', event);
     this.events.unshift(`${event}`);
   }
 
   close() {
     this.modal.close();
+  }
+
+  uploadEventHandler(e: UploadEvent) {
+    e.data = {
+      userID : 1,
+      customerNo: 1,
+      corporateUserProfileImageURL: '',
+      userFile : e.files[0].rawFile
+    };
+    console.log('e.data', e, this.imagePreviews);
   }
 }

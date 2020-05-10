@@ -6,11 +6,13 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
 import { MainCategoryList } from 'src/app/shared/class-tr/classtr-main-category-list';
 import { SubCategoryRequest } from 'src/app/shared/class-tr/classtr-req-sub-category';
-import { BTN_ROLES } from 'src/app/shared/constants/common.const';
+import { BTN_ROLES, LOGO_FILE_EXT } from 'src/app/shared/constants/common.const';
 import { SubCategory } from '../../shared/class/class-sub-category';
 import { DataService } from '../../shared/services/data.service';
 import { RequestDataService } from '../../shared/services/get-data.service';
-
+import { FileRestrictions, FileInfo, SelectEvent, RemoveEvent, ClearEvent, SuccessEvent, UploadEvent } from '@progress/kendo-angular-upload';
+import { Utils } from '../../shared/utils/utils.static';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-register5100',
   templateUrl: './register5100.component.html',
@@ -57,6 +59,21 @@ export class Register5100Component implements OnInit {
   };
 
   ngClassList: string;
+
+  // img declear
+  uploadbtn = true;
+  public imagePreviews: any;
+  public uploadRemoveUrl = 'removeUrl';
+  userinfo: any;
+  public uploadRestrictions: FileRestrictions = {
+    allowedExtensions: LOGO_FILE_EXT
+  };
+  server = environment.bizServer.server;
+  content = environment.bizServer.context;
+  port = environment.bizServer.port;
+
+  totalserver = this.server + ":" + this.port + '/' + this.content;
+  public uploadSaveUrl = this.totalserver + '/upload/companyProfile';
 
   constructor(
     private serverService: ServerService,
@@ -156,6 +173,54 @@ export class Register5100Component implements OnInit {
     });
   }
 
+  // upload img
 
+  public onSelect(ev: SelectEvent): void {
+    ev.files.forEach((file: FileInfo) => {
+      if (file.rawFile) {
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+          this.imagePreviews = { src: String(reader.result) };
+        };
+
+        reader.readAsDataURL(file.rawFile);
+      }
+    });
+  }
+
+  public onRemove(ev: RemoveEvent): void {
+    ev.files.forEach((file: FileInfo) => {
+      this.imagePreviews = null;
+    });
+  }
+
+  public onClear(ev: ClearEvent): void {
+    this.imagePreviews = null;
+  }
+
+  successEventHandler(e: SuccessEvent) {
+    if (e.response.headers) {
+      // this.userInfo = [];
+      // this.userInfo = Utils.getSecureStorage('USER_INFO');
+      // this.userInfo.corporateUserProfileImageURL = e.response.body.body.corporateUserProfileImageURL;
+      // this.util.setSecureStorage('USER_INFO', this.userInfo);
+      // this.dataService.companyMessage(e.response.body.body.corporateUserProfileImageURL);
+      // this.dataService.ImageMessage(e.files[0]);
+    }
+  }
+
+  uploadEventHandler(e: UploadEvent) {
+    e.data = {
+      userID : this.userinfo.userID,
+      customerNo: this.userinfo.customerNo,
+      corporateUserProfileImageURL: this.userinfo.corporateUserProfileImageURL,
+      userFile : e.files[0].rawFile
+    };
+  }
+
+  public completeEventHandler(val) {
+    // this.log(`All files processed`);
+  }
 
 }

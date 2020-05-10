@@ -1623,3 +1623,26 @@ kendo-upload div:nth-child(0) {
   background-position-x: 5px !important;
   background-position-y: 5px !important;
 }
+
+/* add testing */
+.contentsWrap {
+  overflow-y: scroll;
+  height: 95vh;
+}
+.pop_header{
+  z-index: 99;
+}
+.web_Wrap{
+  z-index: 9;
+}
+
+.contentsWrap::-webkit-scrollbar-thumb {
+  background: #6649b8;
+}
+.contentsWrap::-webkit-scrollbar {
+  width: 0.25rem;
+}
+.contentsWrap01 {
+  overflow-y: unset !important;
+}
+
