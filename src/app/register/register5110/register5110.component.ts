@@ -7,9 +7,13 @@ import { FileRestrictions, SelectEvent, RemoveEvent, UploadEvent } from '@progre
 })
 export class Register5110Component implements OnInit {
   modal;
-
+  productName: string;
   constructor() {}
   ngOnInit(): void {
+    if (this.modal) {
+      this.productName = this.modal.message.productName;
+    }
+    console.log(this.modal.message);
   }
   public events: string[] = [];
   public imagePreviews: any[] = [];

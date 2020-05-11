@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register5200.component.css']
 })
 export class Register5200Component implements OnInit {
-
+  modal;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.modal);
   }
 
 }

@@ -27,7 +27,7 @@ import { Register8000Component } from './register8000/register8000.component';
 import { RegisterRoutingModule } from './register-routing.module';
 import { SBSharedModule } from '../shared/sbshare.module';
 import { Register5110Component } from './register5110/register5110.component';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -68,7 +68,8 @@ import { Register5110Component } from './register5110/register5110.component';
   imports: [
     CommonModule,
     RegisterRoutingModule,
-    SBSharedModule
+    SBSharedModule,
+    CKEditorModule
   ],
   entryComponents: [
     Register5110Component

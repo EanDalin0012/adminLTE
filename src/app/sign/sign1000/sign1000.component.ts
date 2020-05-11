@@ -52,7 +52,7 @@ export class Sign1000Component implements OnInit {
     const newAesInfo: any = Utils.getSecureStorage(AES_INFO.STORE) || {};
     newAesInfo.timestamp = new Date().getTime();
     Utils.setSecureStorage(AES_INFO.STORE, newAesInfo);
-    this.router.navigate(['/main/register']);
+    this.router.navigate(['/main/home']);
   }
 
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.component';
 

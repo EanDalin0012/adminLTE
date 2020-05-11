@@ -201,7 +201,6 @@ export class ModalService {
       content
     });
     this.dialogRefList.push(dialog);
-    console.log(this.dialogRefList);
     this.store.set(MODAL_STORE_KEY.MODAL_STORE_KEY, this.dialogRefList);
     this.i++;
     $('kendo-dialog').addClass(modalClass);

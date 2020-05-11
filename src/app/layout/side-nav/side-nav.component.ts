@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { ModalService } from 'src/app/shared/services/modal.service';
 import { URLCODE } from 'src/app/shared/constants/common.const';
 import { environment } from 'src/environments/environment';
+import { Utils } from '../../shared/utils/utils.static';
 declare var $;
 @Component({
   selector: 'app-side-nav',
@@ -14,7 +15,7 @@ declare var $;
 export class SideNavComponent implements OnInit {
 
   modal;
-
+  userInfo: any; // new User();
   class: string;
   path: string;
   constructor(
@@ -26,6 +27,7 @@ export class SideNavComponent implements OnInit {
   }
   timeCheckInterval: any;
   ngOnInit() {
+    this.userInfo = Utils.getUserInfo();
     $(document).ready(() => {
       $('.sidebar-menu').tree();
     });
