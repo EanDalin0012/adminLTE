@@ -46,6 +46,12 @@
                   </ng-template>
               </kendo-grid-column>
 
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'COMMON.LABEL.NO' | translate}}">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                  <img [src]="url +'/'+ dataItem.productId" class="rounded" alt="Grokonez-About Image" width="250px" height="auto">
+                </ng-template>
+            </kendo-grid-column>
+
               <kendo-grid-column width="150" class="subj" field="productName" title="{{'Register5000.LABEL.PRODUCT_NAME' | translate}}"></kendo-grid-column>
               <kendo-grid-column width="200" class="subj" field="subCategoryName" title="{{'Register5000.LABEL.SUB_CATEGORY_NAME' | translate}}"></kendo-grid-column>
 
@@ -93,12 +99,12 @@
           </div>
       </div>
 
-
       <div class="c_btn">
           <div class="add-btn btn-css" (click)="REGISTER()">
             <span>{{'COMMON.LABEL.ADD_NEW' | translate}}</span>
           </div>
       </div>
+
   </div>
 
 </div>

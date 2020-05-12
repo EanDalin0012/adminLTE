@@ -15,6 +15,7 @@ import { ProductDetail } from '../../shared/class/class-product-detial';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
 import { Register5110Component } from '../register5110/register5110.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-register5000',
@@ -68,7 +69,10 @@ export class Register5000Component implements OnInit {
   totalRecord: number;
   public selectedCallback = (args) => args.dataItem;
 
+  url: string;
+  api = '/api/file/logo/';
   ngOnInit() {
+    this.url = environment.bizServer.server + this.api;
     const url = (window.location.href).split('/');
     this.dataService.visitMessage(url[5]);
 
