@@ -5,4 +5,5 @@ export interface ProductDetail extends commonClass {
   subCategoryId: number;
   subCategoryName: string;
   description: string;
+  resourceFileInfoId: string;
 }

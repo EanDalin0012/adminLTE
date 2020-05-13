@@ -68,9 +68,9 @@ export class Register5000Component implements OnInit {
   list: ProductDetail[];
   totalRecord: number;
   public selectedCallback = (args) => args.dataItem;
-
+  bizServer = environment.bizServer.server;
   url: string;
-  api = '/api/file/logo/';
+  api = '/api/file/images/resources/';
   ngOnInit() {
     this.url = environment.bizServer.server + this.api;
     const url = (window.location.href).split('/');

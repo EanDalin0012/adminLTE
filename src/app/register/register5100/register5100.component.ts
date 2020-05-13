@@ -1,18 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MainCategory } from 'src/app/shared/Class/class-main-category';
-import { ServerService } from 'src/app/shared/services/server.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ModalService } from 'src/app/shared/services/modal.service';
-import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
+import { ChunkSettings, ClearEvent, FileInfo, FileRestrictions, RemoveEvent, SelectEvent, SuccessEvent, UploadEvent } from '@progress/kendo-angular-upload';
 import { MainCategoryList } from 'src/app/shared/class-tr/classtr-main-category-list';
 import { SubCategoryRequest } from 'src/app/shared/class-tr/classtr-req-sub-category';
+import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
+import { MainCategory } from 'src/app/shared/Class/class-main-category';
 import { BTN_ROLES, LOGO_FILE_EXT } from 'src/app/shared/constants/common.const';
-import { SubCategory } from '../../shared/class/class-sub-category';
-import { DataService } from '../../shared/services/data.service';
-import { RequestDataService } from '../../shared/services/get-data.service';
-import { FileRestrictions, FileInfo, SelectEvent, RemoveEvent, ClearEvent, SuccessEvent, UploadEvent } from '@progress/kendo-angular-upload';
-import { Utils } from '../../shared/utils/utils.static';
+import { ModalService } from 'src/app/shared/services/modal.service';
+import { ServerService } from 'src/app/shared/services/server.service';
 import { environment } from 'src/environments/environment';
+import { SubCategory } from '../../shared/class/class-sub-category';
+import { RequestDataService } from '../../shared/services/get-data.service';
 @Component({
   selector: 'app-register5100',
   templateUrl: './register5100.component.html',
@@ -75,14 +74,27 @@ export class Register5100Component implements OnInit {
   totalserver = this.server + ":" + this.port + '/' + this.content;
   public uploadSaveUrl = this.totalserver + '/upload/companyProfile';
 
+  selectedFile: File;
+  message: string;
+  userInfo: any;
+
+  url: string;
+  api = '/api/file/upload/product';
+  public chunkSettings: ChunkSettings = {
+    size: 102400
+};
   constructor(
     private serverService: ServerService,
     private translate: TranslateService,
     private modalService: ModalService,
-    private dataService: RequestDataService
+    private dataService: RequestDataService,
+    private httpClient: HttpClient
   ) { }
 
   ngOnInit() {
+    this.url = environment.bizServer.server + this.api;
+    this.uploadSaveUrl = this.url;
+    console.log(this.uploadSaveUrl);
     this.valuePrimitiveMainCategory = true;
     this.valuePrimitiveSubCategory = true;
     this.translate.get('Home8100').subscribe((res) => {
@@ -187,6 +199,7 @@ export class Register5100Component implements OnInit {
         reader.readAsDataURL(file.rawFile);
       }
     });
+
   }
 
   public onRemove(ev: RemoveEvent): void {
@@ -200,7 +213,13 @@ export class Register5100Component implements OnInit {
   }
 
   successEventHandler(e: SuccessEvent) {
-    if (e.response.headers) {
+    console.log('fdjakldfjkl', e);
+    if  (e.response.body.header.result === true) {
+      const id = e.response.body.body.id;
+      const url = e.response.body.body.imageURL;
+      console.log('id url', id, url);
+    }
+    if (e.response.body.header.result) {
       // this.userInfo = [];
       // this.userInfo = Utils.getSecureStorage('USER_INFO');
       // this.userInfo.corporateUserProfileImageURL = e.response.body.body.corporateUserProfileImageURL;
@@ -211,15 +230,17 @@ export class Register5100Component implements OnInit {
   }
 
   uploadEventHandler(e: UploadEvent) {
+    console.log(e);
     e.data = {
-      userID : this.userinfo.userID,
-      customerNo: this.userinfo.customerNo,
-      corporateUserProfileImageURL: this.userinfo.corporateUserProfileImageURL,
-      userFile : e.files[0].rawFile
+      userID : 1,
+      productId: 1,
+      fileImageURL: environment.bizServer.server ,
+      file : e.files[0].rawFile
     };
   }
 
   public completeEventHandler(val) {
+    console.log('val', val);
     // this.log(`All files processed`);
   }
 

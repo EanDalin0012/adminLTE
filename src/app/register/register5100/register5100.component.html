@@ -34,7 +34,7 @@
                         [valueField]="'id'"
                         [(ngModel)]="mainCategoryInfo"
                         [ngModelOptions]="{standalone: true}"
-                        [valuePrimitive]="valuePrimitiveMainCategory"
+                        [valuePrimitive]="valuePrimitiveSubCategory"
                         [defaultItem]="defaultSubCategoryInfo">
                       </kendo-dropdownlist>
 
@@ -70,15 +70,17 @@
                     <label>{{'Home2100.LABEL.DESCRIPTION' | translate}}</label>
                     <kendo-upload
                       class="uploadi-img"
-                      [autoUpload]="false"
+                      [autoUpload]="true"
                       [saveUrl]="uploadSaveUrl"
                       [multiple]="false"
                       [removeUrl]="uploadRemoveUrl"
                       [restrictions]="uploadRestrictions"
                       (select)="onSelect($event)"
                       (clear)="onClear($event)"
+                      [chunkable]="chunkSettings"
                       (remove)="onRemove($event)"
                       (complete)="completeEventHandler($event)"
+                      (success)="successEventHandler($event)"
                       (upload)="uploadEventHandler($event)">
               </kendo-upload>
                   <img class="upload-img" *ngIf="imagePreviews" [src]="imagePreviews.src" />

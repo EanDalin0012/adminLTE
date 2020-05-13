@@ -48,7 +48,7 @@
 
               <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="{{'COMMON.LABEL.NO' | translate}}">
                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                  <img [src]="url +'/'+ dataItem.productId" class="rounded" alt="Grokonez-About Image" width="250px" height="auto">
+                  <img [src]="url +'/'+ dataItem.resourceFileInfoId" class="rounded" alt="Grokonez-About Image" width="250px" height="auto">
                 </ng-template>
             </kendo-grid-column>
 
@@ -63,9 +63,12 @@
                   </ng-template>
               </kendo-grid-column>
 
-              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="{{'COMMON.BUTTON.ADD_IMG' | translate}}">
+              <kendo-grid-column width="200" class="cen" [sortable]="false" field="edit" title="{{'COMMON.BUTTON.ADD_IMG' | translate}}">
                 <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                    <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="addImage(dataItem)"><span>add img</span></button>
+                    <button type="button" style="margin-right: 5px;" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="addImage(dataItem)"><span>add</span></button>
+
+                    <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="addImage(dataItem)"><span>edit</span></button>
+                    <span>image</span>
                 </ng-template>
             </kendo-grid-column>
 
@@ -93,6 +96,8 @@
           </kendo-grid>
       </div>
 
+      <!-- <img [src]="bizServer +'/api/file/images/resources/'+ 'bd1c4a92-8cfe-4c33-ab6f-da4e941c5e94'" class="rounded" alt="Grokonez-About Image" width="250px" height="auto">
+      <img [src]="bizServer +'/api/file/images/resources/'+ '1df8f4a6-629c-49b4-8302-265d37b91ba8'" class="rounded" alt="Grokonez-About Image" width="250px" height="auto"> -->
       <div class="table_control">
           <div class="btn_area">
               <button type="button" tabindex=-1 class="btn03 r"><span>{{'COMMON.BUTTON.DELETE' | translate}}</span></button>

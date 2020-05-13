@@ -18,7 +18,7 @@ export class Register5110Component implements OnInit {
   public events: string[] = [];
   public imagePreviews: any[] = [];
   public uploadRestrictions: FileRestrictions = {
-    allowedExtensions: ['.jpg', '.png']
+    allowedExtensions: ['.jpg', '.png', '.jpeg']
   };
 
   public uploadSaveUrl = 'saveUrl'; // should represent an actual API endpoint
