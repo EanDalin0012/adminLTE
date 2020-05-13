@@ -12,6 +12,10 @@ import { ServerService } from 'src/app/shared/services/server.service';
 import { environment } from 'src/environments/environment';
 import { SubCategory } from '../../shared/class/class-sub-category';
 import { RequestDataService } from '../../shared/services/get-data.service';
+import { Product } from '../../shared/class/class-product';
+import { ProductRequest } from '../../shared/class-tr/classtr-req-product';
+import { Utils } from '../../shared/utils/utils.static';
+
 @Component({
   selector: 'app-register5100',
   templateUrl: './register5100.component.html',
@@ -24,9 +28,10 @@ export class Register5100Component implements OnInit {
   typeList: any[] = [];
   mainCategoryInfo: MainCategory;
   subCategoryInfo: SubCategory;
+  subCategoryId: number;
 
   subCategoryName: string;
-  description: string;
+
   translateTxt: any;
   mainCategoryList = new Array<MainCategory>();
   valuePrimitiveMainCategory: boolean;
@@ -82,19 +87,24 @@ export class Register5100Component implements OnInit {
   api = '/api/file/upload/product';
   public chunkSettings: ChunkSettings = {
     size: 102400
-};
+  };
+
+  product: Product;
+  subCateId: number;
+  proName: string;
+  resourceFileInfoId: string;
+  description: string;
+
   constructor(
     private serverService: ServerService,
     private translate: TranslateService,
     private modalService: ModalService,
-    private dataService: RequestDataService,
-    private httpClient: HttpClient
+    private dataService: RequestDataService
   ) { }
 
   ngOnInit() {
     this.url = environment.bizServer.server + this.api;
     this.uploadSaveUrl = this.url;
-    console.log(this.uploadSaveUrl);
     this.valuePrimitiveMainCategory = true;
     this.valuePrimitiveSubCategory = true;
     this.translate.get('Home8100').subscribe((res) => {
@@ -106,7 +116,6 @@ export class Register5100Component implements OnInit {
 
   close() {
     this.modal.close();
-    // this.modal.close( {close: BTN_ROLES.CLOSE});
   }
 
   inquiryMainCategory() {
@@ -126,7 +135,6 @@ export class Register5100Component implements OnInit {
       this.valuePrimitiveSubCategory = true;
       this.subCategoryList = [];
       this.subCatListTrm.forEach(element => {
-        console.log(value, element.mainCategoryId);
         if (value === element.mainCategoryId) {
           this.subCategoryList.push(element);
         }
@@ -137,13 +145,21 @@ export class Register5100Component implements OnInit {
     }
   }
 
+  valueChangeSubCategory(value) {
+    if (value) {
+      this.subCategoryId = value;
+    }
+  }
+
   onClickRegister() {
     if (this.isValid() === true) {
-      const trReq                = new SubCategoryRequest();
-      trReq.body.mainCategoryId  = this.mainCategoryInfo.id;
-      trReq.body.subCategoryName = this.subCategoryName;
+      const trReq                = new ProductRequest();
+      trReq.body.subCateId       = this.subCategoryId;
+      trReq.body.proName         = this.proName;
       trReq.body.description     = this.description;
-      const api = '/api/sub_category/save';
+      trReq.body.createBy        = Utils.getUserInfo().id;
+      trReq.body.resourceFileInfoId = this.resourceFileInfoId;
+      const api = '/api/product/save';
       this.serverService.HTTPRequest(api, trReq).then(rest => {
         const response = rest as ResponseData;
         if ( this.serverService.checkResponse(response.header) === true) {
@@ -168,20 +184,31 @@ export class Register5100Component implements OnInit {
       if (!this.mainCategoryInfo) {
         const bool = this.modalService.messageAlert(mainCategoryText);
         return bool;
-      } else if (this.subCategoryName === undefined) {
+      }
+
+      if ( !this.subCategoryInfo || !this.subCategoryId) {
         const bool = this.modalService.messageAlert(subText);
         this.subCate.nativeElement.focus();
         return bool;
-      } else {
-        return true;
       }
+
+      if (!this.proName) {
+        const bool = this.modalService.messageAlert(this.translate.instant('Register5100.MESSAGE.ENTER_PRODUCT_NAME'));
+        return bool;
+      }
+
+      if (!this.resourceFileInfoId) {
+        const bool = this.modalService.messageAlert(this.translate.instant('Register5100.MESSAGE.SELECT_PRODUCT_IMAGE'));
+        return bool;
+      }
+
+      return true;
   }
 
   inquirySubCategory() {
     this.dataService.inquirySubCategoryList().then(response => {
       // this.subCategoryList = response;
       this.subCatListTrm = response;
-      console.log('sun category response', this.subCatListTrm);
     });
   }
 
@@ -213,24 +240,21 @@ export class Register5100Component implements OnInit {
   }
 
   successEventHandler(e: SuccessEvent) {
-    console.log('fdjakldfjkl', e);
     if  (e.response.body.header.result === true) {
-      const id = e.response.body.body.id;
+      this.resourceFileInfoId = e.response.body.body.id;
       const url = e.response.body.body.imageURL;
-      console.log('id url', id, url);
     }
-    if (e.response.body.header.result) {
-      // this.userInfo = [];
-      // this.userInfo = Utils.getSecureStorage('USER_INFO');
-      // this.userInfo.corporateUserProfileImageURL = e.response.body.body.corporateUserProfileImageURL;
-      // this.util.setSecureStorage('USER_INFO', this.userInfo);
-      // this.dataService.companyMessage(e.response.body.body.corporateUserProfileImageURL);
-      // this.dataService.ImageMessage(e.files[0]);
-    }
+    // if (e.response.body.header.result) {
+    //   // this.userInfo = [];
+    //   // this.userInfo = Utils.getSecureStorage('USER_INFO');
+    //   // this.userInfo.corporateUserProfileImageURL = e.response.body.body.corporateUserProfileImageURL;
+    //   // this.util.setSecureStorage('USER_INFO', this.userInfo);
+    //   // this.dataService.companyMessage(e.response.body.body.corporateUserProfileImageURL);
+    //   // this.dataService.ImageMessage(e.files[0]);
+    // }
   }
 
   uploadEventHandler(e: UploadEvent) {
-    console.log(e);
     e.data = {
       userID : 1,
       productId: 1,
@@ -240,7 +264,6 @@ export class Register5100Component implements OnInit {
   }
 
   public completeEventHandler(val) {
-    console.log('val', val);
     // this.log(`All files processed`);
   }
 

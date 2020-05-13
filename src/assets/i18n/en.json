@@ -209,5 +209,11 @@
       "HOLDER": {
         "ENTER_PRODUCT_NAME":"Enter product Name"
       }
+    },
+    "Register5100": {
+        "MESSAGE": {
+          "ENTER_PRODUCT_NAME":"Enter product name",
+          "SELECT_PRODUCT_IMAGE":"select product image"
+        }
     }
 }

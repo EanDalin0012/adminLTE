@@ -32,10 +32,11 @@
                         [data]="subCategoryList"
                         [textField]="'subCategoryName'"
                         [valueField]="'id'"
-                        [(ngModel)]="mainCategoryInfo"
+                        [(ngModel)]="subCategoryInfo"
                         [ngModelOptions]="{standalone: true}"
                         [valuePrimitive]="valuePrimitiveSubCategory"
-                        [defaultItem]="defaultSubCategoryInfo">
+                        [defaultItem]="defaultSubCategoryInfo"
+                        (valueChange)="valueChangeSubCategory($event)">
                       </kendo-dropdownlist>
 
                   </div>
@@ -45,9 +46,9 @@
               <div class="form-row">
                 <div class="form-group form-group-last col-md-12">
                     <label>{{'Register5000.LABEL.PRODUCT_NAME' | translate}} :</label>
-                    <input type="text" [ngClass]="description ? 'active-input': ''" [(ngModel)]="description" placeholder="{{'Register5000.HOLDER.ENTER_PRODUCT_NAME' | translate}}" class="form-control">
+                    <input type="text" [ngClass]="proName ? 'active-input': ''" [(ngModel)]="proName" placeholder="{{'Register5000.HOLDER.ENTER_PRODUCT_NAME' | translate}}" class="form-control">
                     <div class="in_box">
-                        <button [ngClass]="description ? 'btn_del':''" (click)="onClickBtnDescr()" type="button" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
+                        <button [ngClass]="proName ? 'btn_del':''" (click)="onClickBtnDescr()" type="button" tabindex=-1 class="btn" tabindex=-1 tabindex=-1><span>Delete text</span></button>
                     </div>
 
                 </div>
