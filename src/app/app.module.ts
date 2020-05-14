@@ -12,9 +12,6 @@ import { LayoutComponent } from './layout/layout/layout.component';
 import { MLayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './shared/services/auth-interceptor.service';
-import { UploadModule } from '@progress/kendo-angular-upload';
-
-
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -23,7 +20,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     LayoutBlankComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     AppRoutingModule,

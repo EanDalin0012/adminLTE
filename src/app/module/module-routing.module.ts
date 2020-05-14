@@ -4,6 +4,7 @@ import { HomeComponent } from '../home/home/home.component';
 import { ExportComponent } from '../exports/export/export.component';
 import { RegisterComponent } from '../register/register/register.component';
 import { SaleComponent } from '../sales/sale/sale.component';
+import { UserManagementComponent } from '../user-management/user-management.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,15 @@ const routes: Routes = [
       {
         path: 'sales',
         loadChildren: '../sales/sales.module#SalesModule'
+      }
+    ]
+  },
+  {
+    path: '', component: UserManagementComponent,
+    children: [
+      {
+        path: 'user-management',
+        loadChildren: '../user-management/user-management.module#UserManagemenModule'
       }
     ]
   }

@@ -6,6 +6,7 @@ import { ImportComponent } from '../imports/import/import.component';
 import { RegisterComponent } from '../register/register/register.component';
 import { SaleComponent } from '../sales/sale/sale.component';
 import { MRoutingModule } from './module-routing.module';
+import { UserManagementComponent } from '../user-management/user-management.component';
 
 
 
@@ -15,7 +16,8 @@ import { MRoutingModule } from './module-routing.module';
     ExportComponent,
     ImportComponent,
     RegisterComponent,
-    SaleComponent
+    SaleComponent,
+    UserManagementComponent,
   ],
   imports: [
     // CommonModule,
