@@ -145,7 +145,7 @@
               </ul>
           </li>
 
-          <li class="treeview" [ngClass]="{active: path == 'user' || path == 'A' }">
+          <li class="treeview" [ngClass]="{active: path == 'user' || path == 'user-role' || path == 'role' }">
               <a href="#">
                   <i class="fa fa-table"></i> <span>User Management</span>
                   <span class="pull-right-container">
@@ -154,8 +154,8 @@
               </a>
               <ul class="treeview-menu">
                   <li (click)="onOpenPage('Register3000')"> <a [ngClass]="{current: path == 'user'}"><i class="fa fa-circle-o"></i>User</a></li>
-                  <li><a><i class="fa fa-circle-o"></i>Role</a></li>
-                  <li><a><i class="fa fa-circle-o"></i>Assign Role</a></li>
+                  <li (click)="onOpenPage('Register3000')"> <a [ngClass]="{current: path == 'role'}"><i class="fa fa-circle-o"></i>Role</a></li>
+                  <li (click)="onOpenPage('Register3000')"> <a [ngClass]="{current: path == 'user-role'}"><i class="fa fa-circle-o"></i>Assign Role</a></li>
               </ul>
           </li>
 

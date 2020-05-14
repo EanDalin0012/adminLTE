@@ -24,6 +24,13 @@ import { Role1000Component } from './role1000/role1000.component';
   imports: [
     CommonModule,
     UserManagementRoutingModule
+  ],
+  entryComponents: [
+    User1100Component,
+    User1200Component,
+
+    Role1100Component,
+    Role1200Component
   ]
 })
 export class UserManagemenModule { }
