@@ -77,9 +77,9 @@ export class Register5000Component implements OnInit {
     this.dataService.visitMessage(url[5]);
 
     this.inquiry();
-    this.translate.get('COMMON.LABEL').subscribe((res) => {
-     console.log(res);
-    });
+    // this.translate.get('COMMON.LABEL').subscribe((res) => {
+    //  console.log(res);
+    // });
     this.disabled = true;
   }
 
@@ -124,16 +124,11 @@ export class Register5000Component implements OnInit {
     this.requestDelete(this.mySelection);
   }
 
-  check(id) {
-    console.log(id);
-  }
-
   REGISTER() {
     this.modalService.open({
           content: Register5100Component,
           message: {},
           callback: async (res) => {
-            console.log('res', res);
             if (await res.close === BTN_ROLES.SAVE) {
               this.inquiry();
             }
@@ -147,7 +142,6 @@ export class Register5000Component implements OnInit {
           content: Register5200Component,
           message: dataItem,
           callback: async ( res ) => {
-            console.log('res', res);
             if (await res.close === BTN_ROLES.EDIT) {
               this.inquiry();
             }
@@ -156,13 +150,8 @@ export class Register5000Component implements OnInit {
     }
   }
 
-  click(Id) {
-     console.log(Id);
-  }
-
   rowclick(event) {
     const id = event.dataItem.Id;
-    console.log(this.mySelection, id);
     this.disabled = false;
   }
 
@@ -185,9 +174,7 @@ export class Register5000Component implements OnInit {
   inquiry() {
     const trReq = new RequestData();
     const api = '/api/product/getProductDetailsList';
-    console.log('trReq data', trReq);
     this.serverService.HTTPRequest(api, trReq).then(response => {
-      console.log('response response', response);
       if (this.serverService.checkResponse(response.header)) {
         this.list         = response.body.list;
         this.data         = this.list;
@@ -249,9 +236,9 @@ export class Register5000Component implements OnInit {
     if ( deleteListById.length > 0) {
       const trReq      = new DeleteList();
       const api        = '/api/company_access/updateListByID';
-      console.log(trReq);
+      // console.log(trReq);
       this.serverService.HTTPRequest(api, trReq).then(rest => {
-        console.log(rest);
+        // console.log(rest);
         const response = rest as ResponseData;
         if ( this.serverService.checkResponse(response.header) === true) {
           this.inquiry();
@@ -267,10 +254,9 @@ export class Register5000Component implements OnInit {
   }
 
   inputSearch(event) {
-    console.log(event);
     if (event) {
       this.search = event.target.value;
-      const searchResult = this.gridData.filter(data => data.name.toLowerCase().includes(event.target.value));
+      const searchResult = this.gridData.filter(data => data.productName.toLowerCase().includes(event.target.value));
       this.totalRecord = searchResult.length;
       this.loadingData(searchResult);
     }
@@ -311,7 +297,6 @@ export class Register5000Component implements OnInit {
           content: Register5110Component,
           message: dataItem,
           callback: async ( res ) => {
-            console.log('res', res);
             if (await res.close === BTN_ROLES.EDIT) {
               this.inquiry();
             }

@@ -31,6 +31,7 @@ export class Register1000Component implements OnInit {
     field: ''
   }];
   public data: any[];
+
   constructor(
     private serverService: ServerService,
     private modalService: ModalService,
