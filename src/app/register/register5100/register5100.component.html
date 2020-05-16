@@ -71,7 +71,7 @@
                     <label>{{'Home2100.LABEL.DESCRIPTION' | translate}}</label>
                     <kendo-upload
                       class="uploadi-img"
-                      [autoUpload]="true"
+                      [autoUpload]="false"
                       [saveUrl]="uploadSaveUrl"
                       [multiple]="false"
                       [removeUrl]="uploadRemoveUrl"
@@ -80,10 +80,13 @@
                       (clear)="onClear($event)"
                       [chunkable]="chunkSettings"
                       (remove)="onRemove($event)"
-                      (complete)="completeEventHandler($event)"
                       (success)="successEventHandler($event)"
                       (upload)="uploadEventHandler($event)">
-              </kendo-upload>
+              <!-- </kendo-upload> -->
+              <!-- <kendo-upload-messages select="Add images"></kendo-upload-messages> -->
+                  </kendo-upload>
+                  <!-- <button type="button" tabindex="-1" class="btn04 rcen_btn" [disabled]="uploadbtn" id="upload" ><span>{{'HOM3200.LABEL.UPLOAD' | translate}}</span></button> Upload -->
+
                   <img class="upload-img" *ngIf="imagePreviews" [src]="imagePreviews.src" />
                 </div>
 
