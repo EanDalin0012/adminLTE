@@ -27,7 +27,8 @@
                 (clear)="clearEventHandler($event)"
                 (remove)="removeEventHandler($event)"
                 (complete)="completeEventHandler($event)"
-                (upload)="uploadEventHandler($event)">
+                (upload)="uploadEventHandler($event)"
+                [ngModel]="imagePreviews">
               </kendo-upload>
               </div>
 

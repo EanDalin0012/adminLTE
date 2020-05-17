@@ -204,7 +204,8 @@
         "PRODUCT_MANAGEMENT":"Product Management",
         "PRODUCT_NAME":"Product Name",
         "SUB_CATEGORY_NAME":"Sub Category Name",
-        "SEARCH_BY_PRODUCT_NAME":"Search by product name"
+        "SEARCH_BY_PRODUCT_NAME":"Search by product name",
+        "IMAGES":"Images"
       },
       "HOLDER": {
         "ENTER_PRODUCT_NAME":"Enter product Name"

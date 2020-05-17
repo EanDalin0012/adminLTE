@@ -8,13 +8,6 @@ import { FileRestrictions, SelectEvent, RemoveEvent, UploadEvent } from '@progre
 export class Register5110Component implements OnInit {
   modal;
   productName: string;
-  constructor() {}
-  ngOnInit(): void {
-    if (this.modal) {
-      this.productName = this.modal.message.productName;
-    }
-    console.log(this.modal.message);
-  }
   public events: string[] = [];
   public imagePreviews: any[] = [];
   public uploadRestrictions: FileRestrictions = {
@@ -23,6 +16,16 @@ export class Register5110Component implements OnInit {
 
   public uploadSaveUrl = 'saveUrl'; // should represent an actual API endpoint
   public uploadRemoveUrl = 'removeUrl'; // should represent an actual API endpoint
+
+
+  constructor() {}
+  ngOnInit(): void {
+    // this.imagePreviews = myFiles;
+    if (this.modal) {
+      this.productName = this.modal.message.productName;
+    }
+    console.log(this.modal.message);
+  }
 
   public clearEventHandler(val): void {
     console.log('Clearing the file upload', val);
@@ -86,3 +89,15 @@ export class Register5110Component implements OnInit {
     console.log('e.data', e, this.imagePreviews);
   }
 }
+
+const myFiles: any[] = [{
+  name: 'three.jpg',
+  src: 'https://demos.telerik.com/kendo-ui/content/web/foods/3.jpg',
+  size: 1000,
+  uid: 1
+}, {
+  name: 'two.jpg',
+  src: 'https://demos.telerik.com/kendo-ui/content/web/foods/2.jpg',
+  size: 2000,
+  uid: 2
+}];

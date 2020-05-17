@@ -28,6 +28,7 @@ import { RegisterRoutingModule } from './register-routing.module';
 import { SBSharedModule } from '../shared/sbshare.module';
 import { Register5110Component } from './register5110/register5110.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+// import { CKEditorModule } from 'ng2-ckeditor';
 
 
 @NgModule({
