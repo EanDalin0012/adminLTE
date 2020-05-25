@@ -251,6 +251,7 @@ export class Register5100Component implements OnInit {
   }
 
   uploadEventHandler(e: UploadEvent) {
+    console.log(e);
     e.data = {
       userID : 1,
       productId: 1,

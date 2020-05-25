@@ -177,6 +177,7 @@ export class Register5000Component implements OnInit {
     this.serverService.HTTPRequest(api, trReq).then(response => {
       if (this.serverService.checkResponse(response.header)) {
         this.list         = response.body.list;
+        console.log(this.list);
         this.data         = this.list;
         this.gridData     = this.list;
         this.totalRecord  = this.list.length;

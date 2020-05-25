@@ -84,6 +84,7 @@ export class Register5200Component implements OnInit {
 
   product: Product;
   subCateId: number;
+  mainCateId: number;
   proName: string;
   resourceFileInfoId: string;
   description: string;
@@ -92,21 +93,33 @@ export class Register5200Component implements OnInit {
     private serverService: ServerService,
     private translate: TranslateService,
     private modalService: ModalService,
-    private dataService: RequestDataService
+    private dataService: RequestDataService,
   ) { }
 
-  ngOnInit() {
-    console.log(this.modal);
+  async ngOnInit() {
+    if (this.modal) {
+      console.log(this.modal.message);
+      this.subCateId   = await this.modal.message.subCategoryId;
+      this.mainCateId  = await this.modal.message.mainCategoryId;
+      this.proName     = await this.modal.message.productName;
+      this.description = await this.modal.message.description;
+    }
+
     this.uploadSaveUrl = environment.bizServer.server + this.api;
     this.uploadRemoveUrl = environment.bizServer.server + '/api/file/removeUrl';
-    this.valuePrimitiveMainCategory = true;
-    this.valuePrimitiveSubCategory = true;
+    this.valuePrimitiveMainCategory = false;
+    this.valuePrimitiveSubCategory = false;
     this.translate.get('Home8100').subscribe((res) => {
       this.translateTxt = res;
      });
-    this.inquiryMainCategory();
     this.inquirySubCategory();
-    this.imagePreviews = myFiles[0];
+    this.inquiryMainCategory();
+    this.imagePreviews = {
+      name: 'three.jpg',
+      src: 'http://127.0.0.1:8080/api/file/images/resources/bd1c4a92-8cfe-4c33-ab6f-da4e941c5e94',
+      size: 1000,
+      uid: 1
+    };
   }
 
   close() {
@@ -114,26 +127,24 @@ export class Register5200Component implements OnInit {
   }
 
   inquiryMainCategory() {
-    const trReq = new ResponseData();
-    const api = '/api/main_category/getList';
-    this.serverService.HTTPRequest(api, trReq).then(rest => {
-      const response = rest as MainCategoryList;
-      if ( this.serverService.checkResponse(rest.header) === true) {
-        this.mainCategoryList   = response.body;
-      }
+    this.dataService.inquiryMainCategory().then( response => {
+      this.mainCategoryList = response;
+      this.setMainCategoryInfo();
     });
   }
 
   valueChangeMainCategory(value) {
     if (value) {
       this.subCategoryInfo = undefined;
-      this.valuePrimitiveSubCategory = true;
+      // this.valuePrimitiveSubCategory = true;
+      // this.valuePrimitiveMainCategory = true;
       this.subCategoryList = [];
       this.subCatListTrm.forEach(element => {
-        if (value === element.mainCategoryId) {
+        if (value.id === element.mainCategoryId) {
           this.subCategoryList.push(element);
         }
       });
+
       this.ngClassList = 'active-input';
     } else {
       this.ngClassList = '';
@@ -202,8 +213,8 @@ export class Register5200Component implements OnInit {
 
   inquirySubCategory() {
     this.dataService.inquirySubCategoryList().then(response => {
-      // this.subCategoryList = response;
       this.subCatListTrm = response;
+      this.setSubCategoryInfo();
     });
   }
 
@@ -260,17 +271,28 @@ export class Register5200Component implements OnInit {
     };
   }
 
+  setMainCategoryInfo() {
+    if (this.mainCateId && this.mainCategoryList.length > 0) {
+      this.mainCategoryList.forEach(element => {
+        if (element.id === this.mainCateId ) {
+          this.mainCategoryInfo = element;
+        }
+      });
+    }
+  }
+
+  setSubCategoryInfo() {
+    if (this.subCateId && this.subCatListTrm.length > 0) {
+      this.subCatListTrm.forEach(element => {
+        if (element.id === this.subCateId) {
+          this.subCategoryInfo = element;
+        }
+        if (element.mainCategoryId === this.mainCateId) {
+          this.subCategoryList.push(element);
+        }
+      });
+    }
+  }
+
+
 }
-
-
-const myFiles: any[] = [{
-  name: 'three.jpg',
-  src: 'http://127.0.0.1:8080/api/file/images/resources//bd1c4a92-8cfe-4c33-ab6f-da4e941c5e94',
-  size: 1000,
-  uid: 1
-}, {
-  name: 'two.jpg',
-  src: 'https://demos.telerik.com/kendo-ui/content/web/foods/2.jpg',
-  size: 2000,
-  uid: 2
-}];
