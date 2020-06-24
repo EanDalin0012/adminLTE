@@ -39,13 +39,7 @@ export class Register1200Component implements OnInit {
   }
 
   btnUpdate() {
-    // console.log(this.mainCategoryName);
-    // this.mainCategory.mainCategoryName = this.mainCategoryName as any;
-    // this.mainCategory.description      = this.description;
-    console.log(this.mainCategory);
-    // this.isValidService.isValidMainCategory(this.mainCategory).then(rest => {
-      // console.log(rest);
-      // if (rest === true) {
+
     if (this.isValid() === true) {
       const userInfo              = Utils.getUserInfo();
       const trReq                 = new MainCategoryRequest();
@@ -54,17 +48,16 @@ export class Register1200Component implements OnInit {
       trReq.body.description      = this.description;
       trReq.body.createBy         = userInfo.id;
       trReq.body.modifyBy         = userInfo.id;
+
       const api = '/api/main_category/update';
-      console.log(trReq);
+
       this.serverService.HTTPRequest(api, trReq).then( response => {
-              console.log(response);
-              if ( this.serverService.checkResponse(response.header) === true) {
-                this.modal.close( {close: BTN_ROLES.EDIT});
-              }
-            // });
-        // }
+          if ( response.body.returnYN === 'Y') {
+            this.modal.close( {close: BTN_ROLES.EDIT});
+          }
       });
     }
+
   }
 
 

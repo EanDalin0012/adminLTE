@@ -74,18 +74,24 @@ export class ServerService {
         const uri = this.bizserverUrl + api;
         this.httpClient.post(uri, JSON.stringify(TrClass), {
           headers: new HttpHeaders(httpOptionsObj)
-        }).subscribe( res => {
-          const newAesInfo: any = Utils.getSecureStorage(AES_INFO.STORE) || {};
-          newAesInfo.timestamp = new Date().getTime();
-          Utils.setSecureStorage(AES_INFO.STORE, newAesInfo);
-          $('body').addClass('loaded');
-          $('div.loading').removeClass('none');
-          const result = res as any;
-          if (this.checkResponse(result.header) === true) {
+        }).subscribe(
+          res => {
+            const newAesInfo: any = Utils.getSecureStorage(AES_INFO.STORE) || {};
+            newAesInfo.timestamp = new Date().getTime();
+            Utils.setSecureStorage(AES_INFO.STORE, newAesInfo);
+            $('body').addClass('loaded');
+            $('div.loading').removeClass('none');
+            const result = res as any;
             resolve(res);
-          } else {
-            resolve(result.header);
-          }
+            // change application convention of throw from api
+            // if (this.checkResponse(result.header) === true) {
+            //   resolve(res);
+            // } else {
+            //   resolve(result.header);
+            // }
+        }, error => {
+          alert();
+          console.log(error);
         });
       }
 

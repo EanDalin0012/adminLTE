@@ -24,14 +24,15 @@ declare let CryptoJS: any;
 })
 export class AuthInterceptor implements HttpInterceptor {
   private timeoutmillsec = 120000;
-  private longtimeApis = ["MAN1006"];
+  private longtimeApis = ['MAN1006'];
 
  constructor(
     private authService: AuthService,
     private translate: TranslateService,
     private router: Router,
     private zone: NgZone,
-    private modal: ModalService
+    private modal: ModalService,
+    private modalService: ModalService,
   ) {
 
   }
@@ -48,13 +49,14 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // console.log("Http Intercepter run.");
-    for( var idx=0 ; idx < this.longtimeApis.length ; idx++ ) {
-      if( req.url.indexOf(this.longtimeApis[idx]) > 0 ){
-        environment.production ? (() => '')() : console.log("timeout sec changed.");
+    // tslint:disable-next-line:prefer-for-of
+    for ( let idx = 0 ; idx < this.longtimeApis.length ; idx++ ) {
+      if ( req.url.indexOf(this.longtimeApis[idx]) > 0 ){
+        environment.production ? (() => '')() : console.log('timeout sec changed.');
         this.timeoutmillsec = 2 * 60 * 1000;
         break;
       }
-    };
+    }
 
     // console.log("AuthInterceptor intercept req => " + JSON.stringify(req.url));
     // console.log("AuthInterceptor intercept req => " + JSON.stringify(req.url.includes('/assets')));
@@ -67,7 +69,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // clonedRequest = req.clone({ headers: req.headers
         //   .append( 'Authorization', 'Bearer ' + this.authService.getAccessToken())
         //   .append( 'X-Requested-With', 'XMLHttpRequest')});
-        this.showErrMsg("NOTLOGIN");
+        this.showErrMsg('NOTLOGIN');
         return;
       }
 
@@ -83,14 +85,14 @@ export class AuthInterceptor implements HttpInterceptor {
       // 암호화 사용시 복호화 과정 추가
       let apiname = req.url.split(environment.bizServer.context)[1];
 
-      if(!apiname){
+      if (!apiname){
         apiname = req.url;
       }
 
       if (environment.encryptionUse) {
         const aesInfo: any = Utils.getSecureStorage(AES_INFO.STORE) || {};
 
-        if (event instanceof HttpResponse && event.body.body && typeof event.body.body === "string") {
+        if (event instanceof HttpResponse && event.body.body && typeof event.body.body === 'string') {
           event = event.clone({ body: {
             header: event.body.header,
             body: JSON.parse(this.decrypt(event.body.body, aesInfo.aesKey))
@@ -100,32 +102,29 @@ export class AuthInterceptor implements HttpInterceptor {
       }
 
       if (event instanceof HttpResponse){
-        environment.production ? (() => '')() : console.log(" Response Code : " + apiname);
+        environment.production ? (() => '')() : console.log(' Response Code : ' + apiname);
         environment.production ? (() => '')() : console.log(event.body);
       }
-      //"CBK_SES_001"
+      // "CBK_SES_001"
 
       return event;
     })
     .pipe(
       finalize(() => {
-        environment.production ? (() => '')() : console.log("Communicate finish.");
-        $("div.loading").addClass("none") ;
+        environment.production ? (() => '')() : console.log('Communicate finish.');
+        $('div.loading').addClass('none') ;
       })
     )
     .catch((error: HttpErrorResponse) => {
+
       // intercept the respons error and displace it to the console
       // console.log('Error Occurred');
       // console.log('Error Occurred => ' + JSON.stringify(error));
-
-      // Access Token이 Expired 되었다면...
+      // Access Token
       // ------------------------------------------------------------------
-
       // ------------------------------------------------------------------
-
-      // 통신 실패 났을때, 재시도 버튼 누르면 뺑글이 남아있는 현상 때문에 넣음
-      $("div.loading").addClass("none");
-      environment.production ? (() => '')() : console.log(req.url + " reqeusting failed. " );
+      $('div.loading').addClass('none');
+      environment.production ? (() => '')() : console.log(req.url + ' reqeusting failed. ' );
       // console.log("Http Response Error");
       // console.log(error);
       let httpErrorCode;
@@ -137,8 +136,8 @@ export class AuthInterceptor implements HttpInterceptor {
       }
 
 
-      environment.production ? (() => '')() : console.log(error.status + " : " + error.statusText);
-      environment.production ? (() => '')() : console.log(error.name + " : " + error.message);
+      console.log(error.status + ' : ' + error.statusText);
+      environment.production ? (() => '')() : console.log(error.name + ' : ' + error.message);
       // if (error.status >= 400 && error.status < 500) {
       //   this.zone.run(() =>  this.router.navigate(['announce/4error']));
       // } else if (error.status >= 500 && error.status < 600) {
@@ -157,7 +156,28 @@ export class AuthInterceptor implements HttpInterceptor {
         // this.zone.run(() => this.router.navigate(['announce/5error']));
       // }
 
-      return Observable.of(new HttpResponse({body:{ 'header':{'result':false, 'resultCode': httpErrorCode },'body':{}} }));
+      if (error && error.error.status === 500) {
+        this.modalService.alert({
+          // tslint:disable-next-line:max-line-length
+          content:  'message :<span class="message-alert">' + String(error.error.message).substr(0, 150) + '</span> <br/>status: <span class= "message-alert">' + error.error.status + '</span',
+          modalClass: [''],
+          btnText: 'Confirm',
+          callback: (res) => {
+            return false;
+          }
+        });
+      }
+      if (error && error.status === 0) {
+          this.modalService.alert({
+            content:  'message : <span>Connection faile</span> status: ' + error.statusText,
+            modalClass: [''],
+            btnText: 'Confirm',
+            callback: (res) => {
+              return false;
+            }
+          });
+      }
+      return Observable.of(new HttpResponse({body: { header: {result: false, resultCode: httpErrorCode }, body: {}} }));
     }) as any;
   }
 
@@ -165,11 +185,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
     this.translate.get('COMMON.ERROR').subscribe( message => {
 
-      if(msgKey === "NOTLOGIN"){
+      if (msgKey === 'NOTLOGIN'){
 
         this.modal.alert({
           content : message[msgKey],
-          callback :() => {
+          callback : () => {
             this.zone.run(() =>  this.router.navigate(['/login']));
           }
         });

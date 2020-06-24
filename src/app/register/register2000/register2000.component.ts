@@ -84,7 +84,7 @@ public data: any[];
     const url = (window.location.href).split('/');
     console.log(url);
     this.dataService.visitMessage(url[5]);
-    this.inquiryMainCategoryList();
+    this.inquiryList();
   }
 
   public sortChange(sort: SortDescriptor[]): void {
@@ -123,7 +123,7 @@ public rowCallback = (context: RowClassArgs) => {
       callback: async (res) => {
         if (await res.close === BTN_ROLES.SAVE) {
           this.modalService.showNotificationService();
-          this.inquiryMainCategoryList();
+          this.inquiryList();
         }
       },
     });
@@ -140,7 +140,7 @@ public rowCallback = (context: RowClassArgs) => {
           message: dataItem,
           callback: async ( res ) => {
             if (await res.close === BTN_ROLES.EDIT) {
-              this.inquiryMainCategoryList();
+              this.inquiryList();
             }
           },
         });
@@ -184,17 +184,16 @@ public rowCallback = (context: RowClassArgs) => {
     }
   }
 
-  inquiryMainCategoryList() {
+  inquiryList() {
     const trReq = new RequestData();
     const api = '/api/sub_category/getList';
-    console.log('request data', trReq);
     this.serverService.HTTPRequest(api, trReq).then(rest => {
       const response = rest as SubCategoryDetailList;
       if (this.serverService.checkResponse(response.header)) {
-        this.list    = response.body;
-        this.data    = this.list;
-        this.gridData = this.list;
-        this.totalRecord = this.list.length;
+        this.list         = response.body;
+        this.data         = this.list;
+        this.gridData     = this.list;
+        this.totalRecord  = this.list.length;
         this.loadingData(this.list);
       }
     });
@@ -264,7 +263,7 @@ public rowCallback = (context: RowClassArgs) => {
       const response = rest as ResponseData;
       if ( this.serverService.checkResponse(response.header) === true) {
         this.modalService.showNotificationService();
-        this.inquiryMainCategoryList();
+        this.inquiryList();
       }
     });
   }

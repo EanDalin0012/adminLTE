@@ -240,9 +240,8 @@ public rowCallback = (context: RowClassArgs) => {
     console.log(trReq);
     const api   = '/api/main_category/deleteByListId';
     console.log(trReq);
-    this.serverService.HTTPRequest(api, trReq).then(rest => {
-      const response = rest as ResponseData;
-      if ( this.serverService.checkResponse(response.header) === true) {
+    this.serverService.HTTPRequest(api, trReq).then(response => {
+      if ( response.body.returnYN === 'Y') {
         this.inquiry();
       }
     });

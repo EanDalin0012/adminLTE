@@ -10,16 +10,6 @@
   </div>
   <div class="container01">
 
-      <!-- <div class="form-row col-md-12" style="height: 55px; padding: 0px;">
-          <div class="form-group form-group-last col-md-6" style="padding: 0px;">
-              <input style="border-bottom: 2px solid #3f496d !important;" type="text" [ngClass]="search ? 'active-input': ''" [(ngModel)]="search" (input)="inputSearch($event)" placeholder="Search by name ..." class="form-control">
-              <div class="in_box">
-                  <button style="top: 8px; right: 8px;" class="btn_del btn" (click)="onClickBtnSearch()" type="button" tabindex=-1 tabindex=-1 tabindex=-1><span>Delete text</span></button>
-              </div>
-
-          </div>
-      </div> -->
-
       <div class="col-md-12" style="margin-bottom: 15px; padding: 0px;">
           <strong>{{'COMMON.LABEL.ITEMS' | translate: {'value': recordsTotal} }}</strong>
       </div>
@@ -81,7 +71,7 @@
 
               <kendo-grid-column width="190" class="subj" field="modifyDate" title="{{'COMMON.LABEL.MODIFY_DATE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <p>{{dataItem.modifyDate | dateFormat}}</p>
+                      <p *ngIf ="dataItem.modifyDate">{{dataItem.modifyDate | dateFormat}}</p>
                   </ng-template>
               </kendo-grid-column>
 

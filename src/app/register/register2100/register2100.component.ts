@@ -70,6 +70,7 @@ export class Register2100Component implements OnInit {
       trReq.body.subCategoryName = this.subCategoryName;
       trReq.body.description     = this.description;
       const api = '/api/sub_category/save';
+
       this.serverService.HTTPRequest(api, trReq).then(rest => {
         const response = rest as ResponseData;
         if ( this.serverService.checkResponse(response.header) === true) {

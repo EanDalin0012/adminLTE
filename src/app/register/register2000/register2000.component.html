@@ -54,12 +54,12 @@
               <kendo-grid-column width="190" class="subj" field="description" title="{{'Home2000.LABEL.DESCRIPTION' | translate}}"></kendo-grid-column>
               <kendo-grid-column width="190" class="subj" field="createDate" title="{{'COMMON.LABEL.CREATE_DATE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <p>{{dataItem.createDate | dateFormat}}</p>
+                      <p >{{dataItem.createDate | dateFormat}}</p>
                   </ng-template>
               </kendo-grid-column>
               <kendo-grid-column width="240" class="subj" field="modifyDate" title="{{'COMMON.LABEL.MODIFY_DATE' | translate}}">
                   <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                      <p>{{dataItem.modifyDate | dateFormat}}</p>
+                      <p *ngIf ="dataItem.modifyDate">{{dataItem.modifyDate | dateFormat}}</p>
                   </ng-template>
               </kendo-grid-column>
 

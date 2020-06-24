@@ -88,6 +88,7 @@ export class Register5200Component implements OnInit {
   proName: string;
   resourceFileInfoId: string;
   description: string;
+  productId: number;
 
   constructor(
     private serverService: ServerService,
@@ -96,6 +97,8 @@ export class Register5200Component implements OnInit {
     private dataService: RequestDataService,
   ) { }
 
+  resourceURLId: string;
+
   async ngOnInit() {
     if (this.modal) {
       console.log(this.modal.message);
@@ -103,6 +106,13 @@ export class Register5200Component implements OnInit {
       this.mainCateId  = await this.modal.message.mainCategoryId;
       this.proName     = await this.modal.message.productName;
       this.description = await this.modal.message.description;
+      this.productId   = await this.modal.message.productId;
+      this.imagePreviews = {
+        name: 'three.jpg',
+        src: 'http://127.0.0.1:8080/api/file/images/resources/' + this.modal.message.resourceFileInfoId ,
+        size: 1000,
+        uid: 1
+      };
     }
 
     this.uploadSaveUrl = environment.bizServer.server + this.api;
@@ -114,12 +124,7 @@ export class Register5200Component implements OnInit {
      });
     this.inquirySubCategory();
     this.inquiryMainCategory();
-    this.imagePreviews = {
-      name: 'three.jpg',
-      src: 'http://127.0.0.1:8080/api/file/images/resources/bd1c4a92-8cfe-4c33-ab6f-da4e941c5e94',
-      size: 1000,
-      uid: 1
-    };
+
   }
 
   close() {
@@ -165,7 +170,8 @@ export class Register5200Component implements OnInit {
       trReq.body.description     = this.description;
       trReq.body.createBy        = Utils.getUserInfo().id;
       trReq.body.resourceFileInfoId = this.resourceFileInfoId;
-      const api = '/api/product/save';
+      trReq.body.proId              = this.productId;
+      const api = '/api/product/update';
       this.serverService.HTTPRequest(api, trReq).then(rest => {
         const response = rest as ResponseData;
         if ( this.serverService.checkResponse(response.header) === true) {

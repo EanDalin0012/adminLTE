@@ -1645,4 +1645,8 @@ kendo-upload div:nth-child(0) {
 .contentsWrap01 {
   overflow-y: unset !important;
 }
+.message-alert {
+  font-weight: 900;
+  color: #000;
+}
 

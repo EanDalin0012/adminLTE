@@ -124,12 +124,13 @@ export class Register5100Component implements OnInit {
   }
 
   valueChangeMainCategory(value) {
+    console.log(value);
     if (value) {
       this.subCategoryInfo = undefined;
       this.valuePrimitiveSubCategory = true;
       this.subCategoryList = [];
       this.subCatListTrm.forEach(element => {
-        if (value === element.mainCategoryId) {
+        if (Number(value) === element.mainCategoryId) {
           this.subCategoryList.push(element);
         }
       });
@@ -201,7 +202,6 @@ export class Register5100Component implements OnInit {
 
   inquirySubCategory() {
     this.dataService.inquirySubCategoryList().then(response => {
-      // this.subCategoryList = response;
       this.subCatListTrm = response;
     });
   }

@@ -6,7 +6,7 @@ export class Header {
   msg = '';
   sessionId = '';
   authData = '';
-  userID = '';
+  userID = 0;
   languageCode = '';
   channelTypeCode = '';
   result = true;
@@ -16,9 +16,9 @@ export class Header {
       this.channelTypeCode = CHANNEL.ADMIN;
       this.languageCode = this.getI18N();
       console.log('localLangCode', this.languageCode);
-      const userinfo = Utils.getSecureStorage('USER_INFO');
+      const userinfo = Utils.getSecureStorage('userInfo');
       if (userinfo) {
-            this.userID = userinfo.userID;
+            this.userID = userinfo.id;
       }
     }
 
