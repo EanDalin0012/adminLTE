@@ -1,4 +1,4 @@
-<div class="contentsWrap">
+<div class="contentsWrap contentsWrap01">
   <div class="page_title">
       <div class="breadcrumb">
           <h1><span>{{'Home9100.LABEL.IMPORT_NEW_PRODUCT' | translate}}</span></h1>
@@ -13,12 +13,29 @@
               <div class="form-group col-md-6" style="padding-left: 0px;">
                   <label>{{'Home9000.LABEL.PRODUCT' | translate}} :</label>
                   <kendo-dropdownlist [ngClass]="ngClassProduct" [data]="proList" [filterable]="true" [textField]="'proName'" [valueField]="'proId'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="productInfo" [ngModelOptions]="{standalone: true}"
-                      [valuePrimitive]="valuePrimitivePro" [defaultItem]="defaultProductInfo" (valueChange)="valueChangeProduct($event)"></kendo-dropdownlist>
+                      [valuePrimitive]="valuePrimitivePro" [defaultItem]="defaultProductInfo" (valueChange)="valueChangeProduct($event)">
+
+                      <ng-template kendoDropDownListValueTemplate let-dataItem>
+                        <span class="template" >
+                          <img *ngIf="dataItem.resourceFileInfoId" [src]="url +'/'+ dataItem.resourceFileInfoId" class="rounded" [alt]="dataItem.resourceFileInfoId" width="250px" height="auto" style="max-width: 25% !important; width: 8%; border-radius: 5px; text-align: center;"/>
+                          <span style="margin-left: 15px;">{{ dataItem.proName }}</span>
+                        </span>
+
+                      </ng-template>
+
+                      <ng-template kendoDropDownListItemTemplate let-dataItem>
+                        <span class="template" >
+                            <img *ngIf="dataItem.resourceFileInfoId" [src]="url +'/'+ dataItem.resourceFileInfoId" class="rounded" [alt]="dataItem.resourceFileInfoId" width="250px" height="auto" style="max-width: 25% !important; width: 8%; border-radius: 5px; text-align: center;"/>
+                            <span style="margin-left: 15px;">{{ dataItem.proName }}</span>
+                          </span>
+
+                    </ng-template>
+                    </kendo-dropdownlist>
               </div>
 
               <div class="form-group col-md-6" style="padding-left: 0px;">
                   <label>{{'Home9000.LABEL.COMPANY' | translate}} :</label>
-                  <kendo-dropdownlist [ngClass]="ngClassCompany" [data]="compList" [filterable]="true" [textField]="'name'" [valueField]="'id'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="companyInfo" [ngModelOptions]="{standalone: true}"
+                  <kendo-dropdownlist [ngClass] = "ngClassCompany" [data]="compList" [filterable]="true" [textField]="'name'" [valueField]="'id'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="companyInfo" [ngModelOptions]="{standalone: true}"
                       [valuePrimitive]="valuePrimitiveCompany" [defaultItem]="defaultCompanyInfo" (valueChange)="valueChangeCompany($event)"></kendo-dropdownlist>
               </div>
           </div>
@@ -107,66 +124,64 @@
               <span>{{'Home9000.LABEL.ADD_NEW_ITEMS' | translate}}</span>
           </div>
       </div>
-  </div>
-</div>
 
 
-<div class="contentsWrap">
-  <div class="container01">
+
       <kendo-grid scrollable="virtual" [data]="gridView" [selectable]="selectableSettings" [sortable]="true" [sort]="sort" (sortChange)="sortChange($event)" [pageSize]="pageSize" [rowClass]="rowCallback" [skip]="skip" [pageable]="{
-    buttonCount: buttonCount,
-    info: info,
-    type: type,
-    pageSizes: pageSizes,
-    previousNext: previousNext
-  }" [height]="height" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" [selectedKeys]="mySelection" class="table01 overflow-x">
-          <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
-          <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="No">
-              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                  <p>{{rowIndex + 1}}</p>
-              </ng-template>
-          </kendo-grid-column>
+        buttonCount: buttonCount,
+        info: info,
+        type: type,
+        pageSizes: pageSizes,
+        previousNext: previousNext
+      }" [height]="height" kendoGridSelectBy="id" [scrollable]="'true'" (pageChange)="pageChange($event)" [selectedKeys]="mySelection" class="table01 overflow-x">
+              <kendo-grid-checkbox-column class="cen" [width]="45" [resizable]="false" [columnMenu]="true" showSelectAll="true"></kendo-grid-checkbox-column>
+              <kendo-grid-column width="50" class="cen" [sortable]="false" field="no" title="No">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <p>{{rowIndex + 1}}</p>
+                  </ng-template>
+              </kendo-grid-column>
 
-          <kendo-grid-column width="150" class="subj" field="productName" title="Product Name"></kendo-grid-column>
-          <kendo-grid-column width="190" class="subj" field="companyName" title="Company Name"></kendo-grid-column>
-          <kendo-grid-column width="190" class="subj" field="supplierName" title="Supplier Name"></kendo-grid-column>
-          <kendo-grid-column width="190" class="cen" field="quantity" title="Quantity"></kendo-grid-column>
-          <kendo-grid-column width="190" class="cen" field="price" title="Price">
-              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                  <span>{{dataItem.price | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
-              </ng-template>
-          </kendo-grid-column>
+              <kendo-grid-column width="150" class="subj" field="productName" title="Product Name"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="companyName" title="Company Name"></kendo-grid-column>
+              <kendo-grid-column width="190" class="subj" field="supplierName" title="Supplier Name"></kendo-grid-column>
+              <kendo-grid-column width="190" class="cen" field="quantity" title="Quantity"></kendo-grid-column>
+              <kendo-grid-column width="190" class="cen" field="price" title="Price">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <span>{{dataItem.price | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
+                  </ng-template>
+              </kendo-grid-column>
 
-          <kendo-grid-column width="190" class="cen" field="discount" title="Discount">
-              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                  <span>{{dataItem.discount | discountFormat}}</span>
-              </ng-template>
-          </kendo-grid-column>
+              <kendo-grid-column width="190" class="cen" field="discount" title="Discount">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <span>{{dataItem.discount | discountFormat}}</span>
+                  </ng-template>
+              </kendo-grid-column>
 
-          <kendo-grid-column width="190" class="cen" field="total" title="total">
-              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                  <span>{{dataItem.total | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
-              </ng-template>
-          </kendo-grid-column>
-          <kendo-grid-column width="300" class="subj" field="description" title="Description"></kendo-grid-column>
+              <kendo-grid-column width="190" class="cen" field="total" title="total">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <span>{{dataItem.total | amountFormat: dataItem.currencyCode}} {{dataItem.currencyCode}}</span>
+                  </ng-template>
+              </kendo-grid-column>
+              <kendo-grid-column width="300" class="subj" field="description" title="Description"></kendo-grid-column>
 
-          <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="Edit">
-              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                  <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="onClickEdit(dataItem)"><span>edit</span></button>
-              </ng-template>
-          </kendo-grid-column>
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="Edit">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button type="button" tabindex=-1 class="btn_edit01" id="rowIndex" (click)="onClickEdit(dataItem)"><span>edit</span></button>
+                  </ng-template>
+              </kendo-grid-column>
 
-          <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="Delete">
-              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                  <button type="button" tabindex=-1 class="btn_cancel" id="rowIndex" (click)="onClickDelet(dataItem)"><span>delete</span></button>
-              </ng-template>
-          </kendo-grid-column>
+              <kendo-grid-column width="100" class="cen" [sortable]="false" field="edit" title="Delete">
+                  <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                      <button type="button" tabindex=-1 class="btn_cancel" id="rowIndex" (click)="onClickDelet(dataItem)"><span>delete</span></button>
+                  </ng-template>
+              </kendo-grid-column>
 
-      </kendo-grid>
+          </kendo-grid>
 
-      <div class="iam-btn-container mbr_introContent">
-        <button class="iam-button save" (click)="onClickSave()">{{'COMMON.BUTTON.SAVE' | translate}}</button>
-      </div>
+          <div class="iam-btn-container mbr_introContent">
+            <button class="iam-button save" (click)="onClickSave()">{{'COMMON.BUTTON.SAVE' | translate}}</button>
+          </div>
+
 
   </div>
 </div>

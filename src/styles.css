@@ -195,7 +195,7 @@ article, aside, footer, header, hgroup, nav, section, figure {display:block; pad
 em, address {font-style:normal;}
 em {color:#7a6d5c;}
 sub {font-weight:normal; vertical-align:middle;}
-img {max-width:100%; max-height:100%; vertical-align:top;}
+img {max-width:60%;vertical-align:top;}
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {-webkit-appearance:none; margin:0;}
 del {color:#898989;}
 iframe {display:block;}

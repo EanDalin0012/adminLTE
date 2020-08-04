@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 import { Utils } from 'src/app/shared/utils/utils.static';
 import { ImportProductRequest } from 'src/app/shared/class-tr/classtr-import-product-req';
 import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-import1100',
@@ -27,6 +28,8 @@ import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
 export class Import1100Component implements OnInit {
 
   focus: string;
+  url: string;
+  api = '/api/file/images/resources/';
   public info = true;
   public buttonCount = 5;
   public type: 'numeric' | 'input' = 'numeric';
@@ -55,6 +58,7 @@ export class Import1100Component implements OnInit {
   importProductDetailsList = new Array<ImportProductDetails>();
   suppliertList: Supplier[] = [];
   compList: Company[] = [];
+  productList: Product[] = [];
 
   supplierInfo: Supplier;
   defaultSupplierInfo = {
@@ -146,12 +150,14 @@ export class Import1100Component implements OnInit {
 
 ngOnInit() {
   this.focus = '';
+  this.url = environment.bizServer.server + this.api;
   this.defaultItemProd = 'select product ..';
   this.valuePrimitivePro = true;
   const url = (window.location.href).split('/');
   this.dataService.visitMessage(url[5]);
   this.gridData = [];
   this.loadData();
+  this.inquiryProductList();
   this.inquiryCompanyList();
   this.inquirySupplierList();
   this.proList    = productList;
@@ -386,8 +392,16 @@ btnDel(key: string) {
   }
 }
 
+inquiryProductList() {
+  this.requestDataService.inquiryProductList().then(response => {
+    if (response) {
+      this.proList   = response;
+    }
+  });
+}
 inquiryCompanyList() {
     this.requestDataService.inquiryCompanyList().then(response => {
+      console.log('response', response);
       if (response) {
         this.compList   = response;
       }

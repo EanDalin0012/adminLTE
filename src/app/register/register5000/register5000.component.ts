@@ -141,8 +141,8 @@ export class Register5000Component implements OnInit {
       this.modalService.open({
           content: Register5200Component,
           message: dataItem,
-          callback: async ( res ) => {
-            if (await res.close === BTN_ROLES.EDIT) {
+          callback: ( res ) => {
+            if ( res.close === BTN_ROLES.EDIT) {
               this.inquiry();
             }
           },

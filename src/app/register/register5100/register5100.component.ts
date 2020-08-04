@@ -241,6 +241,7 @@ export class Register5100Component implements OnInit {
   }
 
   successEventHandler(e: SuccessEvent) {
+    console.log('response file update', e);
     const responseData = e.response.body;
     if (responseData) {
       if  (responseData.header.result === true) {

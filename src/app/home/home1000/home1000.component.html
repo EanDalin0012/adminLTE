@@ -44,7 +44,7 @@
       <kendo-dropdownlist [data]="countryList" [filterable]="true" [textField]="'name'" [valueField]="'countryCode'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="country" [ngModelOptions]="{standalone:
         true}" [defaultItem]="defaultCountry" (valueChange)="setBankName(country)" (click)="countryClass()">
           <ng-template kendoDropDownListValueTemplate let-dataItem>
-              <span class="template">{{ 'dataItem?.name' | translate}}</span>
+              <span class="template">{{ dataItem.name | translate}}</span>
           </ng-template>
           <ng-template kendoDropDownListItemTemplate let-dataItem>
               <span class="template">{{ dataItem.name | translate }}</span>

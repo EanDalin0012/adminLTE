@@ -19,6 +19,7 @@ export class AppComponent {
     if (Utils.getSecureStorage(LOCAL_STORAGE.USER_INFO) === null) {
       this.router.navigate(['/login']);
     }
+    console.log('test test', window.btoa('spring-security-oauth2-read-write-client' + ':' + 'spring-security-oauth2-read-write-client-password1234'));
   }
 
   setInitialAppLanguage() {

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Gender, LOCAL_STORAGE, AES_INFO } from 'src/app/shared/constants/common.const';
-import { Utils } from 'src/app/shared/utils/utils.static';
-import { User } from 'src/app/shared/Class/class-user';
+import { AuthentcatiionRequest, AuthentcatiionService } from '../../shared/services/authentication.service';
+import { ServerService } from '../../shared/services/server.service';
 declare var $;
 
 @Component({
@@ -12,8 +11,14 @@ declare var $;
 })
 export class Sign1000Component implements OnInit {
 
+  authenticationObj: AuthentcatiionRequest;
+  userName: string;
+  password: string;
+
   constructor(
-    private router: Router
+    private router: Router,
+    private serverService: ServerService,
+    private authentcatiionService: AuthentcatiionService
   ) {
   }
 
@@ -33,7 +38,12 @@ export class Sign1000Component implements OnInit {
   }
 
   onClickLogin() {
-    const userInfo = new User();
+
+    this.authenticationObj.username = this.userName;
+    this.authenticationObj.password = this.password;
+
+    this.authentcatiionService.login(this.authenticationObj);
+    /* const userInfo = new User();
     userInfo.id = 1;
     userInfo.firstName = 'dalin',
     userInfo.lastName = 'ean';
@@ -52,7 +62,7 @@ export class Sign1000Component implements OnInit {
     const newAesInfo: any = Utils.getSecureStorage(AES_INFO.STORE) || {};
     newAesInfo.timestamp = new Date().getTime();
     Utils.setSecureStorage(AES_INFO.STORE, newAesInfo);
-    this.router.navigate(['/main/home']);
+    this.router.navigate(['/main/home']); */
   }
 
 }

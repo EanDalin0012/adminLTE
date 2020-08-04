@@ -48,7 +48,6 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // console.log("Http Intercepter run.");
     // tslint:disable-next-line:prefer-for-of
     for ( let idx = 0 ; idx < this.longtimeApis.length ; idx++ ) {
       if ( req.url.indexOf(this.longtimeApis[idx]) > 0 ){
@@ -82,7 +81,6 @@ export class AuthInterceptor implements HttpInterceptor {
     // console.log('new headers', clonedRequest.headers.keys());
     return next.handle(req).timeout(this.timeoutmillsec)
     .map(event => {
-      // 암호화 사용시 복호화 과정 추가
       let apiname = req.url.split(environment.bizServer.context)[1];
 
       if (!apiname){
@@ -91,8 +89,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
       if (environment.encryptionUse) {
         const aesInfo: any = Utils.getSecureStorage(AES_INFO.STORE) || {};
-
-        if (event instanceof HttpResponse && event.body.body && typeof event.body.body === 'string') {
+        if (event instanceof HttpResponse) {
           event = event.clone({ body: {
             header: event.body.header,
             body: JSON.parse(this.decrypt(event.body.body, aesInfo.aesKey))
@@ -106,7 +103,6 @@ export class AuthInterceptor implements HttpInterceptor {
         environment.production ? (() => '')() : console.log(event.body);
       }
       // "CBK_SES_001"
-
       return event;
     })
     .pipe(
@@ -182,27 +178,19 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   showErrMsg(msgKey: string){
-
     this.translate.get('COMMON.ERROR').subscribe( message => {
-
       if (msgKey === 'NOTLOGIN'){
-
         this.modal.alert({
           content : message[msgKey],
           callback : () => {
             this.zone.run(() =>  this.router.navigate(['/login']));
           }
         });
-
       } else {
-
         this.modal.alert({
           content : message[msgKey]
         });
-
       }
-
-
     });
   }
 }

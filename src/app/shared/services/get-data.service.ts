@@ -9,6 +9,8 @@ import { MainCategoryList } from '../class-tr/classtr-main-category-list';
 import { SubCategoryList } from '../class-tr/classtr-sub-category-list';
 import { SupplierList } from '../class-tr/classtr-res-supplier-list';
 import { CompanyList } from '../class-tr/classtr-company-list';
+import { Product } from '../class/class-product';
+import { ProductResponse } from '../class-tr/classtr-res-product';
 
 
 @Injectable({
@@ -57,10 +59,10 @@ export class RequestDataService {
       const api = '/api/company_access/getList';
       console.log('trReq data', trReq);
       this.serverService.HTTPRequest(api, trReq).then(resp => {
-        console.log(resp);
+        console.log('resprespresp', resp);
         const response = resp as CompanyList;
         if (this.serverService.checkResponse(response.header)) {
-          resolve(response.body);
+          resolve(response.body.list);
         } else {
           reject();
         }
@@ -83,9 +85,18 @@ export class RequestDataService {
     });
   }
 
-  inquiryProductList(): Promise<any> {
+  inquiryProductList(): Promise<Product []> {
     return new Promise((resolve, reject) => {
-
+      const trReq = new RequestData();
+      const api = '/api/product/getProductList';
+      this.serverService.HTTPRequest(api, trReq).then(res => {
+        const response = res as ProductResponse;
+        if (this.serverService.checkResponse(response.header)) {
+          resolve(response.body.list);
+        } else {
+          reject();
+        }
+      });
     });
   }
 

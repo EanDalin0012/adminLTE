@@ -155,6 +155,7 @@ export class Register3000Component implements OnInit {
   }
 
   rowclick(event) {
+    console.log(event);
     const id = event.dataItem.Id;
     console.log(this.mySelection, id);
     this.disabled = false;
@@ -183,7 +184,7 @@ export class Register3000Component implements OnInit {
     this.serverService.HTTPRequest(api, trReq).then(resp => {
       console.log(resp);
       const response = resp as CompanyList;
-      this.list    = response.body;
+      this.list    = response.body.list;
       this.data    = this.list;
       this.gridData = this.list;
       this.totalRecord = this.list.length;
@@ -239,8 +240,10 @@ export class Register3000Component implements OnInit {
   }
 
   requestDelete(deleteListById: any[]) {
+    console.log(deleteListById);
     if ( deleteListById.length > 0) {
       const trReq      = new DeleteList();
+      trReq.body.list   = deleteListById;
       const api        = '/api/company_access/updateListByID';
       console.log(trReq);
       this.serverService.HTTPRequest(api, trReq).then(rest => {
@@ -296,6 +299,28 @@ export class Register3000Component implements OnInit {
     });
 
     component.save(options);
+  }
+
+  gridCheckBoxClick(dataItem) {
+    let trmArray = [];
+    if (this.mySelection.length > 0) {
+      this.mySelection.forEach((value, index) => {
+        console.log(dataItem.id);
+        console.log(value.id);
+        // push array
+        if (dataItem.id !== value.id) {
+          this.mySelection.push({id: dataItem.id});
+        }
+        // splice array
+        if (dataItem.id === value.id) {
+          console.log(this.mySelection.splice(0, index));
+          console.log('ddd');
+        }
+
+      });
+    } else {
+      this.mySelection.push({id: dataItem.id});
+    }
   }
 
 }

@@ -90,7 +90,6 @@ export class ServerService {
             //   resolve(result.header);
             // }
         }, error => {
-          alert();
           console.log(error);
         });
       }
@@ -125,5 +124,27 @@ export class ServerService {
   // public checkResponse(header: Header): boolean {
   //   return header.result;
   // }
+
+  public signin(userName: string, passwork: string, value?) {
+    const headers = new HttpHeaders({
+          'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+          'Authorization': 'Basic Auth '
+        });
+    const obj = {
+      grant_type: 'password',
+      username: userName,
+      password: passwork,
+      client_id: 'spring-security-oauth2-read-write-client'
+    };
+
+    const uri = this.bizserverUrl + '/oauth/token';
+    this.httpClient.post(uri, obj, {
+      headers
+    }).subscribe( res => {
+        console.log('rest token', res);
+    }, error => {
+      console.log(error);
+    });
+  }
 
 }

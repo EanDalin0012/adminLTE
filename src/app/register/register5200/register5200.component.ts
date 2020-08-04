@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ChunkSettings, ClearEvent, FileInfo, FileRestrictions, RemoveEvent, SelectEvent, SuccessEvent, UploadEvent } from '@progress/kendo-angular-upload';
-import { MainCategoryList } from 'src/app/shared/class-tr/classtr-main-category-list';
 import { ResponseData } from 'src/app/shared/class-tr/classtr-res-data';
 import { MainCategory } from 'src/app/shared/Class/class-main-category';
 import { BTN_ROLES, LOGO_FILE_EXT } from 'src/app/shared/constants/common.const';
@@ -102,17 +101,20 @@ export class Register5200Component implements OnInit {
   async ngOnInit() {
     if (this.modal) {
       console.log(this.modal.message);
-      this.subCateId   = await this.modal.message.subCategoryId;
-      this.mainCateId  = await this.modal.message.mainCategoryId;
-      this.proName     = await this.modal.message.productName;
-      this.description = await this.modal.message.description;
-      this.productId   = await this.modal.message.productId;
+      this.subCateId          =  this.modal.message.subCategoryId;
+      this.mainCateId         =  this.modal.message.mainCategoryId;
+      this.proName            =  this.modal.message.productName;
+      this.description        =  this.modal.message.description;
+      this.productId          =  this.modal.message.productId;
+      this.resourceFileInfoId = this.modal.message.resourceFileInfoId;
+
       this.imagePreviews = {
         name: 'three.jpg',
         src: 'http://127.0.0.1:8080/api/file/images/resources/' + this.modal.message.resourceFileInfoId ,
         size: 1000,
         uid: 1
       };
+
     }
 
     this.uploadSaveUrl = environment.bizServer.server + this.api;
@@ -122,6 +124,7 @@ export class Register5200Component implements OnInit {
     this.translate.get('Home8100').subscribe((res) => {
       this.translateTxt = res;
      });
+
     this.inquirySubCategory();
     this.inquiryMainCategory();
 
@@ -162,20 +165,21 @@ export class Register5200Component implements OnInit {
     }
   }
 
-  onClickRegister() {
+  onClickUpdate() {
+    console.log(this.subCategoryInfo);
     if (this.isValid() === true) {
-      const trReq                = new ProductRequest();
-      trReq.body.subCateId       = this.subCategoryId;
-      trReq.body.proName         = this.proName;
-      trReq.body.description     = this.description;
-      trReq.body.createBy        = Utils.getUserInfo().id;
+      const trReq                   = new ProductRequest();
+      trReq.body.subCateId          = this.subCategoryInfo.id;
+      trReq.body.proName            = this.proName;
+      trReq.body.description        = this.description;
+      trReq.body.createBy           = Utils.getUserInfo().id;
       trReq.body.resourceFileInfoId = this.resourceFileInfoId;
       trReq.body.proId              = this.productId;
       const api = '/api/product/update';
       this.serverService.HTTPRequest(api, trReq).then(rest => {
         const response = rest as ResponseData;
         if ( this.serverService.checkResponse(response.header) === true) {
-          this.modal.close( {close: BTN_ROLES.SAVE});
+          this.modal.close( {close: BTN_ROLES.EDIT});
         }
       });
     }
@@ -193,14 +197,14 @@ export class Register5200Component implements OnInit {
   isValid(): boolean {
       const mainCategoryText = this.translateTxt.LABEL.MAIN_CATEGORY_ID;
       const subText = this.translateTxt.LABEL.SUB_CATEGORY_NAME;
-      if (!this.mainCategoryInfo) {
+      if (!this.mainCategoryInfo.id) {
         const bool = this.modalService.messageAlert(mainCategoryText);
         return bool;
       }
 
-      if ( !this.subCategoryInfo || !this.subCategoryId) {
+      if ( !this.subCategoryInfo.id) {
         const bool = this.modalService.messageAlert(subText);
-        this.subCate.nativeElement.focus();
+        // this.subCate.nativeElement.focus();
         return bool;
       }
 
@@ -260,6 +264,7 @@ export class Register5200Component implements OnInit {
 
   successEventHandler(e: SuccessEvent) {
     const responseData = e.response.body;
+    console.log(responseData);
     if (responseData) {
       if  (responseData.header.result === true) {
         this.resourceFileInfoId = responseData.body.id;
