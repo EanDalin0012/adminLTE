@@ -82,7 +82,7 @@ import { UploadModule } from '@progress/kendo-angular-upload';
   ]
 })
 export class SBSharedModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<SBSharedModule> {
     return {
       ngModule: SBSharedModule,
       providers: []

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SignComponent } from './sign/sign.component';
 import { Sign1000Component } from './sign1000/sign1000.component';
 import { SignRoutingModule } from './sign-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { SignRoutingModule } from './sign-routing.module';
   ],
   imports: [
     CommonModule,
-    SignRoutingModule
+    SignRoutingModule,
+    FormsModule
   ]
 })
 export class SignModule {

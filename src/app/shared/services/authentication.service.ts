@@ -20,15 +20,19 @@ export class AuthentcatiionService {
 
   public login(auth: AuthentcatiionRequest, basicAuth?: BasicAuth) {
 
+    let credentail: BasicAuth;
+
     if (!basicAuth) {
       console.log('basic auth is undefind');
-      basicAuth.Username = 'spring-security-oauth2-read-write-client';
-      basicAuth.password = 'spring-security-oauth2-read-write-client-password1234';
+      credentail = {
+        Username: 'spring-security-oauth2-read-write-client',
+        password: 'spring-security-oauth2-read-write-client-password1234'
+      };
     }
 
     if (!auth.client_id) {
       console.log('client id is undefind');
-      auth.client_id = 'client_id';
+      auth.client_id = 'spring-security-oauth2-read-write-client';
     }
 
     if (!auth.grant_type) {
@@ -38,16 +42,14 @@ export class AuthentcatiionService {
 
     const api = '/oauth/token';
     const uri = this.bizserverUrl + api;
-    const basicAuthUserName = '';
-    const basicAuthPassword = '';
-    const btoa = 'Basic' + window.btoa(basicAuth.Username + ':' + basicAuth.password);
+    const btoa = 'Basic' + window.btoa(credentail.Username + ':' + credentail.password);
 
     const httpOptionsObj = {
       'Content-Type': 'application/json',
       Authorization: btoa
     };
 
-    console.log(auth, basicAuth);
+    console.log(auth, credentail);
     this.httpClient.post(uri, JSON.stringify(auth), {
       headers: new HttpHeaders(httpOptionsObj)
     }).subscribe(response => {

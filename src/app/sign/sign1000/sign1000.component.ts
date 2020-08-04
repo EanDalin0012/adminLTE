@@ -11,7 +11,6 @@ declare var $;
 })
 export class Sign1000Component implements OnInit {
 
-  authenticationObj: AuthentcatiionRequest;
   userName: string;
   password: string;
 
@@ -39,10 +38,12 @@ export class Sign1000Component implements OnInit {
 
   onClickLogin() {
 
-    this.authenticationObj.username = this.userName;
-    this.authenticationObj.password = this.password;
+    const authenticationObj: AuthentcatiionRequest = {
+      username: this.userName,
+      password: this.password
+    };
 
-    this.authentcatiionService.login(this.authenticationObj);
+    this.authentcatiionService.login(authenticationObj);
     /* const userInfo = new User();
     userInfo.id = 1;
     userInfo.firstName = 'dalin',
