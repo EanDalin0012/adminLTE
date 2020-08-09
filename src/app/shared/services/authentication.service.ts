@@ -43,7 +43,7 @@ export class AuthentcatiionService {
     const api = '/oauth/token';
     const uri = this.bizserverUrl + api;
     const btoa = 'Basic' + window.btoa(credentail.Username + ':' + credentail.password);
-
+    // test
     const httpOptionsObj = {
       'Content-Type': 'application/json',
       Authorization: btoa
@@ -58,6 +58,7 @@ export class AuthentcatiionService {
     });
   }
 }
+
 
 export interface BasicAuth {
   Username: string;
