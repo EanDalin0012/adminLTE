@@ -44,20 +44,8 @@ export class Sign1000Component implements OnInit {
     };
 
     this.authentcatiionService.login(authenticationObj);
-    /* const userInfo = new User();
-    userInfo.id = 1;
-    userInfo.firstName = 'dalin',
-    userInfo.lastName = 'ean';
-    userInfo.age      = 12;
-    userInfo.birtDate = '20201010';
-    userInfo.createBy = 1;
-    userInfo.modifyBy = 1;
-    userInfo.email = 'eandalined@gmail.com';
-    userInfo.imgId = 1;
-    userInfo.phone = '096655879';
-    userInfo.gender = Gender.FEMALE;
-    userInfo.modifyDate = '20201010';
-
+    
+    /* 
     Utils.setSecureStorage( LOCAL_STORAGE.USER_INFO, userInfo);
     console.log(Utils.getSecureStorage( LOCAL_STORAGE.USER_INFO));
     const newAesInfo: any = Utils.getSecureStorage(AES_INFO.STORE) || {};

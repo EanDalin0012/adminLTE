@@ -11,6 +11,7 @@ import { SupplierList } from '../class-tr/classtr-res-supplier-list';
 import { CompanyList } from '../class-tr/classtr-company-list';
 import { Product } from '../class/class-product';
 import { ProductResponse } from '../class-tr/classtr-res-product';
+import { UserInfoRequest } from '../class-tr/classtr-user-info-req';
 
 
 @Injectable({
@@ -89,6 +90,23 @@ export class RequestDataService {
     return new Promise((resolve, reject) => {
       const trReq = new RequestData();
       const api = '/api/product/getProductList';
+      this.serverService.HTTPRequest(api, trReq).then(res => {
+        const response = res as ProductResponse;
+        if (this.serverService.checkResponse(response.header)) {
+          resolve(response.body.list);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  requestUserInfo(user_name: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const trReq = new UserInfoRequest();
+      trReq.body.userName = user_name;
+
+      const api = '/api/user/info';
       this.serverService.HTTPRequest(api, trReq).then(res => {
         const response = res as ProductResponse;
         if (this.serverService.checkResponse(response.header)) {

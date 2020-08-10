@@ -5,9 +5,9 @@ import { LayoutBlankComponent } from './layout/layout-blank/layout-blank.compone
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '', redirectTo: '/singin', pathMatch: 'full'},
   {path: 'main', component: LayoutComponent, loadChildren: './module/module.module#MModule'},
-  {path: 'login', component: LayoutBlankComponent, loadChildren: './sign/sign.module#SignModule'},
+  {path: 'singin', component: LayoutBlankComponent, loadChildren: './sign/sign.module#SignModule'},
 ];
 
 @NgModule({

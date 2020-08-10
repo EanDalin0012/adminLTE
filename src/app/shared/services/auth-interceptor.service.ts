@@ -57,27 +57,6 @@ export class AuthInterceptor implements HttpInterceptor {
       }
     }
 
-    // console.log("AuthInterceptor intercept req => " + JSON.stringify(req.url));
-    // console.log("AuthInterceptor intercept req => " + JSON.stringify(req.url.includes('/assets')));
-
-    // Ignore path
-    if (req.url.indexOf('/assets') === -1 && req.url.indexOf('/security_check') === -1 && req.url.indexOf('/RSA') === -1 && req.url.indexOf('/AES') === -1) {
-      // console.log("Communicate Start.");
-      // $("div.loading").removeClass("none");
-      if (!this.authService.hasSession()) {
-        // clonedRequest = req.clone({ headers: req.headers
-        //   .append( 'Authorization', 'Bearer ' + this.authService.getAccessToken())
-        //   .append( 'X-Requested-With', 'XMLHttpRequest')});
-        this.showErrMsg('NOTLOGIN');
-        return;
-      }
-
-    }
-
-    // let clonedRequest = null;
-    // clonedRequest = req.clone({ headers: req.headers});
-    // acccess token header append
-
     // console.log('new headers', clonedRequest.headers.keys());
     return next.handle(req).timeout(this.timeoutmillsec)
     .map(event => {
@@ -112,7 +91,7 @@ export class AuthInterceptor implements HttpInterceptor {
       })
     )
     .catch((error: HttpErrorResponse) => {
-
+      console.log('error', error);
       // intercept the respons error and displace it to the console
       // console.log('Error Occurred');
       // console.log('Error Occurred => ' + JSON.stringify(error));

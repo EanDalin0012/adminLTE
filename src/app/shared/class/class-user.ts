@@ -7,9 +7,9 @@ export class User extends commonClass {
   lastName: string;
   birtDate: string;
   gender: Gender;
-  age: number;
-  imgId: number;
+  resourceInfoId: string;
   email: string;
-  phone: string;
+  contact: string;
   description: string;
+  password: string;
 }

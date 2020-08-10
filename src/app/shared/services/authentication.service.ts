@@ -21,36 +21,34 @@ export class AuthentcatiionService {
   public login(auth: AuthentcatiionRequest, basicAuth?: BasicAuth) {
 
     let credentail: BasicAuth;
-
+  
     if (!basicAuth) {
-      console.log('basic auth is undefind');
       credentail = {
         Username: 'spring-security-oauth2-read-write-client',
         password: 'spring-security-oauth2-read-write-client-password1234'
       };
     }
 
-    if (!auth.client_id) {
-      console.log('client id is undefind');
-      auth.client_id = 'spring-security-oauth2-read-write-client';
-    }
-
-    if (!auth.grant_type) {
-        console.log('grant-type is undefind');
-        auth.grant_type = 'password';
-    }
+    auth.client_id = 'spring-security-oauth2-read-write-client';
+    auth.grant_type = "password";
+    auth.username = 'admin';
+    auth.password = 'admin1234';
 
     const api = '/oauth/token';
     const uri = this.bizserverUrl + api;
-    const btoa = 'Basic' + window.btoa(credentail.Username + ':' + credentail.password);
+    const btoa = 'Basic ' + window.btoa(credentail.Username + ':' + credentail.password);
     // test
     const httpOptionsObj = {
-      'Content-Type': 'application/json',
-      Authorization: btoa
+      "Authorization": btoa
     };
 
-    console.log(auth, credentail);
-    this.httpClient.post(uri, JSON.stringify(auth), {
+    const formData = new FormData();
+    formData.append('client_id', 'spring-security-oauth2-read-write-client');
+    formData.append('grant_type', 'password');
+    formData.append('username', 'admin');
+    formData.append('password', 'admin123');
+
+    this.httpClient.post(uri, formData, {
       headers: new HttpHeaders(httpOptionsObj)
     }).subscribe(response => {
 
