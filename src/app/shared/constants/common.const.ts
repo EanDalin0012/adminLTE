@@ -60,7 +60,8 @@ export enum LOCAL_STORAGE {
     LANGUAGE_CODE   = 'languageCode',
     I18N            = 'i18n',
     LAST_EVENT_TIME = 'lastEventTime',
-    LAST_TIME_CHECK_NOTIFICATION = 'theLastTimeCheckNotification'
+    LAST_TIME_CHECK_NOTIFICATION = 'theLastTimeCheckNotification',
+    Authorization   = 'Authorization'
 }
 
 export enum BUTTON_ROLE {

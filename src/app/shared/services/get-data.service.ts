@@ -103,14 +103,15 @@ export class RequestDataService {
 
   requestUserInfo(user_name: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      const trReq = new UserInfoRequest();
-      trReq.body.userName = user_name;
-
-      const api = '/api/user/info';
-      this.serverService.HTTPRequest(api, trReq).then(res => {
-        const response = res as ProductResponse;
+      const api = '/api/user/load_user?user_name=admin';
+      const obj = {
+        'user_name': user_name
+      }
+      this.serverService.HTTPget(api, obj).then(_res => {
+        const response = _res as ProductResponse;
+        console.log('user info', _res);
         if (this.serverService.checkResponse(response.header)) {
-          resolve(response.body.list);
+          resolve(response.body);
         } else {
           reject();
         }

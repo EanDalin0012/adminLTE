@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import * as $ from 'jquery';
 import { ModalService } from './modal.service';
 import { Header } from '../Class/class-header';
@@ -7,6 +7,7 @@ import { Utils } from '../utils/utils.static';
 import { AES_INFO, LOCAL_STORAGE } from '../constants/common.const';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Injectable({
@@ -26,7 +27,8 @@ export class ServerService {
   constructor(
     private httpClient: HttpClient,
     private modalService: ModalService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {
     // this.bizserverUrl = environment.bizMOBServer + '/bizmob.iocare/';
     this.bizserverUrl = environment.bizMOBServer;
@@ -68,9 +70,27 @@ export class ServerService {
       } else {
         $('div.loading').addClass('none');
         $('body').removeClass('loaded');
+        
+        let authorization = Utils.getSecureStorage(LOCAL_STORAGE.Authorization);
+        const access_token = authorization.access_token;
+        if (!access_token) {
+          this.modalService.alert({
+            content: '',
+            btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
+            callback: _res => {
+              Utils.removeSecureStorage(LOCAL_STORAGE.Authorization);
+              Utils.removeSecureStorage(LOCAL_STORAGE.USER_INFO);
+              this.router.navigate(['/singin']);
+            }
+          });
+          return;
+        }
+
         const httpOptionsObj = {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'authorization': access_token
         };
+
         const uri = this.bizserverUrl + api;
         this.httpClient.post(uri, JSON.stringify(TrClass), {
           headers: new HttpHeaders(httpOptionsObj)
@@ -98,9 +118,29 @@ export class ServerService {
    }
 
 
-  public PPCBHTTPget(api) {
-    const uri = this.bizserverUrl + api;
-    this.httpClient.get(uri, this.httpOptions).subscribe(rest => {
+  public HTTPget(api, obj?: any): Promise<any> {
+    return new Promise((resolve, reject) =>{
+      const uri = this.bizserverUrl + api;
+    
+      let authorization = Utils.getSecureStorage(LOCAL_STORAGE.Authorization);
+      const access_token = authorization.access_token;
+  
+      if (!access_token) {
+        this.modalService.alert({
+          content: '',
+          btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
+          callback: _res => {
+
+          }
+        });
+        return;
+      }
+  
+      const headers = { 'Authorization': 'Bearer ' + access_token }
+      console.log(headers);
+      this.httpClient.get(uri, {headers}).subscribe(rest => {
+        resolve(rest)
+      });
     });
   }
 

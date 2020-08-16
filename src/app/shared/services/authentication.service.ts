@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ModalService } from './modal.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { RequestDataService } from './get-data.service';
+import { Utils } from '../utils/utils.static';
+import { LOCAL_STORAGE } from '../constants/common.const';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +17,25 @@ export class AuthentcatiionService {
   constructor(
     private httpClient: HttpClient,
     private modalService: ModalService,
-    private router: Router
+    private router: Router,
+    private dataService: RequestDataService,
+    private translate: TranslateService
   ) {
     this.bizserverUrl = environment.bizMOBServer;
   }
 
   public login(auth: AuthentcatiionRequest, basicAuth?: BasicAuth) {
+
+    if(!auth.username || auth.username === null) {
+      this.modalService.alert({
+        content: this.translate.instant('COMMON.MESSAGE.InValid_User_Name'),
+        btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
+        callback: res => {
+
+        }
+      });
+      return;
+    }
 
     let credentail: BasicAuth;
   
@@ -27,17 +44,14 @@ export class AuthentcatiionService {
         Username: 'spring-security-oauth2-read-write-client',
         password: 'spring-security-oauth2-read-write-client-password1234'
       };
+    } else {
+      credentail = basicAuth;
     }
-
-    auth.client_id = 'spring-security-oauth2-read-write-client';
-    auth.grant_type = "password";
-    auth.username = 'admin';
-    auth.password = 'admin1234';
 
     const api = '/oauth/token';
     const uri = this.bizserverUrl + api;
     const btoa = 'Basic ' + window.btoa(credentail.Username + ':' + credentail.password);
-    // test
+
     const httpOptionsObj = {
       "Authorization": btoa
     };
@@ -45,14 +59,19 @@ export class AuthentcatiionService {
     const formData = new FormData();
     formData.append('client_id', 'spring-security-oauth2-read-write-client');
     formData.append('grant_type', 'password');
-    formData.append('username', 'admin');
-    formData.append('password', 'admin123');
+    formData.append('username', auth.username);
+    formData.append('password', auth.password);
 
     this.httpClient.post(uri, formData, {
       headers: new HttpHeaders(httpOptionsObj)
-    }).subscribe(response => {
-
-        console.log('response data from AuthenticationService ', response);
+    }).subscribe(_response => {
+        console.log('response data from AuthenticationService ', _response);
+        Utils.setSecureStorage(LOCAL_STORAGE.Authorization, _response);
+        if(_response) {
+          this.dataService.requestUserInfo(auth.username).then(response =>{
+            Utils.setSecureStorage(LOCAL_STORAGE.Authorization, response);
+          });
+        }
     });
   }
 }

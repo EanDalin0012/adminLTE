@@ -26,13 +26,14 @@
             "YES": "Yes",
             "NO": "No",
             "DELETE": "Delete",
-            "ADD_NEW":"Add New",
-            "EXPORT_PDF":"Export to PDF",
-            "EXPORT_EXCEL":"Export to Excel",
-            "ADD_IMG":"add img"
+            "ADD_NEW": "Add New",
+            "EXPORT_PDF": "Export to PDF",
+            "EXPORT_EXCEL": "Export to Excel",
+            "ADD_IMG": "add img"
         },
         "MESSAGE": {
-            "INVALID_EMAIL": "Invalid Email"
+            "INVALID_EMAIL": "Invalid Email",
+            "InValid_User_Name": "Invalid use name"
         }
     },
     "Home2000": {
@@ -169,52 +170,65 @@
         }
     },
     "Register4000": {
-      "LABEL": {
-        "SUPPLIER_INQUIRY": "Supplier Inquiry"
-      }
+        "LABEL": {
+            "SUPPLIER_INQUIRY": "Supplier Inquiry"
+        }
     },
     "Register3000": {
-      "LABEL": {
-        "COMPANY":"Company",
-        "SEARCH_BY_COMPANY_NAME":"Search by company name"
-      }
+        "LABEL": {
+            "COMPANY": "Company",
+            "SEARCH_BY_COMPANY_NAME": "Search by company name"
+        }
     },
     "Register1000": {
-      "LABEL": {
-        "PRODUCT_ID":"Product ID"
-      }
+        "LABEL": {
+            "PRODUCT_ID": "Product ID"
+        }
     },
     "Register1100": {
-      "LABEL": {
-        "TITLE":"Register Main Category Information",
-        "TITLE_UPDATE":"Update Main Category Information",
-        "MAIN_CATEGORY_NAME":"Main Category Name"
-      },
-      "HOLDER": {
-        "PLEASE_ENTER_SUPLIER_NAME":"Enter suplier name"
-      }
+        "LABEL": {
+            "TITLE": "Register Main Category Information",
+            "TITLE_UPDATE": "Update Main Category Information",
+            "MAIN_CATEGORY_NAME": "Main Category Name"
+        },
+        "HOLDER": {
+            "PLEASE_ENTER_SUPLIER_NAME": "Enter suplier name"
+        }
     },
-    "Register2000":{
-      "HOLDER": {
-        "SEARCH_BY_SUB_CATEGORY_NAME":"Search by sub category name"
-      }
+    "Register2000": {
+        "HOLDER": {
+            "SEARCH_BY_SUB_CATEGORY_NAME": "Search by sub category name"
+        }
     },
     "Register5000": {
-      "LABEL": {
-        "PRODUCT_MANAGEMENT":"Product Management",
-        "PRODUCT_NAME":"Product Name",
-        "SUB_CATEGORY_NAME":"Sub Category Name",
-        "SEARCH_BY_PRODUCT_NAME":"Search by product name",
-        "IMAGES":"Images"
-      },
-      "HOLDER": {
-        "ENTER_PRODUCT_NAME":"Enter product Name"
-      }
+        "LABEL": {
+            "PRODUCT_MANAGEMENT": "Product Management",
+            "PRODUCT_NAME": "Product Name",
+            "SUB_CATEGORY_NAME": "Sub Category Name",
+            "SEARCH_BY_PRODUCT_NAME": "Search by product name",
+            "IMAGES": "Images"
+        },
+        "HOLDER": {
+            "ENTER_PRODUCT_NAME": "Enter product Name"
+        }
     },
     "Register5100": {
         "MESSAGE": {
-          "ENTER_PRODUCT_NAME":"Enter product name",
-          "SELECT_PRODUCT_IMAGE":"select product image"
+            "ENTER_PRODUCT_NAME": "Enter product name",
+            "SELECT_PRODUCT_IMAGE": "select product image"
+        }
+    },
+    "ANNOUNCE": {
+        "COMPANY": "PPCBank smartBiz",
+        "TITLE": "Sorry",
+        "BUTTON": "Go to home",
+        "ERROR4": {
+            "LINE1": "We can't seem to find the page",
+            "LINE2": "you're looking for."
+        },
+        "ERROR5": {
+            "LINE1": "Looks like we're having",
+            "LINE2": "come server issues."
         }
     }
 }

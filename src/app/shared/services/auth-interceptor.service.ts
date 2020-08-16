@@ -92,12 +92,7 @@ export class AuthInterceptor implements HttpInterceptor {
     )
     .catch((error: HttpErrorResponse) => {
       console.log('error', error);
-      // intercept the respons error and displace it to the console
-      // console.log('Error Occurred');
-      // console.log('Error Occurred => ' + JSON.stringify(error));
-      // Access Token
-      // ------------------------------------------------------------------
-      // ------------------------------------------------------------------
+
       $('div.loading').addClass('none');
       environment.production ? (() => '')() : console.log(req.url + ' reqeusting failed. ' );
       // console.log("Http Response Error");
@@ -113,29 +108,31 @@ export class AuthInterceptor implements HttpInterceptor {
 
       console.log(error.status + ' : ' + error.statusText);
       environment.production ? (() => '')() : console.log(error.name + ' : ' + error.message);
-      // if (error.status >= 400 && error.status < 500) {
-      //   this.zone.run(() =>  this.router.navigate(['announce/4error']));
-      // } else if (error.status >= 500 && error.status < 600) {
-      //   this.zone.run(() =>  this.router.navigate(['announce/5error']));
-      // }
-      // else {
-      //   this.zone.run(() => this.router.navigate(['announce/5error']));
-      // }
-      //  this.showErrMsg("REQFAIL");
-      //  this.zone.run(() => this.router.navigate(['announce/5error']));
-        // else if (error.status === 0) {
-        //   this.router.navigate(['/index01']);
-        // }
-      // } else {
 
-        // this.zone.run(() => this.router.navigate(['announce/5error']));
-      // }
+      // if (error.status >= 400 && error.status < 500) {
+      //     this.zone.run(() =>  this.router.navigate(['/error403']));
+      //   } else if (error.status >= 500 && error.status < 500) {
+      //     this.zone.run(() =>  this.router.navigate(['/error404']));
+      //   } else {
+      //     this.zone.run(() => this.router.navigate(['/neterror']));
+      //   }
+      if (error && error.status === 401) {
+        this.modalService.alert({
+          // tslint:disable-next-line:max-line-length
+          title: error.error.error,
+          content:  '<p>'+ error.error.error_description+'</p>',
+          modalClass: [''],
+          btnText: 'Confirm',
+          callback: (res) => {
+          }
+        });
+      }
 
       if (error && error.error.status === 500) {
         this.modalService.alert({
           // tslint:disable-next-line:max-line-length
           content:  'message :<span class="message-alert">' + String(error.error.message).substr(0, 150) + '</span> <br/>status: <span class= "message-alert">' + error.error.status + '</span',
-          modalClass: [''],
+          modalClass: ['pop_confirm'],
           btnText: 'Confirm',
           callback: (res) => {
             return false;

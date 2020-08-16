@@ -12,6 +12,9 @@ import { LayoutComponent } from './layout/layout/layout.component';
 import { MLayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './shared/services/auth-interceptor.service';
+import { AnnounceComponent } from './announce/announce.component';
+import { Error4Component } from './announce/error4/error4.component';
+import { Error5Component } from './announce/error5/error5.component';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -21,6 +24,9 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     LayoutBlankComponent,
     LayoutComponent,
+    AnnounceComponent,
+    Error4Component,
+    Error5Component,
   ],
   imports: [
     AppRoutingModule,
