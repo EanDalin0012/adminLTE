@@ -64,14 +64,15 @@ export class AuthentcatiionService {
 
     this.httpClient.post(uri, formData, {
       headers: new HttpHeaders(httpOptionsObj)
-    }).subscribe(_response => {
-        console.log('response data from AuthenticationService ', _response);
-        Utils.setSecureStorage(LOCAL_STORAGE.Authorization, _response);
-        if(_response) {
-          this.dataService.requestUserInfo(auth.username).then(response =>{
-            Utils.setSecureStorage(LOCAL_STORAGE.Authorization, response);
-          });
-        }
+    }).subscribe(_auth => {
+        const _authorization = _auth as any;
+        if(_authorization.access_token) {
+          Utils.setSecureStorage(LOCAL_STORAGE.Authorization, _authorization);
+              this.dataService.requestUserInfo(auth.username).then(_response =>{
+              Utils.setSecureStorage(LOCAL_STORAGE.USER_INFO, _response);
+              this.router.navigate(['/main/home']);
+          }); 
+      }
     });
   }
 }

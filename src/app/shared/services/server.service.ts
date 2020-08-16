@@ -120,6 +120,9 @@ export class ServerService {
 
   public HTTPget(api, obj?: any): Promise<any> {
     return new Promise((resolve, reject) =>{
+      $('div.loading').addClass('none');
+      $('body').removeClass('loaded');
+
       const uri = this.bizserverUrl + api;
     
       let authorization = Utils.getSecureStorage(LOCAL_STORAGE.Authorization);
@@ -127,7 +130,7 @@ export class ServerService {
   
       if (!access_token) {
         this.modalService.alert({
-          content: '',
+          content: 'fadfadf',
           btnText: this.translate.instant('COMMON.BUTTON.CONFIRME'),
           callback: _res => {
 
@@ -139,6 +142,8 @@ export class ServerService {
       const headers = { 'Authorization': 'Bearer ' + access_token }
       console.log(headers);
       this.httpClient.get(uri, {headers}).subscribe(rest => {
+        $('body').addClass('loaded');
+        $('div.loading').removeClass('none');
         resolve(rest)
       });
     });

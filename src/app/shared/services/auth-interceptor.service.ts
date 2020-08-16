@@ -16,6 +16,7 @@ import { AuthService } from './auth.service';
 import { AES_INFO } from './../../shared/constants/common.const';
 import { environment } from 'src/environments/environment';
 import { Utils } from '../utils/utils.static';
+import { LOCAL_STORAGE } from '../constants/common.const';
 
 declare let CryptoJS: any;
 
@@ -48,6 +49,14 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // const url = (window.location.href).split('/');
+    // console.log('url', url);
+  //  if (url[3] === 'singin') {
+  //    alert(1);
+  //     Utils.removeSecureStorage(LOCAL_STORAGE.Authorization);
+  //     Utils.removeSecureStorage(LOCAL_STORAGE.USER_INFO);
+  //   }
+
     // tslint:disable-next-line:prefer-for-of
     for ( let idx = 0 ; idx < this.longtimeApis.length ; idx++ ) {
       if ( req.url.indexOf(this.longtimeApis[idx]) > 0 ){
@@ -126,9 +135,7 @@ export class AuthInterceptor implements HttpInterceptor {
           callback: (res) => {
           }
         });
-      }
-
-      if (error && error.error.status === 500) {
+      } else if (error && error.error.status === 500) {
         this.modalService.alert({
           // tslint:disable-next-line:max-line-length
           content:  'message :<span class="message-alert">' + String(error.error.message).substr(0, 150) + '</span> <br/>status: <span class= "message-alert">' + error.error.status + '</span',
@@ -138,8 +145,7 @@ export class AuthInterceptor implements HttpInterceptor {
             return false;
           }
         });
-      }
-      if (error && error.status === 0) {
+      } else if (error && error.status === 0) {
           this.modalService.alert({
             content:  'message : <span>Connection faile</span> status: ' + error.statusText,
             modalClass: [''],
