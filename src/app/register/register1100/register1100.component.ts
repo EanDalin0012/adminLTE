@@ -37,13 +37,13 @@ export class Register1100Component implements OnInit {
     if ( this.isValid() === true) {
       const userInfo                = Utils.getUserInfo();
       const trReq                   = new MainCategoryRequest();
-      trReq.body.mainCategoryName   = this.mainCategoryName;
+      trReq.body.name   = this.mainCategoryName;
       trReq.body.description        = this.description;
       trReq.body.createBy           = userInfo.id;
       trReq.body.modifyBy           = userInfo.id;
-      const api = '/api/main_category/save';
+      const api = '/api/main/category/save';
       this.serverService.HTTPRequest(api, trReq).then(response => {
-        if ( response.body.returnYN === 'Y') {
+        if ( response && response.body.isSuccess === 'Y') {
           this.modal.close( {close: BTN_ROLES.SAVE});
         }
       });

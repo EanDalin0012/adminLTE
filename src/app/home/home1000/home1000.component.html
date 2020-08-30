@@ -1,55 +1,55 @@
 <div class="contentsWrap contentsWrap01">
-  <!-- Navigation Tab -->
-  <div class="naviWrap">
+    <!-- Navigation Tab -->
+    <div class="naviWrap">
 
-  </div>
-  <!-- //Navigation Tab -->
-  <!-- page title -->
-  <div class="page_title">
-      <div class="breadcrumb">
-          <div class="page_navi">
-              <span>Home</span>
-              <span>Information</span>
-          </div>
-          <h1><span>Product Management</span></h1>
-      </div>
-  </div>
-  <div class="container01">
-      <div class="tableWrap" id="grid_list">
-          <kendo-chart [categoryAxis]="{categories: categories }">
-              <kendo-chart-title text="Gross domestic product growth /GDP annual %/"></kendo-chart-title>
-              <kendo-chart-legend position="bottom" orientation="horizontal"></kendo-chart-legend>
-              <kendo-chart-tooltip format="{0}%"></kendo-chart-tooltip>
-              <kendo-chart-series>
-                  <kendo-chart-series-item *ngFor="let item of series" type="line" [data]="item.data" [name]="item.name">
-                  </kendo-chart-series-item>
-              </kendo-chart-series>
-          </kendo-chart>
-      </div>
+    </div>
+    <!-- //Navigation Tab -->
+    <!-- page title -->
+    <div class="page_title">
+        <div class="breadcrumb">
+            <div class="page_navi">
+                <span>Home</span>
+                <span>Information</span>
+            </div>
+            <h1><span>Product Management</span></h1>
+        </div>
+    </div>
+    <div class="container01">
+        <div class="tableWrap" id="grid_list">
+            <kendo-chart [categoryAxis]="{categories: categories }">
+                <kendo-chart-title text="Gross domestic product growth /GDP annual %/"></kendo-chart-title>
+                <kendo-chart-legend position="bottom" orientation="horizontal"></kendo-chart-legend>
+                <kendo-chart-tooltip format="{0}%"></kendo-chart-tooltip>
+                <kendo-chart-series>
+                    <kendo-chart-series-item *ngFor="let item of series" type="line" [data]="item.data" [name]="item.name">
+                    </kendo-chart-series-item>
+                </kendo-chart-series>
+            </kendo-chart>
+        </div>
 
-      <div class="add-btn btn-css">
-          <span>Add New</span>
-      </div>
+        <div class="add-btn btn-css">
+            <span>Add New</span>
+        </div>
 
-      <div class="btn-css test">
-          <span>Add New</span>
-      </div>
-      <div class="iam-btn-container mbr_introContent">
-          <button class="iam-button">{{'COMMON.LABEL.SORT' | translate}}</button>
-      </div>
+        <div class="btn-css test">
+            <span>Add New</span>
+        </div>
+        <div class="iam-btn-container mbr_introContent">
+            <button class="iam-button">{{'COMMON.LABEL.SORT' | translate}}</button>
+        </div>
 
-      <kendo-datepicker [format]="'dd/MM/yyyy'" [topView]="'year'" [navigation]="false" [value]="value" required>
-      </kendo-datepicker>
+        <kendo-datepicker [format]="'dd/MM/yyyy'" [topView]="'year'" [navigation]="false" [value]="value" required>
+        </kendo-datepicker>
 
-      <kendo-dropdownlist [data]="countryList" [filterable]="true" [textField]="'name'" [valueField]="'countryCode'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="country" [ngModelOptions]="{standalone:
+        <kendo-dropdownlist [data]="countryList" [filterable]="true" [textField]="'name'" [valueField]="'countryCode'" [kendoDropDownFilter]="filterSettings" [popupSettings]="{ popupClass: 'search_filter_pop' }" [(ngModel)]="country" [ngModelOptions]="{standalone:
         true}" [defaultItem]="defaultCountry" (valueChange)="setBankName(country)" (click)="countryClass()">
-          <ng-template kendoDropDownListValueTemplate let-dataItem>
-              <span class="template">{{ dataItem.name | translate}}</span>
-          </ng-template>
-          <ng-template kendoDropDownListItemTemplate let-dataItem>
-              <span class="template">{{ dataItem.name | translate }}</span>
-          </ng-template>
-      </kendo-dropdownlist>
+            <ng-template kendoDropDownListValueTemplate let-dataItem>
+                <span class="template">{{ dataItem.name | translate}}</span>
+            </ng-template>
+            <ng-template kendoDropDownListItemTemplate let-dataItem>
+                <span class="template">{{ dataItem.name | translate }}</span>
+            </ng-template>
+        </kendo-dropdownlist>
 
-  </div>
+    </div>
 </div>

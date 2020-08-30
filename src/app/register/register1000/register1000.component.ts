@@ -72,7 +72,7 @@ list: Array<MainCategory>;
 public containerRef: ViewContainerRef;
 // selection row get data
 public mySelection: any[] = [];
-public pageSize = 10;
+public pageSize = 5;
 public skip = 0;
 statusSuppling = SUPPLYING_STATUS_CODE;
 IDList = new Array<IDDto>();
@@ -161,9 +161,8 @@ public rowCallback = (context: RowClassArgs) => {
 
   inquiry() {
     const trReq = new RequestData();
-    const api = '/api/main_category/getList';
-    console.log('post request', trReq);
-    this.serverService.HTTPRequest(api, trReq).then(resp => {
+    const api = '/api/main/category/get/list';
+    this.serverService.HTTPget(api).then(resp => {
       console.log(resp);
       const response   = resp as MainCategoryList;
       if (this.serverService.checkResponse(response.header)) {
@@ -251,7 +250,7 @@ public rowCallback = (context: RowClassArgs) => {
     let name = '';
     this.list.forEach(element => {
       if (element.id === val) {
-        name = element.mainCategoryName + '(' + element.id + ')';
+        name = element.name + '(' + element.id + ')';
       }
     });
     return name;
@@ -265,7 +264,7 @@ public rowCallback = (context: RowClassArgs) => {
 
   onChangeSearch(event) {
     if (event) {
-      const resultSearch  = this.list.filter( data => data.mainCategoryName.toLowerCase().includes(event.target.value));
+      const resultSearch  = this.list.filter( data => data.name.toLowerCase().includes(event.target.value));
       this.totalRecord    = resultSearch.length;
       this.loadingData(resultSearch);
     }

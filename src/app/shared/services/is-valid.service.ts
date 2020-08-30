@@ -17,7 +17,7 @@ export class IsValidModelService {
 
   public isValidMainCategory(mainCategory: MainCategory): Promise<boolean> {
     return new Promise( (resolve) => {
-      if (!mainCategory.mainCategoryName || mainCategory.mainCategoryName === undefined) {
+      if (!mainCategory.name || mainCategory.name === undefined) {
           this.alertMessage(this.translate.instant('Home7100.MESSAGE_ERROR.MAIN_CATEGORY_REQUEIRED')).then( rest => {
             resolve(rest);
           });

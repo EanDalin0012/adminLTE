@@ -4,7 +4,7 @@ export class MainCategoryRequest {
   header =  new Header();
   body = {
     id: 0,
-    mainCategoryName: '',
+    name: '',
     description: '',
     createBy: 0,
     modifyBy: 0,

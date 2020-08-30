@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Utils } from '../utils/utils.static';
-import { AES_INFO } from '../constants/common.const';
+import { AES_INFO, LOCAL_STORAGE } from '../constants/common.const';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class AuthService {
     private router: Router
   ) {}
   public setLastEventTime(): void {
-    Utils.setSecureStorage('lastEventTime', String(new Date().getTime()));
+    Utils.setSecureStorage(LOCAL_STORAGE.LAST_EVENT_TIME, String(new Date().getTime()));
   }
 
   public isEventTimeOver(time?: number): boolean {

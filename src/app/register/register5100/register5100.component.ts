@@ -35,7 +35,7 @@ export class Register5100Component implements OnInit {
   valuePrimitiveMainCategory: boolean;
   defaultMainCategoryInfo: MainCategory = {
     id: 0,
-    mainCategoryName: 'Select Main Category',
+    name: 'Select Main Category',
     description: null,
     createBy: null,
     modifyBy: null,

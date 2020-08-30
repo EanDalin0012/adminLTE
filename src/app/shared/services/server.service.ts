@@ -49,7 +49,7 @@ export class ServerService {
 
   public HTTPRequest(api, TrClass: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      const aesInfo: any = Utils.getSecureStorage(AES_INFO.STORE) || {};
+      const aesInfo: any = Utils.getSecureStorage(LOCAL_STORAGE.LAST_EVENT_TIME) || {};
       console.log(aesInfo.timestamp);
       if (aesInfo && new Date().getTime() - aesInfo.timestamp > environment.autoLogoutTime) {
 
@@ -88,7 +88,7 @@ export class ServerService {
 
         const httpOptionsObj = {
           'Content-Type': 'application/json',
-          'authorization': access_token
+          'Authorization': 'Bearer '+access_token
         };
 
         const uri = this.bizserverUrl + api;

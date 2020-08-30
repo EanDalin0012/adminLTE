@@ -44,15 +44,13 @@ export class Register1200Component implements OnInit {
       const userInfo              = Utils.getUserInfo();
       const trReq                 = new MainCategoryRequest();
       trReq.body.id               = this.id;
-      trReq.body.mainCategoryName = this.mainCategoryName;
+      trReq.body.name             = this.mainCategoryName;
       trReq.body.description      = this.description;
-      trReq.body.createBy         = userInfo.id;
-      trReq.body.modifyBy         = userInfo.id;
 
-      const api = '/api/main_category/update';
+      const api = '/api/main/category/update';
 
       this.serverService.HTTPRequest(api, trReq).then( response => {
-          if ( response.body.returnYN === 'Y') {
+          if ( response && response.body.isSuccess === 'Y') {
             this.modal.close( {close: BTN_ROLES.EDIT});
           }
       });
@@ -64,7 +62,7 @@ export class Register1200Component implements OnInit {
   setDataEdit() {
     if (this.modal) {
       this.id = this.modal.message.id;
-      this.mainCategoryName = this.modal.message.mainCategoryName;
+      this.mainCategoryName = this.modal.message.name;
       this.description      = this.modal.message.description;
     }
 
