@@ -7,9 +7,9 @@ import { Error5Component } from './announce/error5/error5.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/singin', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'main', component: LayoutComponent, loadChildren: './module/module.module#MModule'},
-  {path: 'singin', component: LayoutBlankComponent, loadChildren: './sign/sign.module#SignModule'},
+  {path: 'login', component: LayoutBlankComponent, loadChildren: './sign/sign.module#SignModule'},
   
   { path: 'announce/4error', component: Error4Component },
   { path: 'announce/5error', component: Error5Component },
