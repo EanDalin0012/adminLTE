@@ -83,7 +83,6 @@ public selectedCallback = (args) => args.dataItem;
 
   ngOnInit() {
     const url = (window.location.href).split('/');
-    console.log(url);
     this.dataService.visitMessage(url[5]);
     this.search = '';
     this.inquiry();

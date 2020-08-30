@@ -153,7 +153,7 @@ export class ServerService {
       if (header) {
         if ( header.result === false) {
           this.modalService.alert({
-            content: header.msg,
+            content: header.message,
             modalClass: [''],
             btnText: 'Confirm',
             callback: (res) => {

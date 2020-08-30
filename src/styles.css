@@ -6042,3 +6042,11 @@ kendo-upload div:nth-child(0) {
     font-weight: 900;
     color: #000;
 }
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}

@@ -1,8 +1,9 @@
 import { Gender } from '../constants/common.const';
-export class UserInfo {
+import { commonClass } from './class-commondto';
+export class UserInfo extends commonClass {
     id: number;
     account_expired: boolean;
-    account_load: boolean;
+    account_locked: boolean;
     credentials_expired: boolean;
     enabled: boolean;
     user_name: string;

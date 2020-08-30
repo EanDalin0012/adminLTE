@@ -230,5 +230,15 @@
             "LINE1": "Looks like we're having",
             "LINE2": "come server issues."
         }
+    },
+    "User1000": {
+        "LABEL": {
+            "Account_Expired": "Account Expired",
+            "Enabled": "Enabled",
+            "User_Name": "User Name",
+            "Account_Locked": "Account Locked",
+            "Credentials_Expired": "Credentials Expired"
+        }
+
     }
 }

@@ -3,20 +3,17 @@ import { Utils } from '../utils/utils.static';
 import { CHANNEL, LANGUAGE } from '../constants/common.const';
 
 export class Header {
-  msg = '';
-  sessionId = '';
-  authData = '';
-  userID = 0;
-  languageCode = '';
+  message         = '';
+  userID          = 0;
+  languageCode    = '';
   channelTypeCode = '';
-  result = true;
+  result          = true;
 
   constructor(
     ) {
-      this.channelTypeCode = CHANNEL.ADMIN;
-      this.languageCode = this.getI18N();
-      console.log('localLangCode', this.languageCode);
-      const userinfo = Utils.getSecureStorage('userInfo');
+      this.channelTypeCode  = CHANNEL.ADMIN;
+      this.languageCode     = this.getI18N();
+      const userinfo        = Utils.getSecureStorage('userInfo');
       if (userinfo) {
             this.userID = userinfo.id;
       }

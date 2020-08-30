@@ -9,6 +9,7 @@ import { Role1100Component } from './role1100/role1100.component';
 import { UserRole1000Component } from './user-role1000/user-role1000.component';
 import { Role1000Component } from './role1000/role1000.component';
 import { User2000Component } from './user2000/user2000.component';
+import { SBSharedModule } from '../shared/sbshare.module';
 
 
 
@@ -25,7 +26,8 @@ import { User2000Component } from './user2000/user2000.component';
   ],
   imports: [
     CommonModule,
-    UserManagementRoutingModule
+    UserManagementRoutingModule,
+    SBSharedModule
   ],
   entryComponents: [
     User1100Component,
