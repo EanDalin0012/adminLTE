@@ -8,7 +8,7 @@ import { User2000Component } from './user2000/user2000.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'user', pathMatch: 'full'},
-  { path: 'user', component: User1000Component },
+  { path: 'user-account', component: User1000Component },
   { path: 'role', component: Role1000Component },
   { path: 'user-role', component: UserRole1000Component },
   { path: 'user-lock', component: User2000Component },

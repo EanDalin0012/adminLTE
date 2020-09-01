@@ -113,6 +113,9 @@ export class SideNavComponent implements OnInit {
       case '3000': // setting
         url += `home/${URLCODE[urlCode]}`;
         break;
+      case 'User1000': // setting
+        url += `user-management/${URLCODE[urlCode]}`;
+        break;
     }
     this.router.navigate([url]);
   }

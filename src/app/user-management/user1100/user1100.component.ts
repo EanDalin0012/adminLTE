@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class User1100Component implements OnInit {
 
+  modal;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.modal);
   }
 
+  close() {
+
+  }
+
+  update() {
+    
+  }
 }

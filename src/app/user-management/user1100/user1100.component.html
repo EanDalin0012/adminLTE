@@ -1,1 +1,46 @@
-<p>user1100 works!</p>
+<div class="contentsWrap" style="height: auto;">
+    <div class="container01">
+        <div class="web_container">
+            <!-- header -->
+            <div class="pop_header">
+                <h1>{{'Register1100.LABEL.TITLE' | translate}}</h1>
+                <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
+            </div>
+            <!-- //header -->
+            <table class="table02">
+                <colgroup>
+                    <col style="width:16.666%;" span="6" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">User Name</th>
+                        <td colspan="5"><strong>User Name</strong></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Enable</th>
+                        <td>Enable</td>
+                        <th scope="row">Account Lock</th>
+                        <td>Account Lock</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Credentials Expired</th>
+                        <td>Credentials Expired</td>
+                        <th scope="row">Account Expired</th>
+                        <td>Account Expired</td>
+                    </tr>
+
+            </table>
+
+        </div>
+        <!-- footer -->
+        <div class="c_btn">
+            <div class="add-close  btn-css margin-right-btn-clos" (click)="close()">
+                <span>{{'COMMON.BUTTON.CLOSE' | translate}}</span>
+            </div>
+            <div class="iam-btn-container mbr_introContent" style="display: inline-block;">
+                <button class="iam-button save" (click)="update()">{{'COMMON.BUTTON.SAVE' | translate}}</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -253,7 +253,7 @@ input[type=file],
     background-color: rgb(232, 240, 254);
     /* background:#eff2f5; */
     display: inline-block;
-    height: 40px;
+    /* height: 40px; */
     margin: 0;
     padding: 3px 12px;
     font-weight: normal;
@@ -5904,6 +5904,7 @@ kendo-dialog.testing {
 .content-wrapper {
     min-height: 1302.2px;
     height: 100vh;
+    background-color: #eaeff8;
 }
 
 .export {
@@ -6049,4 +6050,16 @@ kendo-upload div:nth-child(0) {
 
 .float-left {
     float: left;
+}
+
+.login-box-body,
+.register-box-body {
+    border-radius: 1px;
+    -webkit-box-shadow: 0 3px 5px rgb(78 113 182 / 26%);
+    box-shadow: 0 3px 5px rgb(78 113 182 / 26%);
+}
+
+.display-block,
+.display_block {
+    display: block;
 }

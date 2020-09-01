@@ -7,6 +7,8 @@ import { UserDataResponse } from '../../shared/class-tr/classtr-res-user-data';
 import { UserInfo } from '../../shared/class/class-user-info';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { GridDataResult, SelectableSettings, PageChangeEvent, RowClassArgs } from '@progress/kendo-angular-grid';
+import { ModalService } from '../../shared/services/modal.service';
+import { User1100Component } from '../user1100/user1100.component';
 
 @Component({
   selector: 'app-user1000',
@@ -53,7 +55,8 @@ export class User1000Component implements OnInit {
   constructor(
     private dataService: DataService,
     private titleService: Title,
-    private service: ServerService
+    private service: ServerService,
+    private modalService: ModalService
   ) {
     this.titleService.setTitle('User');
     this.setSelectableSettings();
@@ -92,7 +95,15 @@ export class User1000Component implements OnInit {
   }
 
   edit(dataItems) {
-
+    this.modalService.open({
+      content: User1100Component,
+      message: dataItems,
+      callback: _response => {
+        if(_response) {
+            console.log(_response);
+        }
+      }
+    });
   }
 
   searchChange(event) {
