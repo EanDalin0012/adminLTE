@@ -240,5 +240,15 @@
             "Credentials_Expired": "Credentials Expired"
         }
 
+    },
+    "User1100": {
+        "LABEL": {
+            "Tittle": "User Account",
+            "User_Name": "User Name",
+            "Enable": "Enable",
+            "Account_Lock": "Account Lock",
+            "Credentials_Expired": "Credentials Expired",
+            "Account_Expired": "Account Expired"
+        }
     }
 }

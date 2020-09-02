@@ -6016,7 +6016,7 @@ kendo-upload div:nth-child(0) {
 
 .contentsWrap {
     overflow-y: scroll;
-    height: 95vh;
+    /*  height: 95vh; */
 }
 
 .pop_header {

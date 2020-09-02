@@ -3,7 +3,7 @@
         <div class="web_container">
             <!-- header -->
             <div class="pop_header">
-                <h1>{{'Register1100.LABEL.TITLE' | translate}}</h1>
+                <h1>{{'User1100.LABEL.Tittle' | translate}}</h1>
                 <button type="button" tabindex=-1 class="btn_popclose" (click)="close()"><span>close</span></button>
             </div>
             <!-- //header -->
@@ -13,20 +13,26 @@
                 </colgroup>
                 <tbody>
                     <tr>
-                        <th scope="row">User Name</th>
-                        <td colspan="5"><strong>User Name</strong></td>
+                        <th scope="row">{{'User1100.LABEL.User_Name' | translate}}</th>
+                        <td colspan="5"><strong>{{userName}}</strong></td>
                     </tr>
                     <tr>
-                        <th scope="row">Enable</th>
-                        <td>Enable</td>
-                        <th scope="row">Account Lock</th>
-                        <td>Account Lock</td>
+                        <th scope="row">{{'User1100.LABEL.Enable' | translate}}</th>
+                        <td>
+                            <input type="checkbox" [(ngModel)]="enable" [checked]="enable" disabled id="chk1" class="checkbox" />
+                        </td>
+                        <th scope="row">{{'User1100.LABEL.Account_Lock' | translate}}</th>
+                        <td>
+                            <input type="checkbox" [(ngModel)]="accountLock" [checked]="accountLock" id="chk1" class="checkbox" />
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="row">Credentials Expired</th>
-                        <td>Credentials Expired</td>
-                        <th scope="row">Account Expired</th>
-                        <td>Account Expired</td>
+                        <th scope="row">{{'User1100.LABEL.Credentials_Expired' | translate}}</th>
+                        <td>
+                            <input type="checkbox" [(ngModel)]="credentialsExpired" [checked]="credentialsExpired" id="chk1" class="checkbox" />
+                        </td>
+                        <th scope="row">{{'User1100.LABEL.Account_Expired' | translate}}</th>
+                        <td><input type="checkbox" [checked]="accountExpired" id="chk1" class="checkbox" /></td>
                     </tr>
 
             </table>
@@ -38,7 +44,7 @@
                 <span>{{'COMMON.BUTTON.CLOSE' | translate}}</span>
             </div>
             <div class="iam-btn-container mbr_introContent" style="display: inline-block;">
-                <button class="iam-button save" (click)="update()">{{'COMMON.BUTTON.SAVE' | translate}}</button>
+                <button class="iam-button save" (click)="save()">{{'COMMON.BUTTON.SAVE' | translate}}</button>
             </div>
         </div>
 
