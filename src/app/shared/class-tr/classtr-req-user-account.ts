@@ -1,10 +1,10 @@
 import { Header } from '../Class/class-header';
 
 class Body {
-  enable: boolean;
+  enabled: boolean;
   accountExpired: boolean;
   credentialsExpired: boolean;
-  accountLock: boolean;
+  accountLocked: boolean;
   userName: string;
   id: number;
 }

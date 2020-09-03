@@ -12,10 +12,10 @@ import { BTN_ROLES } from '../../shared/constants/common.const';
 export class User1100Component implements OnInit {
 
   modal;
-  enable: boolean;
+  enabled: boolean;
   accountExpired: boolean;
   credentialsExpired: boolean;
-  accountLock: boolean;
+  accountLocked: boolean;
   userName: string;
   id: number;
 
@@ -24,11 +24,10 @@ export class User1100Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.enable = true;
     if (this.modal) {
-      this.enable             = this.modal.message.enabled;
+      this.enabled             = this.modal.message.enabled;
       this.accountExpired     = this.modal.message.account_expired;
-      this.accountLock        = this.modal.message.account_locked;
+      this.accountLocked        = this.modal.message.account_locked;
       this.credentialsExpired = this.modal.message.credentials_expired;
       this.userName           = this.modal.message.user_name;
       this.id                 = this.modal.message.id;
@@ -42,8 +41,8 @@ export class User1100Component implements OnInit {
   save() {
     const trReq = new UserAccountRequest();
     trReq.body.accountExpired     = this.accountExpired;
-    trReq.body.enable             = this.enable;
-    trReq.body.accountLock        = this.accountLock;
+    trReq.body.enabled            = this.enabled;
+    trReq.body.accountLocked      = this.accountLocked;
     trReq.body.credentialsExpired = this.credentialsExpired;
     trReq.body.userName           = this.userName;
     trReq.body.id                 = this.id;
@@ -55,5 +54,9 @@ export class User1100Component implements OnInit {
         this.modal.close({close: BTN_ROLES.EDIT});
       }
     });
+  }
+
+  test() {
+    alert();
   }
 }

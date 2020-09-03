@@ -19,11 +19,11 @@
                     <tr>
                         <th scope="row">{{'User1100.LABEL.Enable' | translate}}</th>
                         <td>
-                            <input type="checkbox" [(ngModel)]="enable" [checked]="enable" disabled id="chk1" class="checkbox" />
+                            <input type="checkbox" [(ngModel)]="enabled" [checked]="enabled" disabled id="chk1" class="checkbox" />
                         </td>
                         <th scope="row">{{'User1100.LABEL.Account_Lock' | translate}}</th>
                         <td>
-                            <input type="checkbox" [(ngModel)]="accountLock" [checked]="accountLock" id="chk1" class="checkbox" />
+                            <input type="checkbox" data-md-icheck (ngModelChange)="test()" [(ngModel)]="accountLocked" [checked]="accountLocked" id="chk1" class="checkbox" />
                         </td>
                     </tr>
                     <tr>
@@ -32,7 +32,7 @@
                             <input type="checkbox" [(ngModel)]="credentialsExpired" [checked]="credentialsExpired" id="chk1" class="checkbox" />
                         </td>
                         <th scope="row">{{'User1100.LABEL.Account_Expired' | translate}}</th>
-                        <td><input type="checkbox" [checked]="accountExpired" id="chk1" class="checkbox" /></td>
+                        <td><input type="checkbox" [(ngModel)]="accountExpired" [checked]="accountExpired" id="chk1" class="checkbox" /></td>
                     </tr>
 
             </table>

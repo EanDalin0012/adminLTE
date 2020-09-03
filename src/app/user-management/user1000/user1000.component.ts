@@ -9,6 +9,7 @@ import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { GridDataResult, SelectableSettings, PageChangeEvent, RowClassArgs } from '@progress/kendo-angular-grid';
 import { ModalService } from '../../shared/services/modal.service';
 import { User1100Component } from '../user1100/user1100.component';
+import { BTN_ROLES } from '../../shared/constants/common.const';
 
 @Component({
   selector: 'app-user1000',
@@ -81,17 +82,8 @@ export class User1000Component implements OnInit {
         this.gridData = this.userInfoList;
         this.list     = this.userInfoList;
         this.loadingData(this.userInfoList);
-        console.log(this.userInfoList);
       }
     });
-  }
-
-  Resgister() {
-
-  }
-
-  delete() {
-
   }
 
   edit(dataItems) {
@@ -100,17 +92,26 @@ export class User1000Component implements OnInit {
       message: dataItems,
       callback: _response => {
         if(_response) {
-            console.log(_response);
+          if(_response && _response.close === BTN_ROLES.EDIT) {
+            this.inquiry();
+          }
         }
       }
     });
   }
 
   searchChange(event) {
-
+    if (event) {
+      console.log(event.target.value);
+      const resultSearch  = this.list.filter( data => data.user_name.toLowerCase().includes(event.target.value));
+      this.totalRecord    = resultSearch.length;
+      this.loadingData(resultSearch);
+    }
   }
+
   deleteTextSearch() {
     this.search = undefined;
+    this.loadingData(this.list);
   }
 
   public excelExportExcel(component) {

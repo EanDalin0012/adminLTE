@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentcatiionRequest, AuthentcatiionService } from '../../shared/services/authentication.service';
 import { ServerService } from '../../shared/services/server.service';
+import { Utils } from '../../shared/utils/utils.static';
 declare var $;
 
 @Component({
@@ -13,6 +14,10 @@ export class Sign1000Component implements OnInit {
 
   userName: string;
   password: string;
+  rememberMe: boolean = false;
+  theCheckbox= false;
+  accountLocked =true;
+  @ViewChild('passwordElement') passwordElement: ElementRef;
 
   constructor(
     private router: Router,
@@ -30,6 +35,10 @@ export class Sign1000Component implements OnInit {
         increaseArea: '20%' /* optional */
       });
     });
+    this.rememberMe = Utils.getSecureStorage('rememberMe');
+    if(this.rememberMe === true) {
+      this.userName = Utils.getSecureStorage('UserID');
+    }
   }
 
   ngOnDestroy(): void {
@@ -37,21 +46,46 @@ export class Sign1000Component implements OnInit {
   }
 
   onClickLogin() {
+    if(this.rememberMe === true) {
+      Utils.setSecureStorage('UserID', this.userName)
+    }
 
     const authenticationObj: AuthentcatiionRequest = {
       username: this.userName,
       password: this.password
     };
-
     this.authentcatiionService.login(authenticationObj);
-    
-    /* 
-    Utils.setSecureStorage( LOCAL_STORAGE.USER_INFO, userInfo);
-    console.log(Utils.getSecureStorage( LOCAL_STORAGE.USER_INFO));
-    const newAesInfo: any = Utils.getSecureStorage(AES_INFO.STORE) || {};
-    newAesInfo.timestamp = new Date().getTime();
-    Utils.setSecureStorage(AES_INFO.STORE, newAesInfo);
-    this.router.navigate(['/main/home']); */
   }
 
+  enterLoginHandler(event: any) {
+    if (event.keyCode === 13 && this.userName !== '' && this.password !== '') {
+      this.onClickLogin();
+    } else if (event.keyCode === 13 && this.userName !== '') {
+      this.passwordElement.nativeElement.focus();
+    }
+  }
+
+  tapfocus(event: any) {
+    const element = event.srcElement.nextElementSibling;
+    if (event.keyCode === 9) {
+      element.focus();
+    }
+  }
+  
+  clickRememberMe() {
+    alert();
+    console.log(this.userName);
+    if(this.userName !== '') {
+      Utils.setSecureStorage('rememberMe', this.rememberMe);
+      Utils.setSecureStorage('UserID', this.userName)
+    }
+  }
+
+  toggleVisibility(e){
+    alert(e.target.checked);
+  }
+
+  test() {
+    alert();
+  }
 }
