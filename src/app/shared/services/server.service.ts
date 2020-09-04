@@ -68,7 +68,8 @@ export class ServerService {
           }
         });
       } else {
-        $('div.loading').addClass('none');
+        // $('div.loading').addClass('none');
+        $('div.loading').removeClass('none');
         $('body').removeClass('loaded');
         
         let authorization = Utils.getSecureStorage(LOCAL_STORAGE.Authorization);
@@ -120,7 +121,8 @@ export class ServerService {
 
   public HTTPget(api, obj?: any): Promise<any> {
     return new Promise((resolve, reject) =>{
-      $('div.loading').addClass('none');
+      // $('div.loading').addClass('none');
+      $('div.loading').removeClass('none');
       $('body').removeClass('loaded');
 
       const uri = this.bizserverUrl + api;
@@ -142,7 +144,7 @@ export class ServerService {
       const headers = { 'Authorization': 'Bearer ' + access_token }
       this.httpClient.get(uri, {headers}).subscribe(rest => {
         $('body').addClass('loaded');
-        $('div.loading').removeClass('none');
+        $('div.loading').addClass('none');
         resolve(rest)
       });
     });

@@ -70,7 +70,6 @@ import { UploadModule } from '@progress/kendo-angular-upload';
     PhoneNumberPipe,
     AmountFormatPipe,
     DiscountFormatPipe,
-
     AutoFocusDirective
 
   ],
