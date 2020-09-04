@@ -145,7 +145,7 @@
                 </ul>
             </li>
 
-            <li class="treeview" [ngClass]="{active: path == 'user-account' }">
+            <li class="treeview" [ngClass]="{active: path == 'user-account' || path == 'user-info'}">
                 <a href="#">
                     <i class="fa fa-table"></i> <span>User Management</span>
                     <span class="pull-right-container">
@@ -154,18 +154,17 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="treeview">
-                        <!--  <a [ngClass]="{current: path == 'user'}">
-                            <i class="fa fa-circle-o"></i>User
-                        </a> -->
 
-                        <a [ngClass]="{current: path == 'user-account'}"><i class="fa fa-circle-o text-aqua"></i> User
+                        <a [ngClass]="{current: path == 'user-account' || path == 'user-info'}"><i class="fa fa-circle-o text-aqua"></i> User
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
 
-                        <ul class="treeview-menu" [ngClass]="{display_block: path == 'user-account'}">
-                            <li><a href="#"><i class="fa fa-circle-o"></i>User Information</a></li>
+                        <ul class="treeview-menu" [ngClass]="{display_block: path == 'user-account' || path == 'user-info'}">
+                            <li (click)="onOpenPage('User2000')">
+                                <a [ngClass]="{current: path == 'user-info'}"><i class="fa fa-circle-o"></i>User Information</a>
+                            </li>
                             <li (click)="onOpenPage('User1000')">
                                 <a [ngClass]="{current: path == 'user-account'}"><i class="fa fa-circle-o"></i>User Account</a>
                             </li>

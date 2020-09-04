@@ -76,7 +76,7 @@ export class Register5000Component implements OnInit {
     const url = (window.location.href).split('/');
     this.dataService.visitMessage(url[5]);
 
-    this.inquiry();
+    // this.inquiry();
     // this.translate.get('COMMON.LABEL').subscribe((res) => {
     //  console.log(res);
     // });

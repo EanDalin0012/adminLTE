@@ -10,6 +10,8 @@ import { UserRole1000Component } from './user-role1000/user-role1000.component';
 import { Role1000Component } from './role1000/role1000.component';
 import { User2000Component } from './user2000/user2000.component';
 import { SBSharedModule } from '../shared/sbshare.module';
+import { User2100Component } from './user2100/user2100.component';
+import { User2200Component } from './user2200/user2200.component';
 
 
 
@@ -22,7 +24,9 @@ import { SBSharedModule } from '../shared/sbshare.module';
     Role1100Component,
     Role1000Component,
     UserRole1000Component,
-    User2000Component
+    User2000Component,
+    User2100Component,
+    User2200Component
   ],
   imports: [
     CommonModule,

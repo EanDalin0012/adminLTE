@@ -15,7 +15,7 @@ declare var $;
 export class SideNavComponent implements OnInit {
 
   modal;
-  userInfo: any; // new User();
+  userInfo: any;
   class: string;
   path: string;
   constructor(
@@ -35,7 +35,6 @@ export class SideNavComponent implements OnInit {
     this.class = 'home';
     this.dataService.visitData.subscribe(message => {
       if (message !== '') {
-        // ExpressionChangedAfterItHasBeenCheckedError로 인하여 setTimeout으로 우회처리
         setTimeout(() => {
           this.path = message;
           console.log(message);
@@ -114,6 +113,7 @@ export class SideNavComponent implements OnInit {
         url += `home/${URLCODE[urlCode]}`;
         break;
       case 'User1000': // setting
+      case 'User2000': // setting
         url += `user-management/${URLCODE[urlCode]}`;
         break;
     }

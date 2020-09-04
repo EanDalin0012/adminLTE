@@ -1011,7 +1011,7 @@ kendo-pdf-export {
     position: relative;
     min-width: 76px;
     height: auto;
-    padding: 0 26px 0 0;
+    padding: 10px 0 0 0;
     font-size: .875rem;
     color: #18191b;
     line-height: 28px;
@@ -5827,7 +5827,7 @@ kendo-dialog:focus {
     position: absolute;
     display: block;
     right: 20px;
-    top: 33px;
+    top: 29px;
     width: 25px;
     height: 25px;
     text-indent: -999em;
