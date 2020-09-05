@@ -12,6 +12,9 @@ import { User2000Component } from './user2000/user2000.component';
 import { SBSharedModule } from '../shared/sbshare.module';
 import { User2100Component } from './user2100/user2100.component';
 import { User2200Component } from './user2200/user2200.component';
+import { User3000Component } from './user3000/user3000.component';
+import { User3100Component } from './user3100/user3100.component';
+import { User3200Component } from './user3200/user3200.component';
 
 
 
@@ -26,7 +29,10 @@ import { User2200Component } from './user2200/user2200.component';
     UserRole1000Component,
     User2000Component,
     User2100Component,
-    User2200Component
+    User2200Component,
+    User3000Component,
+    User3100Component,
+    User3200Component
   ],
   imports: [
     CommonModule,
