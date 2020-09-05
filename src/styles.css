@@ -1022,7 +1022,8 @@ kendo-pdf-export {
 
 /*.change_lang .cur:before {content:""; position:absolute; left:0; top:50%; width:22px; height:20px; margin-top:-10px; background:url("assets/images/ico_lang_flag_eng.png") no-repeat left center;}*/
 
-.change_lang .cur:after {
+
+/* .change_lang .cur:after {
     content: "";
     position: absolute;
     right: 0;
@@ -1032,7 +1033,7 @@ kendo-pdf-export {
     margin-top: -5px;
     background: url("assets/images/ico_lang_arrow.png") no-repeat right center;
     transition: all .3s linear;
-}
+} */
 
 .change_lang .cur button {
     position: absolute;
@@ -6062,4 +6063,10 @@ kendo-upload div:nth-child(0) {
 .display-block,
 .display_block {
     display: block;
+}
+
+.fa,
+.far,
+.fas {
+    font-family: "FontAwesome" !important;
 }

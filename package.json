@@ -56,6 +56,7 @@
     "@progress/kendo-recurrence": "^1.0.0",
     "@progress/kendo-theme-default": "^4.21.0",
     "bootstrap": "^4.5.2",
+    "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.0",
     "jquery": "^3.5.1",
     "moment": "^2.27.0",

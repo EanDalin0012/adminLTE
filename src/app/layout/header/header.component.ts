@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Utils } from '../../shared/utils/utils.static';
 import { TranslateService } from '@ngx-translate/core';
+import { LOCAL_STORAGE } from '../../shared/constants/common.const';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,6 @@ export class HeaderComponent implements OnInit {
     km: { class: "khmer", text: "ខ្មែរ"},
     zh: { class: "china", text: "中文"},
   };
-  faCoffee = 'faCoffee';
   constructor(
     private translate: TranslateService,
   ) { }
@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   onChangeLanguage(code: string) {
     this.langCode = code;
     this.translate.use( this.langCode );
-    Utils.setSecureStorage( 'langCode', this.langCode );
+    Utils.setSecureStorage( LOCAL_STORAGE.I18N, this.langCode );
   }
 
 }

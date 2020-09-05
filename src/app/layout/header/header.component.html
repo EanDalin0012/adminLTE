@@ -51,7 +51,7 @@
                 <!-- Notifications: style can be found in dropdown.less -->
                 <li class="dropdown notifications-menu">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell-o"></i>
+                        <i class="fa fa-bell-o" aria-hidden="true"></i>
                         <span class="label label-warning">10</span>
                     </a>
                     <ul class="dropdown-menu">
@@ -148,10 +148,8 @@
                 <li>
                     <div class="change_lang ui_dropdown" [ngClass]="{ 'ui_drop_open': sltLanguageList }" (click)="$event.stopPropagation();sltLanguageList = !sltLanguageList">
                         <div class="cur" [ngClass]="langData[langCode].class">
-                            <strong>{{ langData[langCode].text }}</strong>
-                            <i class="fa fa-circle-o"></i>
-                            <i class="fas fa-angle-down"></i>
-                            <button type="button" tabindex="-1"><span>show language list</span></button>
+                            <strong style="color: white;">{{ langData[langCode].text }}</strong>
+                            <i class="fa" [ngClass]="{'fa-chevron-up': sltLanguageList, 'fa-chevron-down': !sltLanguageList}" aria-hidden="true" style="margin-left: 8px;color: white;"></i>
                         </div>
                         <div class="lang_list ui_drop_cont">
                             <ul>

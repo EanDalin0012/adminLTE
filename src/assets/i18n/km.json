@@ -1,12 +1,12 @@
 {
     "COMMON": {
         "LABEL": {
-            "SORT": "Sort",
+            "SORT": "តម្រៀប",
             "ALL": "All",
             "NO": "No",
             "ITEMS": "{{value}} Item(s)",
             "SELECT_ROW_FOR_DELETE": "Please select row for delete items.",
-            "ADD_NEW": "Add New",
+            "ADD_NEW": "បន្តែមថ្មី",
             "HOME": "Home",
             "INFORMATION": "Information",
             "REGISTER": "Register",
@@ -33,7 +33,7 @@
         },
         "MESSAGE": {
             "INVALID_EMAIL": "Invalid Email",
-            "InValid_User_Name": "ឈ្មោះប្រើប្រាស់មិនត្រឹមត្រូវ"
+            "InValid_User_Name": "Invalid use name"
         }
     },
     "Home2000": {
@@ -216,6 +216,39 @@
         "MESSAGE": {
             "ENTER_PRODUCT_NAME": "Enter product name",
             "SELECT_PRODUCT_IMAGE": "select product image"
+        }
+    },
+    "ANNOUNCE": {
+        "COMPANY": "PPCBank smartBiz",
+        "TITLE": "Sorry",
+        "BUTTON": "Go to home",
+        "ERROR4": {
+            "LINE1": "We can't seem to find the page",
+            "LINE2": "you're looking for."
+        },
+        "ERROR5": {
+            "LINE1": "Looks like we're having",
+            "LINE2": "come server issues."
+        }
+    },
+    "User1000": {
+        "LABEL": {
+            "Account_Expired": "Account Expired",
+            "Enabled": "Enabled",
+            "User_Name": "User Name",
+            "Account_Locked": "Account Locked",
+            "Credentials_Expired": "Credentials Expired"
+        }
+
+    },
+    "User1100": {
+        "LABEL": {
+            "Tittle": "User Account",
+            "User_Name": "User Name",
+            "Enable": "Enable",
+            "Account_Lock": "Account Lock",
+            "Credentials_Expired": "Credentials Expired",
+            "Account_Expired": "Account Expired"
         }
     }
 }

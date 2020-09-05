@@ -26,11 +26,11 @@
                         ],
                         "styles": [
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                            "./node_modules/font-awesome/css/font-awesome.min.css",
                             {
                                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
                             },
                             "src/assets/bower_components/bootstrap/dist/css/bootstrap.min.css",
-                            "src/assets/bower_components/font-awesome/css/font-awesome.min.css",
                             "src/assets/bower_components/Ionicons/css/ionicons.min.css",
                             "src/assets/dist/css/AdminLTE.min.css",
                             "src/assets/dist/css/skins/_all-skins.min.css",
@@ -40,7 +40,6 @@
                             "src/assets/bower_components/bootstrap-daterangepicker/daterangepicker.css",
                             "src/assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css",
                             "src/assets/plugins/iCheck/square/blue.css",
-                            "src/assets/bower_components/fontawesome-free-5.14.0-web/css/all.css",
                             "src/styles.css"
                         ],
                         "scripts": [

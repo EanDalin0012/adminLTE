@@ -22,14 +22,13 @@ export class AppComponent {
   }
 
   setInitialAppLanguage() {
-    const localLangCode = Utils.getSecureStorage( LOCAL_STORAGE.LANGUAGE_CODE );
     const i18n = Utils.getSecureStorage( LOCAL_STORAGE.I18N );
-    if ( !i18n || !localLangCode ) {
+    if ( !i18n ) {
       Utils.setSecureStorage(LOCAL_STORAGE.I18N, LANGUAGE.I18N_EN.toString());
       this.translate.setDefaultLang( LANGUAGE.I18N_EN.toString() );
       this.translate.use( LANGUAGE.I18N_EN.toString() );
     } else {
-      this.translate.setDefaultLang( i18n );
+      this.translate.setDefaultLang( 'en' );
       this.translate.use( i18n );
     }
   }
